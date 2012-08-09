@@ -1,0 +1,59 @@
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <script type="text/javascript">
+	google.load('visualization', '1.0', {'packages':['corechart']});
+	google.setOnLoadCallback(drawChart);
+	
+	function drawChart() {
+		// Create the data table.
+	    var data = new google.visualization.DataTable();
+	    data.addColumn('string', 'Value');
+	    data.addColumn('number', '<%= @sensor.data_points.last.units %>');
+	    $.ajax({
+			url: '/sensors/<%=@sensor.id%>/data_points',		  	
+		  	success: function(response) {
+		  		for(var i=0; i< response.length; i++) {
+		  			console.log(response[i][0]);
+		  			data.addRow([
+		  				response[i][0],
+		  				parseInt(response[i][1])
+		  			]);
+		  		}
+				var options = {'title':'<%= @sensor.name %>', 'width':900,'height':400};
+			    var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
+			    chart.draw(data, options);	
+		  	}
+		});
+	}
+	function addData() {
+		data.addRows([
+	      ['Mushrooms', 3],
+	      ['Onions', 1],
+	      ['Olives', 1],
+	      ['Zucchini', 1],
+	      ['Pepperoni', 2]
+	    ]);
+
+	    // Set chart options
+	    
+	}
+</script>
+<h1>Showing <%= @sensor.name %></h1>
+<aside><%= link_to "Back to Sensors", sensors_path %></aside>
+<div id="chart-container"></div>
+<h2>Latest Data Points</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Last Updated</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @latest_data_points.each do |data_point| %>
+			<tr>
+				<td><%= data_point.created_at %></td>
+				<td><%= data_point.value %><%=data_point.units%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

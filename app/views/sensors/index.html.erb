@@ -1,0 +1,24 @@
+<h1>Sensors</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Last Value</td>
+            <td>Today's Average</td>
+            <td>Yesterday's Average</td>
+            <td>Last Updated</td>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sensors.each do |sensor| %>
+            <% last_data_point = sensor.data_points.last %>
+            <tr>
+                <td><%= link_to sensor.name, sensor %></td>
+                <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
+                <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
+                <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
+                <td><%= sensor.data_points.last.created_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

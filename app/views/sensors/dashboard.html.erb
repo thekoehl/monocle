@@ -1,0 +1,14 @@
+<h1>Dashboard</h1>
+<table class="table table-striped">
+	<tbody>
+		<% @sensors.each do |sensor| %>
+			<tr>
+				<td>
+					<strong><%= link_to sensor.name, sensor %></strong>
+					<aside>updated @ <%= sensor.data_points.last.created_at %></aside>
+				</td>
+				<td><h2 class="pull right"><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></h2></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
