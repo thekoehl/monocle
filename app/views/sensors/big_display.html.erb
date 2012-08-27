@@ -1,0 +1,15 @@
+<script type="text/javascript">
+	setTimeout("location.reload(true);",60 * 1000);	
+</script>
+<br/>
+<br/>
+<br/>
+<div class="sensor-big-display">
+	<span><%= @sensor.data_points.last.value%><%= @sensor.data_points.last.units%></span>
+	<aside>
+		<p><%= @sensor.name %></p>
+		<p>Sensor Updated @ <%= @sensor.data_points.last.created_at.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]).strftime("%I:%M%P (%Y/%m/%d)")%></p>
+		<p>Page Updated @ <%= Time.now.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]).strftime("%I:%M%P")%></p>
+
+	</aside>
+</div>

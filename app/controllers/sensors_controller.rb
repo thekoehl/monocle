@@ -1,5 +1,9 @@
 class SensorsController < ApplicationController
     before_filter :authenticate_user!
+    def big_display
+        @sensor = current_user.sensors.find_by_id params[:id]
+        raise "Could not locate sensor by id #{params[:id]}" unless @sensor
+    end
     def dashboard
         @sensors = current_user.sensors.all
     end

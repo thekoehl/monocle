@@ -5,6 +5,7 @@ ComPhantomdataMonicle::Application.routes.draw do
       get :dashboard
     end
     member do      
+      get :big_display
       get :data_points
     end
   end

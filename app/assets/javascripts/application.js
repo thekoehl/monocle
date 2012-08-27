@@ -19,10 +19,28 @@ var NERD = NERD || {};
 
 $().ready(function() {
     NERD.DataChart.init();
+    NERD.BigDisplay.init();
 });
 
 NERD.DataChart = {
     init: function() {
     	if ($('#chart-container').length === 0) return;
     }
+}
+NERD.BigDisplay = {
+	init: function() {
+		if($('.sensor-big-display').length === 0) return;
+
+		$('.navbar-inner').hide();
+		$('body').addClass('sensor-green-display');
+		setInterval(function() {
+			if ($('.sensor-big-display span.glowing').length === 0)
+				$('.sensor-big-display span').addClass('glowing');
+			else
+				$('.sensor-big-display span').removeClass('glowing');
+			},
+			2000
+		);
+	}
+	
 }
