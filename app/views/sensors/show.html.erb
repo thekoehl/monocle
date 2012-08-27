@@ -4,15 +4,18 @@
 	google.setOnLoadCallback(drawChart);
 	
 	function drawChart() {
-		// Create the data table.
+		var chartRange = $('.chart-sub-nav > li.active > a.chart-range').first();
+		if (chartRange === false) return;
+		chartRange = chartRange.attr('chart-range');
+
 	    var data = new google.visualization.DataTable();
 	    data.addColumn('string', 'Value');
 	    data.addColumn('number', '<%= @sensor.data_points.last.units %>');
+
 	    $.ajax({
-			url: '/sensors/<%=@sensor.id%>/data_points',		  	
+			url: '/sensors/<%=@sensor.id%>/data_points?chart_range=' + chartRange,
 		  	success: function(response) {
 		  		for(var i=0; i< response.length; i++) {
-		  			console.log(response[i][0]);
 		  			data.addRow([
 		  				response[i][0],
 		  				parseInt(response[i][1])
@@ -24,21 +27,17 @@
 		  	}
 		});
 	}
-	function addData() {
-		data.addRows([
-	      ['Mushrooms', 3],
-	      ['Onions', 1],
-	      ['Olives', 1],
-	      ['Zucchini', 1],
-	      ['Pepperoni', 2]
-	    ]);
-
-	    // Set chart options
-	    
-	}
 </script>
 <h1>Showing <%= @sensor.name %></h1>
-<aside><%= link_to "Back to Sensors", sensors_path %></aside>
+
+<ul class="nav nav-pills chart-sub-nav">
+	<li><%= link_to "Back to Sensors", sensors_path %></li>
+	<li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
+	<li><a href="#" class="chart-range" chart-range="this-week">This Week</a></li>
+	<li class="active"><a href="#" class="chart-range" chart-range="this-day">This Day</a></li>
+	<li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
+</ul>
+
 <div id="chart-container"></div>
 <h2>Latest Data Points</h2>
 <table class="table table-striped">

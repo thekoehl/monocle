@@ -25,6 +25,15 @@ $().ready(function() {
 NERD.DataChart = {
     init: function() {
     	if ($('#chart-container').length === 0) return;
+    	this.initNavigation();
+    },
+    initNavigation: function() {
+    	$('.chart-range').click(function() {
+    		$('.chart-sub-nav li.active').removeClass('active');
+    		$(this).parent().addClass('active');
+    		drawChart(); // This directly references inHTML JS.  I know; but its the only way to get GCharts working right.
+    		return false;
+    	});
     }
 }
 NERD.BigDisplay = {
