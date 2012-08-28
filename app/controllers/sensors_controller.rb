@@ -10,8 +10,13 @@ class SensorsController < ApplicationController
     def data_points
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
-
-    	render :json => @sensor.average_by_hour.to_a
+        if params[:chart_range] == "this-day"
+    	   render :json => @sensor.average_by_hour.to_a
+        elsif params[:chart_range] == "this-month"
+            render :json => @sensor.average_by_day.to_a
+        elsif params[:chart_range] == "all-time"
+            render :json => @sensor.average_by_month.to_a
+        end
     end
     def index
         @sensors = current_user.sensors.all

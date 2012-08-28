@@ -21,7 +21,7 @@
 		  				parseInt(response[i][1])
 		  			]);
 		  		}
-				var options = {'title':'<%= @sensor.name %>', 'width':900,'height':400};
+				var options = {'title':'<%= @sensor.name %>', 'width':1024,'height':500};
 			    var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
 			    chart.draw(data, options);	
 		  	}
@@ -33,26 +33,9 @@
 <ul class="nav nav-pills chart-sub-nav">
 	<li><%= link_to "Back to Sensors", sensors_path %></li>
 	<li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
-	<li><a href="#" class="chart-range" chart-range="this-week">This Week</a></li>
+	<li><a href="#" class="chart-range" chart-range="this-month">This Month</a></li>
 	<li class="active"><a href="#" class="chart-range" chart-range="this-day">This Day</a></li>
 	<li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
 </ul>
 
 <div id="chart-container"></div>
-<h2>Latest Data Points</h2>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Last Updated</th>
-			<th>Value</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @latest_data_points.each do |data_point| %>
-			<tr>
-				<td><%= data_point.created_at %></td>
-				<td><%= data_point.value %><%=data_point.units%></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
