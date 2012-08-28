@@ -1,0 +1,18 @@
+
+<h2>Latest Data Points</h2>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Last Updated</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @latest_data_points.each do |data_point| %>
+			<tr>
+				<td><%= data_point.created_at.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]) %></td>
+				<td><%= data_point.value %><%=data_point.units%></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

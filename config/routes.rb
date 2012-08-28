@@ -6,6 +6,7 @@ ComPhantomdataMonicle::Application.routes.draw do
     end
     member do      
       get :big_display
+      get :data
       get :data_points
     end
   end

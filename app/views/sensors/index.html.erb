@@ -11,13 +11,19 @@
     </thead>
     <tbody>
         <% @sensors.each do |sensor| %>
-            <% last_data_point = sensor.data_points.last %>
             <tr>
                 <td><%= link_to sensor.name, sensor %></td>
-                <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
-                <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
-                <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
-                <td><%= sensor.data_points.last.created_at %></td>
+                <% if sensor.data_points.last == nil %>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                <% else %>
+                    <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
+                    <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
+                    <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
+                    <td><%= sensor.data_points.last.created_at %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>

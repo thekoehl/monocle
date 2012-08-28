@@ -7,13 +7,15 @@ class Sensor < ActiveRecord::Base
     attr_accessible :name, :reporter
 
     def average_by_hour
-        self.data_points.average(:value, :group => "created_at_hourly", :order => "created_at ASC")
+        self.data_points.average(:value, :group => "created_at_hourly", :order => "created_at ASC", 
+                                 :conditions => ["created_at >= ?", Time.now - 48.hours])
     end
     def average_by_day
         self.data_points.average(:value, :group => "created_at_daily", :order => "created_at ASC")
     end
     def average_by_month
-        self.data_points.average(:value, :group => "created_at_monthly", :order => "created_at ASC")
+        self.data_points.average(:value, :group => "created_at_monthly", :order => "created_at ASC",
+            :conditions => ["created_at >= ?", Time.now - 3.months])
     end
 
     def todays_average

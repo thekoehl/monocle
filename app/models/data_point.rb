@@ -9,9 +9,9 @@ class DataPoint < ActiveRecord::Base
   validates_presence_of :value
 
   def compute_statistical_references
-  	tn = Time.now.utc
+  	tn = Time.now.utc.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"])
 	  self.created_at_monthly = tn.strftime("%Y/%m")
-	  self.created_at_daily = tn.strftime("%Y/%m/%d")
-	  self.created_at_hourly = tn.strftime("%Y/%m/%d %H:00")
+	  self.created_at_daily = tn.strftime("%a %m/%d")
+	  self.created_at_hourly = tn.strftime("%a %m/%d %H:00")
   end
 end

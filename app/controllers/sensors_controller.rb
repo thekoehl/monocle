@@ -7,6 +7,10 @@ class SensorsController < ApplicationController
     def dashboard
         @sensors = current_user.sensors.all
     end
+    def data
+        @sensor = current_user.sensors.find_by_id params[:id]
+        @latest_data_points = @sensor.data_points.all(:conditions => ["created_at > ?", Time.now-48.hours], :order => "created_at DESC")
+    end
     def data_points
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
@@ -23,7 +27,6 @@ class SensorsController < ApplicationController
     end
     def show
     	@sensor = current_user.sensors.find_by_id params[:id]
-        @latest_data_points = @sensor.data_points.all(:conditions => ["created_at > ?", Time.now-48.hours], :order => "created_at DESC")
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
     end
 end
