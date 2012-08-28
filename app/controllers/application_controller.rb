@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     layout "fixed"
     protect_from_forgery
 
-    before_filter :create_api_key_if_necessary
+    before_filter :create_api_key_if_necessary, :start_page_load_timer
 
     def create_api_key_if_necessary
         if current_user && (current_user.api_key == nil || current_user.api_key.empty?)
@@ -13,4 +13,7 @@ class ApplicationController < ActionController::Base
     def after_sign_in_path_for(resource)
 		sensors_path
 	end
+    def start_page_load_timer
+        @load_started_at = Time.now
+    end
 end
