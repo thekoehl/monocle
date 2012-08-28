@@ -48,7 +48,7 @@
       </div><!--/content-->
 
       <footer>
-        Page loaded in <%= (Time.now - @load_started_at).to_s %>s at <%= Time.now %>.
+        Page loaded in <%= (Time.now - @load_started_at).to_s %>s at <%= Time.now.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]) %>.
       </footer>
 
     </div> <!-- /container -->
