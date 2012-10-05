@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'capistrano'
+gem 'rvm-capistrano'
 gem "devise"
 gem "twitter-bootstrap-rails"
 gem 'mysql2'
