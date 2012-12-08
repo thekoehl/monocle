@@ -32,6 +32,9 @@ header.masthead {
     width:25px;
 }
 /* SENSORS */
+#chart-container {
+    left:-125px;
+}
 .sensor-big-display {
 	text-align: center;
 	font-size:20em;

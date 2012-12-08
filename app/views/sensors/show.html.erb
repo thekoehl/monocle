@@ -21,7 +21,7 @@
 		  				parseInt(response[i][1])
 		  			]);
 		  		}
-				var options = {'title':'<%= @sensor.name %>', 'width':1024,'height':500};
+				var options = {'title':'<%= @sensor.name %>', 'width':1160, 'height':400, left:-55};
 			    var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
 			    chart.draw(data, options);	
 		  	}
