@@ -1,17 +1,35 @@
-<h2>Sign in</h2>
+<div class="alert alert-notice">
+  <p><%= link_to "sign up", new_user_registration_path, :class => "btn btn-inverse" %> if you don't already have an account!</p>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="row">
+    <div class="span8">
+        <h3>What is monocle?</h3>
+        <p>Monocle is a simple little datalogger.  Use my monocle thor script (@github) to periodically poll your stuff and send it back here to be graphed.  I like pretty graphs and I primarily built this app so I could look at a pretty graph of the temperature in my apartment.  Huzzah!</p>
+        <p><em>This little project was made with Rails 3.0 and Twitter Bootstrap and runs on Rackspace.</em></p>
+    </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
+    <div class="span3">
+        <h3>Login</h3>
+        <%=  form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+            <div class="form-fields-container">
+                <%= f.label :email %>
+                <%= f.email_field :email %>
+            </div>
+            <div class="form-fields-container">
+                <%= f.label :password %>
+                <%= f.password_field :password %>
+            </div>
+            <div class="form-fields-container checkbox-container">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+            <div class="form-fields-container">
+                <input type="submit" class="btn btn-success" value="Login!" />
+            </div>
+        <% end %>
+    </div>
+</div>
+<!--
 <%= render :partial => "devise/shared/links" %>
+-->

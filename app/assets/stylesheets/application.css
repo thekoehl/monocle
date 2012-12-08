@@ -18,6 +18,18 @@ footer {
 header.masthead {
 	text-align:center;
 }
+/* FORMS */
+.checkbox-container {
+    overflow: hidden;
+}
+.checkbox-container label {
+    line-height: 20px;
+}
+.checkbox-container input[type="checkbox"] {
+    float:left;
+    width:25px;
+}
+/* SENSORS */
 .sensor-big-display {
 	text-align: center;
 	font-size:20em;

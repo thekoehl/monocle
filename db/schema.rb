@@ -13,12 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120805200639) do
 
-  create_table "api_keys", :force => true do |t|
-    t.string   "key"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "data_points", :force => true do |t|
     t.integer  "value"
     t.string   "reporter"
