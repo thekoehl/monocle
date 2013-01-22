@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805200639) do
+ActiveRecord::Schema.define(:version => 20130122142810) do
+
+  create_table "alarms", :force => true do |t|
+    t.integer  "sensor_id"
+    t.boolean  "active"
+    t.integer  "trigger_value"
+    t.string   "trigger_type"
+    t.datetime "last_triggered"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "data_points", :force => true do |t|
     t.integer  "value"

@@ -1,4 +1,7 @@
 ComPhantomdataMonicle::Application.routes.draw do
+  resources :alarms
+
+
   resources :data_points
   resources :sensors do
     collection do
