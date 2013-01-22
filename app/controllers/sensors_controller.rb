@@ -1,5 +1,6 @@
 class SensorsController < ApplicationController
     before_filter :authenticate_user!
+
     def big_display
         @sensor = current_user.sensors.find_by_id params[:id]
         raise "Could not locate sensor by id #{params[:id]}" unless @sensor
@@ -22,12 +23,19 @@ class SensorsController < ApplicationController
             render :json => @sensor.average_by_month.to_a
         end
     end
+    def destroy
+        @sensor = current_user.sensors.find_by_id params[:id]
+        @sensor.delete
+        flash[:notice] = "Sensor has been deleted."
+        return redirect_to sensors_path
+    end
     def index
-        @sensors = current_user.sensors.all
+        @sensors = current_user.sensors.includes('data_points').all        
+        @signal_faulted_sensors = current_user.sensors.signal_faulted
     end
     def show
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
-      @data_points = @sensor.data_points.where("created_at >= ?", Time.now - 1.day)
+        @data_points = @sensor.data_points.where("created_at >= ?", Time.now - 1.day)
     end
 end

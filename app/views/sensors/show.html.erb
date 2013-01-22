@@ -1,63 +1,71 @@
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    google.load('visualization', '1.0', {'packages':['corechart']});
-    google.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        var chartRange = $('.chart-sub-nav > li.active > a.chart-range').first();
-        if (chartRange === false) return;
-        chartRange = chartRange.attr('chart-range');
-
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Value');
-        data.addColumn('number', '<%= @sensor.data_points.last.units %>');
-
-        $.ajax({
-            url: '/sensors/<%=@sensor.id%>/data_points?chart_range=' + chartRange,
-            success: function(response) {
-                for(var i=0; i< response.length; i++) {
-                    data.addRow([
-                        response[i][0],
-                        parseInt(response[i][1])
-                    ]);
-                }
-                var options = {'title':'<%= @sensor.name %>', 'width':1285, 'height':450, left:-55};
-                var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
-                chart.draw(data, options);
-            }
-        });
-    }
-</script>
-<h1>Showing <%= @sensor.name %></h1>
-
-<ul class="nav nav-pills chart-sub-nav">
-  <li><%= link_to "Back to Sensors", sensors_path %></li>
-  <li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
-  <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
-  <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>
-  <li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
-</ul>
-
-<div id="chart-container"></div>
-<% if @data_points.present? %>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td>Value</td>
-                <td>Reported By</td>
-                <td>Reported At</td>
-            </tr>
-        </thead>
-        <tbody>
-            <% @data_points.each do |data_point| %>
-                <tr>
-                    <td><%= data_point.value %></td>
-                    <td><%= data_point.reporter %></td>
-                    <td><%= data_point.created_at %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<h1>Showing <%= @sensor.name %> <%= button_to "Delete", @sensor, :method=>:delete, :class=> "destroy btn btn-danger pull-right" %></h1>
+<% if @sensor.data_points.count == 0 %>
+    <p>No data has come in for this sensor yet.  Check back later!</p>    
 <% else %>
-      <strong>No data present for this sensor.</strong>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1.0', {'packages':['corechart']});
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var chartRange = $('.chart-sub-nav > li.active > a.chart-range').first();
+            if (chartRange === false) return;
+            chartRange = chartRange.attr('chart-range');
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Value');
+            data.addColumn('number', '<%= @sensor.data_points.last.units %>');
+
+            $.ajax({
+                url: '/sensors/<%=@sensor.id%>/data_points?chart_range=' + chartRange,
+                success: function(response) {
+                    for(var i=0; i< response.length; i++) {
+                        data.addRow([
+                            response[i][0],
+                            parseInt(response[i][1])
+                        ]);
+                    }
+                    var options = {'title':'<%= @sensor.name %>', 'width':1285, 'height':450, left:-55};
+                    var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
+                    chart.draw(data, options);
+                }
+            });
+        }
+    </script>
+
+    <ul class="nav nav-pills chart-sub-nav">
+        <li><%= link_to "Back to Sensors", sensors_path %></li>
+        <li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
+        <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
+        <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>
+        <li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
+        <li>
+
+        </li>
+
+    </ul>
+
+    <div id="chart-container"></div>
+    <% if @data_points.present? %>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Value</td>
+                    <td>Reported By</td>
+                    <td>Reported At</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @data_points.each do |data_point| %>
+                    <tr>
+                        <td><%= data_point.value %></td>
+                        <td><%= data_point.reporter %></td>
+                        <td><%= data_point.created_at %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    <% else %>
+          <strong>No data present for this sensor.</strong>
+    <% end %>
 <% end %>

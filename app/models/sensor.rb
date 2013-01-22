@@ -2,10 +2,18 @@ class Sensor < ActiveRecord::Base
     belongs_to :user
     has_many :data_points
 
+    scope :signal_faulted, where("updated_at <= ?", Time.now - 6.hours)
+
     validates_presence_of :name
 
     attr_accessible :name, :reporter
 
+    # Model methods
+    def signal_faulted                
+        self.updated_at < (Time.now-6.hours)
+    end
+
+    # Average computations
     def average_by_hour
         self.data_points.average(:value, :group => "created_at_hourly", :order => "created_at ASC", 
                                  :conditions => ["created_at >= ?", Time.now - 48.hours])

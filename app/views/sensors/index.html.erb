@@ -1,3 +1,10 @@
+<% if @signal_faulted_sensors.length > 0 %>
+    <div class="alert">
+        <% @signal_faulted_sensors.each do |sensor| %>
+            <p><strong>Warning!</strong>  <%= link_to sensor.name, sensor %> has not been heard from for more than 6 hours!</p>
+        <% end %>
+    </div>
+<% end %>
 <div class="row">
     <h1>Sensors</h1>
     <% if @sensors.present? %>
@@ -8,6 +15,7 @@
                     <td>Last Value</td>
                     <td>Today's Average</td>
                     <td>Yesterday's Average</td>
+                    <td>Status</td>
                     <td>Last Updated</td>
                 </tr>
             </thead>
@@ -20,11 +28,17 @@
                             <td>N/A</td>
                             <td>N/A</td>
                             <td>N/A</td>
+                            <td>N/A</td>
                         <% else %>
                             <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
                             <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
                             <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
-                            <td><%= sensor.data_points.last.created_at %></td>
+                            <td>
+                                <% if sensor.signal_faulted %>
+                                    SF
+                                <% end %>
+                            </td>
+                            <td><%= sensor.updated_at %></td>
                         <% end %>
                     </tr>
                 <% end %>
