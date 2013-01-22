@@ -1,8 +1,9 @@
 ComPhantomdataMonicle::Application.routes.draw do
+  
   resources :alarms
-
-
+  
   resources :data_points
+  
   resources :sensors do
     collection do
       get :dashboard
@@ -15,10 +16,10 @@ ComPhantomdataMonicle::Application.routes.draw do
   end
 
 
-    devise_for :users
+  devise_for :users
 
-    # Static Pages
-    match 'pages/home' => "pages#home", :as=>"home"
+  # Static Pages
+  match 'pages/home' => "pages#home", :as=>"home"
 
-    root :to => 'pages#home'
+  root :to => 'pages#home'
 end
