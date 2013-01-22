@@ -30,7 +30,7 @@ class SensorsController < ApplicationController
         return redirect_to sensors_path
     end
     def index
-        @sensors = current_user.sensors.includes('data_points').all        
+        @sensors = current_user.sensors.all
         @signal_faulted_sensors = current_user.sensors.signal_faulted
     end
     def show
