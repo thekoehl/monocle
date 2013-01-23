@@ -24,6 +24,8 @@ class DataPoint < ActiveRecord::Base
 
   belongs_to :sensor
 
+  default_scope order('created_at DESC')
+
   validates_presence_of :reporter
   validates_presence_of :sensor
   validates_presence_of :units
