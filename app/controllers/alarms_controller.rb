@@ -12,6 +12,13 @@ class AlarmsController < ApplicationController
 		flash[:notice] = "Alarm saved."
 		return redirect_to alarms_path		
 	end
+    def destroy
+        @alarm = Alarm.find_by_id params[:id]
+        raise "That's not your sensor!" if current_user.sensors.where(:id => @alarm.sensor_id).first.nil?
+        @alarm.delete
+        flash[:notice] = "Alarm has been deleted."
+        return redirect_to alarms_path
+    end
 	def index
 		@alarms = current_user.sensors.map { |sensor| sensor.alarms }.flatten.compact		
 	end

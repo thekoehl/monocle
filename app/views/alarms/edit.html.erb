@@ -1,4 +1,4 @@
-<h1>Edit Alarm</h1>
+<h1>Edit Alarm <%= button_to "Delete", @alarm, :method=>:delete, :class=> "destroy btn btn-danger pull-right", :confirm => "Are you sure?" %></h1>
 <% if @sensors.nil? %>
 	<p>You need some sensors before you can create alarms!</p>
 <% else %>

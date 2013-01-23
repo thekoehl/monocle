@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
 */
+h1 .btn {
+	margin-top:5px;
+}
 footer {
     color: #eeeeee;
     font-weight:bolder;

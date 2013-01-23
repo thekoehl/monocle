@@ -1,4 +1,4 @@
-<h1>Showing <%= @sensor.name %> <%= button_to "Delete", @sensor, :method=>:delete, :class=> "destroy btn btn-danger pull-right" %></h1>
+<h1>Showing <%= @sensor.name %> <%= button_to "Delete", @sensor, :method=>:delete, :class=> "destroy btn btn-danger pull-right", :confirm => "Are you sure?" %></h1>
 <% if @sensor.data_points.count == 0 %>
     <p>No data has come in for this sensor yet.  Check back later!</p>    
 <% else %>
