@@ -24,4 +24,21 @@ class Alarm < ActiveRecord::Base
 	validates :trigger_type,  :presence => true
 	
 	belongs_to :sensor
+
+	def check_for_and_trigger data_point_value
+		return if self.active
+		if self.trigger_type == "low_level"
+			self.active = data_point_value <= self.trigger_value
+		elsif self.trigger_type == "high_level"
+			self.active = data_point_value >= self.trigger_value
+		end
+		if self.active
+			self.last_triggered = Time.now 
+			self.last_triggered_value = data_point_value
+		end
+		self.save
+	end
+	def units
+		return self.sensor.data_points.last.units
+	end
 end

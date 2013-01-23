@@ -23,6 +23,7 @@ class AlarmsController < ApplicationController
 		@alarms = current_user.sensors.map { |sensor| sensor.alarms }.flatten.compact		
 	end
 	def edit
+		flash[:notice] = "Updating this alarm will clear its active state!"
 		@alarm = Alarm.find_by_id params[:id]
 		@sensors = current_user.sensors
 		@trigger_types = Alarm::TRIGGER_TYPES
@@ -36,6 +37,7 @@ class AlarmsController < ApplicationController
 	def update
 		@alarm = Alarm.find_by_id params[:id]
 		@alarm.update_attributes(params[:alarm])
+		@alarm.active = false
 		unless @alarm.valid?
 			@sensors = current_user.sensors
 			@trigger_types = Alarm::TRIGGER_TYPES

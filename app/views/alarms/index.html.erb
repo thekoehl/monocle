@@ -6,6 +6,7 @@
 			<th>Trigger Type</th>
 			<th>Trigger Value</th>
 			<th>Last Triggered</th>
+			<th>Active</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -16,6 +17,13 @@
 				<td><%= alarm.trigger_type %></td>
 				<td><%= alarm.trigger_value %></td>
 				<td><%= alarm.last_triggered.nil? ? "Never" : alarm.last_triggered %></td>
+				<td>
+					<% if alarm.active %>
+						<span class="label label-important">Active @ <%= alarm.last_triggered_value %><%= alarm.units %></span>
+					<% else %>
+						<span class="label label-success">Inactive</span>
+					<% end %>
+				</td>
 				<td>
 					<%= link_to "Update", edit_alarm_path(alarm), :class=> "btn" %>
 				</td>

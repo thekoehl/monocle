@@ -18,6 +18,8 @@ class DataPoint < ActiveRecord::Base
   attr_accessible :reporter, :units, :value
   
   after_create :update_parent_updated_at
+  after_create :check_for_and_trigger_alarms
+
   before_create :compute_statistical_references
 
   belongs_to :sensor
@@ -34,6 +36,12 @@ class DataPoint < ActiveRecord::Base
 	  self.created_at_hourly = tn.strftime("%a %m/%d %H:00")
   end
   
+  def check_for_and_trigger_alarms
+    self.sensor.alarms.each do |alarm|
+      alarm.check_for_and_trigger self.value
+    end
+  end
+
   def update_parent_updated_at
     self.sensor.updated_at = Time.now + 6.hours
     self.sensor.save!

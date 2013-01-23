@@ -31,6 +31,7 @@ class SensorsController < ApplicationController
     end
     def index
         @sensors = current_user.sensors.all
+        @active_alarms = current_user.sensors.collect {|sensor| sensor.alarms.where(:active => true)}.flatten.compact
         @signal_faulted_sensors = current_user.sensors.signal_faulted
     end
     def show
