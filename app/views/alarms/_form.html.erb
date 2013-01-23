@@ -1,0 +1,18 @@
+<%= error_messages @alarm %>
+<ul class="form-horizontal">
+	<li>
+		<%= f.label :trigger_value %>
+		<%= f.text_field :trigger_value %>
+	</li>
+	<li>
+		<%= f.label :sensor_id %>
+		<%= f.select :sensor_id, options_for_select(sensors.map{|entry|[entry.name,entry.id]}, :selected => @alarm.sensor_id) %>
+	</li>
+	<li>
+		<%= f.label :trigger_type %>
+		<%= f.select :trigger_type, options_for_select(trigger_types, :selected => @alarm.trigger_type) %>
+	</li>
+	<li class="button-container">
+		<%= f.submit 'Save', :class => 'btn btn-success' %>
+	</li>
+</ul>

@@ -1,8 +1,8 @@
-<h1>New Alarm</h1>
+<h1>Edit Alarm</h1>
 <% if @sensors.nil? %>
 	<p>You need some sensors before you can create alarms!</p>
 <% else %>
-	<%= form_for @alarm, :url => {:action => 'create'} do |f| %>	
+	<%= form_for @alarm, :url => {:action => 'update'} do |f| %>	
 		<%= render :partial => "form", :locals => { 
 			:f => f, 
 			:sensors => @sensors,
