@@ -13,7 +13,15 @@
 #
 
 class Alarm < ActiveRecord::Base
+	TRIGGER_TYPES = %w(high_level low_level)
+
 	attr_accessible :trigger_type
+	attr_accessible :trigger_value
+	attr_accessible :sensor_id
+
+	validates :sensor_id,     :presence => true
+	validates :trigger_value, :presence => true
+	validates :trigger_type,  :presence => true
 	
 	belongs_to :sensor
 end

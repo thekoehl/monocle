@@ -31,6 +31,29 @@ header.masthead {
     float:left;
     width:25px;
 }
+
+/******************************************************************************
+	Basic Form Styling
+ ******************************************************************************/
+.form-horizontal li {
+	clear:both;
+	display:block;
+	margin: 15px;
+	overflow: hidden;
+}
+.form-horizontal label {
+	float:left;
+	width: 120px;
+}
+.form-horizontal input {
+	float: left;
+}
+.form-horizontal select {
+	float: left;
+}
+.form-horizontal .button-container {
+	padding-left: 120px;
+}
 /* SENSORS */
 #chart-container {
     left:-170px;
