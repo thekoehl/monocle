@@ -42,7 +42,14 @@
                             <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
                             <td>
                                 <% if sensor.signal_faulted %>
-                                    SF
+                                    <span class="label label-warning">SF</span>
+                                <% end %>
+                                <% sensor.alarms.active.each do |alarm| %>                                    
+                                    <% if alarm.trigger_type == "high_level" %>
+                                        <span class="label label-important">HL</span>
+                                    <% elsif alarm.trigger_type == "low_level" %>
+                                        <span class="label label-important">LL</span>
+                                    <% end %>
                                 <% end %>
                             </td>
                             <td><%= sensor.updated_at %></td>

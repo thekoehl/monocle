@@ -25,6 +25,8 @@ class Alarm < ActiveRecord::Base
 	
 	belongs_to :sensor
 
+	scope :active, where(:active => true)
+
 	def check_for_and_trigger data_point_value
 		return if self.active
 		if self.trigger_type == "low_level"
