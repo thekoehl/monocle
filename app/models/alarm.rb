@@ -28,19 +28,50 @@ class Alarm < ActiveRecord::Base
 	scope :active, where(:active => true)
 
 	def check_for_and_trigger data_point_value
-		return if self.active
-		if self.trigger_type == "low_level"
-			self.active = data_point_value <= self.trigger_value
-		elsif self.trigger_type == "high_level"
-			self.active = data_point_value >= self.trigger_value
-		end
-		if self.active
+		new_active = check_if_active data_point_value
+		
+		if new_active
 			self.last_triggered = Time.now 
 			self.last_triggered_value = data_point_value
 		end
-		self.save
+
+		if new_active != self.active
+			self.active = new_active
+			self.save
+		end
+
+		send_notification data_point_value if self.active
 	end
+
 	def units
 		return self.sensor.data_points.last.units
+	end
+
+	private
+	# Checks if, based on the trigger type, the alarm is active
+	# or not.
+	#
+	# Raises an exception if an unexpected trigger_type is encountered.
+	def check_if_active data_point_value
+		active = false
+		if self.trigger_type == "low_level"
+			return data_point_value <= self.trigger_value
+		elsif self.trigger_type == "high_level"
+			return data_point_value >= self.trigger_value
+		end
+
+		raise "Unexpected trigger type of #{self.trigger_type} for this alarm!"
+	end
+
+	# Triggers a notification email if the alarm is triggered and has not been sent in the
+	# last 6 hours.
+	def send_notification data_point_value
+		user = self.sensor.user
+		return if !user.last_notification_sent_at.nil? && user.last_notification_sent_at <= Time.now - 6.hours
+
+		warning_message = "#{self.sensor.name} is experiencing a #{self.trigger_type} value @ #{data_point_value}#{self.units}!"
+		
+		user.last_notification_sent_at = Time.now
+		user.save!
 	end
 end
