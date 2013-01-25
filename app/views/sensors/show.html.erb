@@ -26,7 +26,7 @@
                         ]);
                     }
                     var options = {'title':'<%= @sensor.name %>', 'width':1285, 'height':450, left:-55};
-                    var chart = new google.visualization.LineChart(document.getElementById('chart-container'));
+                    var chart = new google.visualization.AreaChart(document.getElementById('chart-container'));
                     chart.draw(data, options);
                 }
             });
