@@ -37,6 +37,6 @@ class SensorsController < ApplicationController
     def show
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
-        @data_points = @sensor.data_points.where("created_at >= ?", Time.now - 1.day)
+        @data_points = @sensor.data_points.where("created_at >= ?", Time.now - 1.day).ordered_by_latest
     end
 end
