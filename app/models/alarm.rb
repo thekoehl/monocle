@@ -71,6 +71,8 @@ class Alarm < ActiveRecord::Base
 
 		warning_message = "#{self.sensor.name} is experiencing a #{self.trigger_type} value @ #{data_point_value}#{self.units}!"
 		
+		UserMailer.send_alarm_notification user, self, data_point_value
+
 		user.last_notification_sent_at = Time.now
 		user.save!
 	end
