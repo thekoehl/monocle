@@ -1,6 +1,10 @@
 ComPhantomdataMonicle::Application.routes.draw do
   
-  resources :alarms
+  resources :alarms do
+    member do
+      post :reset
+    end
+  end
   
   resources :data_points
   

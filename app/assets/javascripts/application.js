@@ -18,10 +18,51 @@
 var NERD = NERD || {};
 
 $().ready(function() {
+	NERD.AlarmResetHandler.init();
     NERD.DataChart.init();
     NERD.BigDisplay.init();
 });
 
+NERD.AlarmResetHandler = {
+	init: function() {
+		if ($('.alarm-reset-link').length === 0) return;
+		this.initAlarmResetLinks();
+	},
+	initAlarmResetLinks: function() {
+		$('.alarm-reset-link').click(function() {
+			var id = $(this).attr('alarm-id');
+			var clickedLink = this;
+
+			$.ajax({				
+				type: 'POST',
+				url: '/alarms/'+id+'/reset',
+				success: NERD.AlarmResetHandler.handleResetSuccess,
+				error: NERD.AlarmResetHandler.handleResetFailure
+			});
+		});
+	},
+	handleResetSuccess: function(data) {
+		if (data.success != true) { alert(data.message); return; }
+		var alertContainer = $('.alert-error');
+		var alarmId = data.alarm.id;
+
+		if (alertContainer.children().length == 1) {
+			alertContainer.fadeOut();
+			return;
+		}
+
+		var alarmLink = alertContainer.find('a[alarm-id="' + alarmId + '"]');
+		if (alarmLink.length === 0) return;
+		alarmLink.fadeOut();
+	},
+	handleResetFailure: function() {
+		alert('We\'re sorry, but your request has failed.  Please try refreshing the page and trying again.');
+	}
+};
+
+// Handles navigation of the big chart on the sensor display page
+// Does not draw the chart, google charts is weird and this is done
+// inline.
 NERD.DataChart = {
     init: function() {
     	if ($('#chart-container').length === 0) return;
@@ -35,7 +76,9 @@ NERD.DataChart = {
     		return false;
     	});
     }
-}
+};
+
+// Handles refreshing /sensors/big_display
 NERD.BigDisplay = {
 	init: function() {
 		if($('.sensor-big-display').length === 0) return;
@@ -51,5 +94,4 @@ NERD.BigDisplay = {
 			2000
 		);
 	}
-	
 }

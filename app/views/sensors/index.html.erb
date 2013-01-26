@@ -1,7 +1,11 @@
 <% if @active_alarms.length > 0 %>
     <div class="alert alert-error">
         <% @active_alarms.each do |alarm| %>
-            <p><strong>ALERT!</strong> <%= link_to alarm.sensor.name, alarm.sensor %> is experiencing dangerous levels (<%= alarm.last_triggered_value %><%= alarm.units %>)!!</p>
+            <p>
+                <a href="#" alarm-id="<%=alarm.id%>" class="alarm-reset-link"><i class="icon-remove"></i></a>
+                <strong>ALERT!</strong>
+                <%= link_to alarm.sensor.name, alarm.sensor %> is experiencing dangerous levels (<%= alarm.last_triggered_value %><%= alarm.units %>)!!
+            </p>
         <% end %>
     </div>
 <% end %>
