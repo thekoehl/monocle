@@ -67,7 +67,7 @@ class Alarm < ActiveRecord::Base
 	# last 6 hours.
 	def send_notification data_point_value
 		user = self.sensor.user
-		return if !user.last_notification_sent_at.nil? && user.last_notification_sent_at <= Time.now - 6.hours
+		return if !user.last_notification_sent_at.nil? && user.last_notification_sent_at >= Time.now - 6.hours
 
 		warning_message = "#{self.sensor.name} is experiencing a #{self.trigger_type} value @ #{data_point_value}#{self.units}!"
 		
