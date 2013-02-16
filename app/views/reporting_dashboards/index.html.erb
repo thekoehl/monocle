@@ -1,0 +1,29 @@
+<h1>Reporting Dashboards <%= link_to "Create", new_reporting_dashboard_path, :class=> "btn btn-success pull-right" %></h1>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Sensors</th>			
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @reporting_dashboards.each do |reporting_dashboard| %>
+			<tr>
+				<td><%= reporting_dashboard.sensor.name %></td>
+				<td>					
+					<ul>
+						<%= reporting_dashboard.sensors.each do |sensor| %>
+							<li>
+								<%= sensor.name %>
+							</li>
+						<% end %>
+					</ul>
+				</td>
+				<td>
+					<%= link_to "Update", edit_reporting_dashboard_path(reporting_dashboard), :class=> "btn" %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
