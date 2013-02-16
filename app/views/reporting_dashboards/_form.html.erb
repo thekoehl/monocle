@@ -1,0 +1,20 @@
+<%= error_messages @reporting_dashboard %>
+<ul class="form-horizontal">
+	<li>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</li>
+	<% @sensors.each do |sensor| %>
+		<li class="form-checkbox-container">
+			<%= check_box_tag "reporting_dashboard_sensor_ids_#{sensor.id}",
+							  sensor.id,
+							   @reporting_dashboard.sensors.include?(sensor),
+							  :name => "reporting_dashboard[sensor_ids][]"
+							   %>
+			<%= label_tag "reporting_dashboard_sensor_ids_#{sensor.id}", sensor.name %>
+		</li>
+	<% end %>
+	<li class="button-container">
+		<%= f.submit 'Save', :class => 'btn btn-success' %>
+	</li>
+</ul>

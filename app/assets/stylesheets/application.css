@@ -38,6 +38,10 @@ header.masthead {
 /******************************************************************************
 	Basic Form Styling
  ******************************************************************************/
+li.form-checkbox-container label {
+	margin-left: 15px;
+	width: auto;
+}
 .form-horizontal li {
 	clear:both;
 	display:block;
