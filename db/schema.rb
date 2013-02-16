@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125051929) do
+ActiveRecord::Schema.define(:version => 20130216182129) do
 
   create_table "alarms", :force => true do |t|
     t.integer  "sensor_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20130125051929) do
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "reporting_dashboards", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "reporting_dashboards_sensors", :force => true do |t|
+    t.integer "reporting_dashboard_id"
+    t.integer "sensor_id"
   end
 
   create_table "sensors", :force => true do |t|

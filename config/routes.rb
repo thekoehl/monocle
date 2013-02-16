@@ -1,5 +1,8 @@
 ComPhantomdataMonicle::Application.routes.draw do
   
+  resources :reporting_dashboards
+
+
   resources :alarms do
     member do
       post :reset
