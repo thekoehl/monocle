@@ -2,11 +2,10 @@
 <% if @sensors.nil? %>
 	<p>You need some sensors before you can create alarms!</p>
 <% else %>
-	<%= form_for @alarm, :url => {:action => 'update'} do |f| %>	
+	<%= form_for @reporting_dashboard, :url => {:action => 'update'} do |f| %>	
 		<%= render :partial => "form", :locals => { 
 			:f => f, 
-			:sensors => @sensors,
-			:trigger_types => @trigger_types
+			:sensors => @sensors
 		} %>
 	<% end %>
 <% end %>
