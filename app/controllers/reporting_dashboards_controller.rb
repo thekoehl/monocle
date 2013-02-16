@@ -13,6 +13,14 @@ class ReportingDashboardsController < ApplicationController
 		flash[:notice] = "Reporting Dashboard saved."
 		return redirect_to reporting_dashboards_path		
 	end
+  def destroy
+    @reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]
+    raise "That's an invalid reporting dashboard." if @reporting_dashboard.nil?
+
+    @reporting_dashboard.delete
+    flash[:notice] = "Reporting Dashboard has been deleted."
+    return redirect_to reporting_dashboards_path
+  end
 	def edit
 		@reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]
 		raise "That's an invalid reporting dashboard." if @reporting_dashboard.nil?
