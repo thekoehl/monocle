@@ -1,0 +1,32 @@
+<h1><%= @reporting_dashboard.title %></h1>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<% @reporting_dashboard.sensors.each do |sensor | %>
+    <script type="text/javascript">
+        google.load('visualization', '1.0', {'packages':['corechart']});
+        google.setOnLoadCallback(drawChart<%= sensor.id%>);
+
+        function drawChart<%= sensor.id%>() {
+            var chartRange = 'this-day';
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Value');
+            data.addColumn('number', '<%= sensor.data_points.last.units %>');
+
+            $.ajax({
+                url: '/sensors/<%=sensor.id%>/data_points?chart_range=' + chartRange,
+                success: function(response) {
+                    for(var i=0; i< response.length; i++) {
+                        data.addRow([
+                            response[i][0],
+                            parseInt(response[i][1])
+                        ]);
+                    }
+                    var options = {'title':'<%= sensor.name %>', 'width':1285, 'height':450, left:-55};
+                    var chart = new google.visualization.AreaChart(document.getElementById('chart-container<%= sensor.id%>'));
+                    chart.draw(data, options);
+                }
+            });
+        }
+    </script>
+    <div id="chart-container<%= sensor.id%>" class="chart-container"></div>
+<% end %>

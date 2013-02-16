@@ -34,6 +34,11 @@ class ReportingDashboardsController < ApplicationController
 		@reporting_dashboard = ReportingDashboard.new
 		@sensors = current_user.sensors
 	end
+	def show
+		@reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]
+		raise "That's an invalid reporting dashboard." if @reporting_dashboard.nil?
+		
+	end
 	def update
 		@reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]
 		raise "That's an invalid reporting dashboard." if @reporting_dashboard.nil?

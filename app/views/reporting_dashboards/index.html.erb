@@ -10,7 +10,7 @@
 	<tbody>
 		<% @reporting_dashboards.each do |reporting_dashboard| %>
 			<tr>
-				<td><%= reporting_dashboard.title %></td>
+				<td><%= link_to reporting_dashboard.title, reporting_dashboard %></td>
 				<td>					
 					<ul>
 						<% reporting_dashboard.sensors.each do |sensor| %>

@@ -62,7 +62,7 @@ li.form-checkbox-container label {
 	padding-left: 120px;
 }
 /* SENSORS */
-#chart-container {
+#chart-container, .chart-container {
     left:-170px;
 }
 .sensor-big-display {
