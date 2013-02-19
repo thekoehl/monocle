@@ -25,8 +25,8 @@
                 <tr>
                     <td>Name</td>
                     <td>Last Value</td>
-                    <td>Today's Average</td>
-                    <td>Last Updated</td>
+                    <td class="todays-average">Today's Average</td>
+                    <td class="last-updated">Last Updated</td>
                 </tr>
             </thead>
             <tbody>
@@ -48,12 +48,14 @@
                         <% if sensor.data_points.last == nil %>
                             <td>N/A</td>
                             <td>N/A</td>
-                            <td>N/A</td>                            
-                            <td>N/A</td>
+                            <td class="todays-average">N/A</td>                            
+                            <td class="last-updated">N/A</td>
                         <% else %>
-                            <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
-                            <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
-                            <td><%= sensor.updated_at %></td>
+                            <td>
+                                <span class="last-value"><%= sensor.data_points.last.value %></span><%= sensor.data_points.last.units%>
+                            </td>
+                            <td class="todays-average"><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
+                            <td class="last-updated"><%= sensor.updated_at %></td>
                         <% end %>
                     </tr>
                 <% end %>

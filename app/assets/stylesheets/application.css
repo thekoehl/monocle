@@ -30,6 +30,11 @@ header.masthead {
     margin: 0 auto;
     max-width:960px;
 }
+@media screen and (max-width: 580px) {
+    .main-wrapper {
+        margin: 0 25px;
+    }
+}
 
 /* FORMS */
 .checkbox-container {
@@ -77,7 +82,24 @@ li.form-checkbox-container label {
  table.sensors-listing td {
     padding: 16px;
  }
-
+@media screen and (max-width: 580px) {
+    h1 {
+        display: none;
+    }
+    table.sensors-listing td {
+        padding: 10px 0 10px 5px;
+    }
+    table.sensors-listing .last-value {
+        /*font-size:1.5em;*/
+        font-weight: bolder;
+    }
+    table.sensors-listing .last-updated {
+        display: none;
+    }
+    table.sensors-listing .todays-average {
+        display: none;
+    }
+}
 /* SENSORS */
 #chart-container, .chart-container {
     left:-170px;
