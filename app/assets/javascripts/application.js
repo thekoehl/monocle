@@ -101,7 +101,8 @@ NERD.DataChart = {
                         'height': 350, 
                         'chartArea':{ left:0,top:0,height: 350, width:"100%" },
                         'hAxis': {
-                            'textPosition': 'in'
+                            'textPosition': 'in',
+                            'textStyle': {fontSize: 10}
                         },
                         'vAxis': {
                             'textPosition': 'in'
