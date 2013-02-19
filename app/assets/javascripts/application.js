@@ -112,7 +112,7 @@ NERD.MainMenu = {
             return;
         }
 
-        $('.nav > li > a').each(function () {
+        $('.navbar .nav > li > a').each(function () {
             var $this = $(this);
             var destinationUrl = $this.attr('href').replace('http://', '').split('/');
 
