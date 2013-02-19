@@ -21,6 +21,7 @@ $().ready(function() {
 	NERD.AlarmResetHandler.init();
     NERD.DataChart.init();
     NERD.BigDisplay.init();
+    NERD.MainMenu.init();
 });
 
 NERD.AlarmResetHandler = {
@@ -94,4 +95,33 @@ NERD.BigDisplay = {
 			2000
 		);
 	}
-}
+};
+
+// Handles highlighting the active menu entry.
+NERD.MainMenu = {
+    init: function() {
+        this.highlightActiveEntry();
+    },
+    highlightActiveEntry: function() {
+        var url = document.URL.replace('http://', '').split('/');
+        var controller = url.length > 1 && url[1] != "" ? url[1] : null;
+        var action = url.length > 2 ? url[2] : null;
+
+        if (controller == null && action == null) {
+            $('.nav li').first().addClass('active');
+            return;
+        }
+
+        $('.nav > li > a').each(function () {
+            var $this = $(this);
+            var destinationUrl = $this.attr('href').replace('http://', '').split('/');
+
+            var destinationController = destinationUrl.length > 1 ? destinationUrl[1] : null;
+
+            if (destinationController == controller) {
+                $this.parent().addClass('active');
+                return;
+            }
+        });
+    }
+};
