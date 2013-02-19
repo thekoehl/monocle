@@ -20,43 +20,41 @@
 <div class="row">
     <h1>Sensors</h1>
     <% if @sensors.present? %>
-        <table class="table table-striped">
+        <table class="table table-striped sensors-listing">
             <thead>
                 <tr>
                     <td>Name</td>
                     <td>Last Value</td>
                     <td>Today's Average</td>
                     <td>Yesterday's Average</td>
-                    <td>Status</td>
                     <td>Last Updated</td>
                 </tr>
             </thead>
             <tbody>
                 <% @sensors.each do |sensor| %>
                     <tr>
-                        <td><%= link_to sensor.name, sensor %></td>
+                        <td>
+                            <%= link_to sensor.name, sensor %>
+                            <% if sensor.signal_faulted %>
+                                <span class="label label-warning">SF</span>
+                            <% end %>
+                            <% sensor.alarms.active.each do |alarm| %>                                    
+                                <% if alarm.trigger_type == "high_level" %>
+                                    <span class="label label-important">HL</span>
+                                <% elsif alarm.trigger_type == "low_level" %>
+                                    <span class="label label-important">LL</span>
+                                <% end %>
+                            <% end %>
+                        </td>
                         <% if sensor.data_points.last == nil %>
                             <td>N/A</td>
                             <td>N/A</td>
-                            <td>N/A</td>
-                            <td>N/A</td>
+                            <td>N/A</td>                            
                             <td>N/A</td>
                         <% else %>
-                            <td><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
+                            <td class="last-value"><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></td>
                             <td><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
                             <td><%= sensor.yesterdays_average %><%= sensor.data_points.last.units%></td>
-                            <td>
-                                <% if sensor.signal_faulted %>
-                                    <span class="label label-warning">SF</span>
-                                <% end %>
-                                <% sensor.alarms.active.each do |alarm| %>                                    
-                                    <% if alarm.trigger_type == "high_level" %>
-                                        <span class="label label-important">HL</span>
-                                    <% elsif alarm.trigger_type == "low_level" %>
-                                        <span class="label label-important">LL</span>
-                                    <% end %>
-                                <% end %>
-                            </td>
                             <td><%= sensor.updated_at %></td>
                         <% end %>
                     </tr>

@@ -69,6 +69,19 @@ li.form-checkbox-container label {
 .form-horizontal .button-container {
 	padding-left: 120px;
 }
+
+
+/******************************************************************************
+    Sensors Listing
+ ******************************************************************************/
+ table.sensors-listing td {
+    padding: 16px;
+ }
+ table.sensors-listing .last-value {
+    font-size: 2em;
+    font-weight: bolder;
+ }
+
 /* SENSORS */
 #chart-container, .chart-container {
     left:-170px;
