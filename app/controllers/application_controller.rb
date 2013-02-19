@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout "fixed"
+  layout "application"
   protect_from_forgery
 
   before_filter :create_api_key_if_necessary
