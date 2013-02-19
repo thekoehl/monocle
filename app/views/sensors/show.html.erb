@@ -6,7 +6,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load('visualization', '1.0', {'packages':['corechart']});
-        google.setOnLoadCallback(drawChart);
+        /*google.setOnLoadCallback(drawChart);
 
         function drawChart() {
             var chartRange = $('.chart-sub-nav > li.active > a.chart-range').first();
@@ -31,7 +31,7 @@
                     chart.draw(data, options);
                 }
             });
-        }
+        }*/
     </script>
 
     <ul class="nav nav-pills chart-sub-nav">
@@ -46,7 +46,12 @@
 
     </ul>
 
-    <div id="chart-container"></div>
+    <div id="chart-container" 
+         data-sensor-id="<%= @sensor.id %>"
+         data-sensor-name="<%= @sensor.name %>"
+         data-sensor-units="<%= @sensor.data_points.last.units %>" 
+         class="sensor-chart-container"></div>
+
     <% if @data_points.present? %>
         <table class="table table-striped">
             <thead>
