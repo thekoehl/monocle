@@ -75,15 +75,12 @@ NERD.DataChart = {
     },
     initChartCallback: function() {
         $('.sensor-chart-container').each(function() {
-            var $this = $(this);
+            var chartContainer = $(this);
 
-            var chartRange = NERD.DataChart.findSelectedChartRange();            
-            
-            var sensorId = $this.attr('data-sensor-id');
-            var sensorName = $this.attr('data-sensor-name');
-            var sensorUnits = $this.attr('data-sensor-units');
-
-            if (sensorUnits === undefined) throw 'You must specify units on the chart.';
+            var chartRange = NERD.DataChart.findSelectedChartRange();
+            var sensorId = chartContainer.attr('data-sensor-id');
+            var sensorName = chartContainer.attr('data-sensor-name');
+            var sensorUnits = chartContainer.attr('data-sensor-units');
 
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Value');
@@ -99,7 +96,7 @@ NERD.DataChart = {
                         ]);
                     }
                     var options = {'title': sensorName, 'width':1285, 'height':450, left:-55};
-                    var chart = new google.visualization.AreaChart(document.getElementById('chart-container'));
+                    var chart = new google.visualization.AreaChart(chartContainer[0]);
                     chart.draw(data, options);
                 }
             });

@@ -6,32 +6,6 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load('visualization', '1.0', {'packages':['corechart']});
-        /*google.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var chartRange = $('.chart-sub-nav > li.active > a.chart-range').first();
-            if (chartRange === false) return;
-            chartRange = chartRange.attr('chart-range');
-
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Value');
-            data.addColumn('number', '<%= @sensor.data_points.last.units %>');
-
-            $.ajax({
-                url: '/sensors/<%=@sensor.id%>/data_points?chart_range=' + chartRange,
-                success: function(response) {
-                    for(var i=0; i< response.length; i++) {
-                        data.addRow([
-                            response[i][0],
-                            parseInt(response[i][1])
-                        ]);
-                    }
-                    var options = {'title':'<%= @sensor.name %>', 'width':1285, 'height':450, left:-55};
-                    var chart = new google.visualization.AreaChart(document.getElementById('chart-container'));
-                    chart.draw(data, options);
-                }
-            });
-        }*/
     </script>
 
     <ul class="nav nav-pills chart-sub-nav">
@@ -40,10 +14,6 @@
         <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
         <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>
         <li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
-        <li>
-
-        </li>
-
     </ul>
 
     <div id="chart-container" 
