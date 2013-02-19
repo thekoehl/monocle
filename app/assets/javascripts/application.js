@@ -99,19 +99,16 @@ NERD.DataChart = {
                         'title': sensorName,
                         'width': '100%',
                         'height': 350, 
-                        'chartArea':{ left:0,top:0,height: 350, width:"100%" },
+                        'chartArea':{ left:0,top:0,height: 330, width:"100%" },
                         'hAxis': {
-                            'textPosition': 'in',
-                            'textStyle': {fontSize: 10},
-                            'showTextEvery': 2
+                            'textPosition': 'in',                            
+                            'maxAlternation': 1,
+                            'showEvery': 5
                         },
                         'vAxis': {
                             'textPosition': 'in'
                         },
-                        'titlePosition': 'in',
-                        'series': [{
-                            pointSize: 2
-                        }]
+                        'titlePosition': 'in'                        
                     };
                     var chart = new google.visualization.AreaChart(chartContainer[0]);
                     chart.draw(data, options);
