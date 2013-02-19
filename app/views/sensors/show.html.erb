@@ -9,39 +9,16 @@
     </script>
 
     <ul class="nav nav-pills chart-sub-nav">
-        <li><%= link_to "Back to Sensors", sensors_path %></li>
+        <li class="small-screen-hide"><%= link_to "Back to Sensors", sensors_path %></li>
         <li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
         <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
         <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>
-        <li><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
+        <li class="small-screen-hide"><%= link_to "Big Display", big_display_sensor_path(@sensor) %></li>
     </ul>
 
-    <div id="chart-container" 
+    <div
          data-sensor-id="<%= @sensor.id %>"
          data-sensor-name="<%= @sensor.name %>"
          data-sensor-units="<%= @sensor.data_points.last.units %>" 
          class="sensor-chart-container"></div>
-
-    <% if @data_points.present? %>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <td>Value</td>
-                    <td>Reported By</td>
-                    <td>Reported At</td>
-                </tr>
-            </thead>
-            <tbody>
-                <% @data_points.each do |data_point| %>
-                    <tr>
-                        <td><%= data_point.value %></td>
-                        <td><%= data_point.reporter %></td>
-                        <td><%= data_point.created_at %></td>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
-    <% else %>
-          <strong>No data present for this sensor.</strong>
-    <% end %>
 <% end %>

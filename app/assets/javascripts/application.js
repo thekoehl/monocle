@@ -66,7 +66,7 @@ NERD.AlarmResetHandler = {
 // inline.
 NERD.DataChart = {
     init: function() {
-    	if ($('#chart-container').length === 0) return;
+    	if ($('.sensor-chart-container').length === 0) return;
         this.initNavigation();
         this.initChart();
     },
@@ -95,7 +95,22 @@ NERD.DataChart = {
                             parseInt(response[i][1])
                         ]);
                     }
-                    var options = {'title': sensorName, 'width':1285, 'height':450, left:-55};
+                    var options = {
+                        'title': sensorName,
+                        'width': '100%',
+                        'height': 350, 
+                        'chartArea':{ left:0,top:0,height: 350, width:"100%" },
+                        'hAxis': {
+                            'textPosition': 'in'
+                        },
+                        'vAxis': {
+                            'textPosition': 'in'
+                        },
+                        'titlePosition': 'in',
+                        'series': [{
+                            pointSize: 5
+                        }]
+                    };
                     var chart = new google.visualization.AreaChart(chartContainer[0]);
                     chart.draw(data, options);
                 }
