@@ -77,10 +77,6 @@ li.form-checkbox-container label {
  table.sensors-listing td {
     padding: 16px;
  }
- table.sensors-listing .last-value {
-    font-size: 2em;
-    font-weight: bolder;
- }
 
 /* SENSORS */
 #chart-container, .chart-container {
