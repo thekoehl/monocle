@@ -55,7 +55,7 @@
                                 <span class="last-value"><%= sensor.data_points.last.value %></span><%= sensor.data_points.last.units%>
                             </td>
                             <td class="todays-average"><%= sensor.todays_average %><%= sensor.data_points.last.units%></td>
-                            <td class="last-updated"><%= sensor.updated_at %></td>
+                            <td class="last-updated"><%= sensor.updated_at - 6.hours %></td>
                         <% end %>
                     </tr>
                 <% end %>
