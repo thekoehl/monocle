@@ -38,17 +38,15 @@
     </div>
 <% end %>
 
-<div class="container">
+<div role="main" class="main-wrapper">
     <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-success" %>
     <% end %>
     <%= yield %>
-
-    <footer>
-        Page loaded in <%= (Time.now - @load_started_at).to_s %>s at <%= Time.now.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]) %>.
-    </footer>
-
-</div> <!-- /container -->
+</div>
+<footer>
+    Page loaded in <%= (Time.now - @load_started_at).to_s %>s at <%= Time.now.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"]) %>.
+</footer>
 
 <!-- Javascripts
 ================================================== -->
