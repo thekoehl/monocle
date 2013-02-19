@@ -102,14 +102,15 @@ NERD.DataChart = {
                         'chartArea':{ left:0,top:0,height: 350, width:"100%" },
                         'hAxis': {
                             'textPosition': 'in',
-                            'textStyle': {fontSize: 10}
+                            'textStyle': {fontSize: 10},
+                            'showTextEvery': 2
                         },
                         'vAxis': {
                             'textPosition': 'in'
                         },
                         'titlePosition': 'in',
                         'series': [{
-                            pointSize: 5
+                            pointSize: 2
                         }]
                     };
                     var chart = new google.visualization.AreaChart(chartContainer[0]);
