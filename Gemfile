@@ -4,12 +4,10 @@ gem 'rails', '3.2.11'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem "devise"
-gem "less-rails"
-gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails", '2.1.7'
 gem 'mysql2'
 gem 'sqlite3'
 
-gem 'therubyracer', :platform => :ruby
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
