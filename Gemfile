@@ -4,6 +4,7 @@ gem 'rails', '3.2.11'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem "devise"
+gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'mysql2'
 gem 'sqlite3'
