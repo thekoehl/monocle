@@ -4,7 +4,9 @@ gem 'rails', '3.2.11'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem "devise"
-gem "twitter-bootstrap-rails", '2.1.7'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem 'mysql2'
 gem 'sqlite3'
 
