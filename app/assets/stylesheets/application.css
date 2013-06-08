@@ -141,7 +141,7 @@ ul.camera-listing img {
 /******************************************************************************
     Phone Specific Display
  ******************************************************************************/
- @media screen and (max-width: 580px) {
+ @media screen and (max-width: 780px) {
     .main-wrapper {
         margin: 0 25px;
     }
