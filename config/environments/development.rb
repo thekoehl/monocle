@@ -36,5 +36,5 @@ ComPhantomdataMonicle::Application.configure do
   config.assets.debug = true
 
   config.time_zone = 'Central Time (US & Canada)'
-  config.active_record.default_timezone = 'Central Time (US & Canada)'
+  #config.active_record.default_timezone = 'Central Time (US & Canada)'
 end

@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  ################
+  # Associations #
+  ################
+
+  has_many :cameras
   has_many :reporting_dashboards, :order => "title ASC"
   has_many :sensors, :order => "name ASC"
 end

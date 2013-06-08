@@ -71,6 +71,30 @@ li.form-checkbox-container label {
 	padding-left: 120px;
 }
 /******************************************************************************
+    Camera Listing
+ ******************************************************************************/
+ul.camera-listing {
+    list-style-type: none;
+    overflow: hidden;
+}
+ul.camera-listing li {
+    float: left;
+    margin: 15px;
+}
+ul.camera-listing h2 {
+    color: white;
+    display: inline;
+    font-size: 1.5em;
+    margin:15px;
+    position: absolute;
+    text-align: center;        
+
+    text-shadow: 3px 1px 1px black;
+}
+ul.camera-listing img {
+    width: 480px;
+}
+/******************************************************************************
     Sensors Charts
  ******************************************************************************/
  .sensor-chart-container {

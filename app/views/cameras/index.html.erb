@@ -1,0 +1,12 @@
+<div class="row">
+    <ul class="camera-listing">
+        <% @cameras.each do |camera| %>
+            <li>
+                <h2><%= camera.title %> 
+                    @ <%= time_ago_in_words camera.updated_at %> ago
+                </h2>
+                <%= image_tag camera.latest_snapshot.url(:medium) %>
+            </li>
+        <% end %>
+    </ul>
+</div>

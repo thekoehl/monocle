@@ -1,5 +1,8 @@
 ComPhantomdataMonicle::Application.routes.draw do
   
+  resources :cameras
+
+
   resources :reporting_dashboards
 
 
