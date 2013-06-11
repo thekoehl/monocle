@@ -75,11 +75,12 @@ li.form-checkbox-container label {
  ******************************************************************************/
 ul.camera-listing {
     list-style-type: none;
+    margin: 0;
     overflow: hidden;
 }
 ul.camera-listing li {
     float: left;
-    margin: 15px;
+    margin: 5px;
 }
 ul.camera-listing h2 {
     color: white;
