@@ -1,5 +1,6 @@
 class SensorsController < ApplicationController
     before_filter :authenticate_user!
+    before_filter :load_sensors, only: [:data_points]
 
     def big_display
         @sensor = current_user.sensors.find_by_id params[:id]
@@ -13,14 +14,16 @@ class SensorsController < ApplicationController
         @latest_data_points = @sensor.data_points.all(:conditions => ["created_at > ?", Time.now-48.hours], :order => "created_at DESC")
     end
     def data_points
-    	@sensor = current_user.sensors.find_by_id params[:id]
-    	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
+        @sensors = params[:id].split(',').map do |id|
+            current_user.sensors.find_by_id id
+        end
+        
         if params[:chart_range] == "this-day"
-    	   render :json => @sensor.average_by_hour.to_a
+    	   render :json => @sensors.map { |s| s.average_by_hour.to_a }
         elsif params[:chart_range] == "this-month"
-            render :json => @sensor.average_by_day.to_a
+            render :json => @sensors.map { |s| s.average_by_day.to_a }
         elsif params[:chart_range] == "all-time"
-            render :json => @sensor.average_by_month.to_a
+            render :json => @sensors.map { |s| s.average_by_month.to_a }
         end
     end
     def destroy
@@ -37,6 +40,15 @@ class SensorsController < ApplicationController
     def show
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor
-        @data_points = @sensor.data_points.where("created_at >= ?", Time.now - 1.day).ordered_by_latest
+    end
+
+#########
+private #
+#########
+
+    def load_sensors
+        @sensors = params[:id].split(',').map do |id|
+            current_user.sensors.find_by_id id
+        end
     end
 end

@@ -89,10 +89,10 @@ NERD.DataChart = {
             $.ajax({
                 url: '/sensors/' + sensorId + '/data_points?chart_range=' + chartRange,
                 success: function(response) {
-                    for(var i=0; i< response.length; i++) {
+                    for(var i=0; i< response[0].length; i++) {
                         data.addRow([
-                            response[i][0],
-                            parseInt(response[i][1])
+                            response[0][i][0],
+                            parseInt(response[0][i][1])
                         ]);
                     }
                     var options = {
