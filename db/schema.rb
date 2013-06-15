@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608044313) do
+ActiveRecord::Schema.define(:version => 20130615062134) do
 
   create_table "alarms", :force => true do |t|
     t.integer  "sensor_id"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20130608044313) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.integer  "last_triggered_value"
+  end
+
+  create_table "camera_events", :force => true do |t|
+    t.integer  "camera_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   create_table "cameras", :force => true do |t|

@@ -1,5 +1,8 @@
 ComPhantomdataMonicle::Application.routes.draw do
   
+  resources :camera_events
+
+
   resources :cameras
 
 

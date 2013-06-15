@@ -9,6 +9,7 @@ class Camera < ActiveRecord::Base
   ################
 
   belongs_to :user
+  has_many :camera_events
 
   ################
   # Gems         #

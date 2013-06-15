@@ -6,6 +6,22 @@
                     @ <%= time_ago_in_words camera.updated_at %> ago
                 </h2>
                 <%= image_tag camera.latest_snapshot.url(:medium) %>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Event Date</td>
+                            <td>Download</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% camera.camera_events.each do |camera_event| %>
+                            <tr>
+                                <td><%= camera_event.created_at %></td>
+                                <td><%= link_to "Download", camera_event.video.url(:original, false), target: '_blank' %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
             </li>
         <% end %>
     </ul>
