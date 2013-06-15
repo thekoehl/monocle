@@ -14,7 +14,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% camera.camera_events.each do |camera_event| %>
+                        <% camera.camera_events.order("created_at DESC").each do |camera_event| %>
                             <tr>
                                 <td><%= camera_event.created_at %></td>
                                 <td><%= link_to "Download", camera_event.video.url(:original, false), target: '_blank' %></td>
