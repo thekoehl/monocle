@@ -37,7 +37,10 @@ class ReportingDashboardsController < ApplicationController
 	def show
 		@reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]
 		raise "That's an invalid reporting dashboard." if @reporting_dashboard.nil?
-		
+
+		@sensor_ids = @reporting_dashboard.sensors.map {|s| s.id }.join(',')
+		@sensor_names = @reporting_dashboard.sensors.map {|s| s.name }.join(',')
+		@sensor_units = @reporting_dashboard.sensors.first.data_points.last.units
 	end
 	def update
 		@reporting_dashboard = current_user.reporting_dashboards.find_by_id params[:id]

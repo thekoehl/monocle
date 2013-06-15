@@ -86,7 +86,7 @@ NERD.DataChart = {
             chartRange: NERD.DataChart.findSelectedChartRange(),
             sensorIds: el.attr('data-sensor-id').split(','),
             sensorNames: el.attr('data-sensor-name').split(','),
-            ensorUnit: el.attr('data-sensor-units')
+            sensorUnits: el.attr('data-sensor-units')
         };
     }
 };
