@@ -22,22 +22,20 @@ NERD.DataChart = {
             $.ajax({
                 url: '/sensors/' + options.sensorIds.join(',') + '/data_points?chart_range=' + options.chartRange,
                 success: function(response) {
-                    console.log('got response back');
                     NERD.DataChart.drawChart(options, chartContainer, data, response);            
                 }
             });
         });
     },
     drawChart: function(options, chartContainer, data, response) {
-        console.log('processing data');
         for(var i=0; i< response[0].length; i++) {
             var dataToAdd = [ response[0][i][0], parseInt(response[0][i][1]) ];
+            console.log('first row added');
             for(var k = 1; k < response.length; k++) {
                 dataToAdd.push(parseInt(response[k][i][1]));
             }
             data.addRow(dataToAdd);
         }
-        console.log('data processed... setting up actual drawwing...');
         var chartOptions = NERD.DataChart.getGoogleChartOptions(options);
         var chart = new google.visualization.AreaChart(chartContainer[0]);
         chart.draw(data, chartOptions);
