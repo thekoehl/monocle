@@ -3,6 +3,12 @@
 <script type="text/javascript">
     google.load('visualization', '1.0', {'packages':['corechart']});
 </script>
+<ul class="nav nav-pills chart-sub-nav">
+        <li class="small-screen-hide"><%= link_to "Back to Sensors", sensors_path %></li>
+        <li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
+        <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
+        <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>
+    </ul>
 <div 
      data-sensor-id="<%= @sensor_ids %>"
      data-sensor-name="<%= @sensor_names %>"
