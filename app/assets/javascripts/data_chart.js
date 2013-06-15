@@ -60,7 +60,7 @@ NERD.DataChart = {
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Value');
         for(var i = 0; i < options.sensorIds.length; i++) {
-            data.addColumn('number', options.sensorUnits);
+            data.addColumn('number', options.sensorNames[i]);
         };
 
         return data;
