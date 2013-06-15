@@ -8,7 +8,7 @@ class CameraEventsController < ApplicationController
       raise "Non-existant user[api_key] passed." if @user == nil
 
       @camera = @user.cameras.find_by_title params[:camera_title]
-      raise "Something went totally wrong while trying to locate that camera." if @camera.nil?
+      raise "Something went totally wrong while trying to locate that camera (#{params[:camera_title]}." if @camera.nil?
 
       @camera_event = @camera.camera_events.build params[:camera_event]
 
