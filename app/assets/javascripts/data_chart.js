@@ -27,10 +27,11 @@ NERD.DataChart = {
             });
         });
     },
+    // THIS WILL FAIL IF SENSORS DON'T HAVE SAME START POINTS
+    // TODO: FIX THIS
     drawChart: function(options, chartContainer, data, response) {
         for(var i=0; i< response[0].length; i++) {
-            var dataToAdd = [ response[0][i][0], parseInt(response[0][i][1]) ];
-            console.log('first row added');
+            var dataToAdd = [ response[0][i][0], parseInt(response[0][i][1]) ];            
             for(var k = 1; k < response.length; k++) {
                 dataToAdd.push(parseInt(response[k][i][1]));
             }
