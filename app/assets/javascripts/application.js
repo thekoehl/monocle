@@ -14,8 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-
-var NERD = NERD || {};
+//= require data_chart
 
 $().ready(function() {
 	NERD.AlarmResetHandler.init();
@@ -61,77 +60,7 @@ NERD.AlarmResetHandler = {
 	}
 };
 
-// Handles navigation of the big chart on the sensor display page
-// Does not draw the chart, google charts is weird and this is done
-// inline.
-NERD.DataChart = {
-    init: function() {
-    	if ($('.sensor-chart-container').length === 0) return;
-        this.initNavigation();
-        this.initChart();
-    },
-    initChart: function() {
-        google.setOnLoadCallback(this.initChartCallback);
-    },
-    initChartCallback: function() {
-        $('.sensor-chart-container').each(function() {
-            var chartContainer = $(this);
 
-            var chartRange = NERD.DataChart.findSelectedChartRange();
-            var sensorId = chartContainer.attr('data-sensor-id');
-            var sensorName = chartContainer.attr('data-sensor-name');
-            var sensorUnits = chartContainer.attr('data-sensor-units');
-
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Value');
-            data.addColumn('number', sensorUnits);
-
-            $.ajax({
-                url: '/sensors/' + sensorId + '/data_points?chart_range=' + chartRange,
-                success: function(response) {
-                    for(var i=0; i< response[0].length; i++) {
-                        data.addRow([
-                            response[0][i][0],
-                            parseInt(response[0][i][1])
-                        ]);
-                    }
-                    var options = {
-                        'title': sensorName,
-                        'width': '100%',
-                        'height': 350, 
-                        'chartArea':{ left:0,top:0,height: 330, width:"100%" },
-                        'hAxis': {
-                            'textPosition': 'in',                            
-                            'maxAlternation': 1,
-                            'showEvery': 5
-                        },
-                        'vAxis': {
-                            'textPosition': 'in'
-                        },
-                        'titlePosition': 'in'                        
-                    };
-                    var chart = new google.visualization.AreaChart(chartContainer[0]);
-                    chart.draw(data, options);
-                }
-            });
-        });
-    },
-    initNavigation: function() {
-    	$('.chart-range').click(function() {
-    		$('.chart-sub-nav li.active').removeClass('active');
-    		$(this).parent().addClass('active');
-    		NERD.DataChart.initChartCallback();
-    		return false;
-    	});
-    },
-    findSelectedChartRange: function() {
-        var chartRangeEl = $('.chart-sub-nav > li.active > a.chart-range').first();
-        var chartRange = chartRangeEl.attr('chart-range');
-        if (chartRange == undefined) chartRange = 'this-day';
-
-        return chartRange;
-    }
-};
 
 // Handles refreshing /sensors/big_display
 NERD.BigDisplay = {
