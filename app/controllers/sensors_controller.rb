@@ -2,6 +2,8 @@ class SensorsController < ApplicationController
     before_filter :authenticate_user!
     before_filter :load_sensors, only: [:data_points]
 
+    include SensorsHelper
+
     def big_display
         @sensor = current_user.sensors.find_by_id params[:id]
         raise "Could not locate sensor by id #{params[:id]}" unless @sensor
@@ -19,12 +21,13 @@ class SensorsController < ApplicationController
         end
         
         if params[:chart_range] == "this-day"
-    	   render :json => @sensors.map { |s| s.average_by_hour.to_a }
+    	   data = @sensors.map { |s| s.average_by_hour.to_a }
         elsif params[:chart_range] == "this-month"
-            render :json => @sensors.map { |s| s.average_by_day.to_a }
+            data = @sensors.map { |s| s.average_by_day.to_a }
         elsif params[:chart_range] == "all-time"
-            render :json => @sensors.map { |s| s.average_by_month.to_a }
+            data = @sensors.map { |s| s.average_by_month.to_a }
         end
+        render :json => cleanup_dataset(data)
     end
     def destroy
         @sensor = current_user.sensors.find_by_id params[:id]

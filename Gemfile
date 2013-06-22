@@ -21,3 +21,7 @@ gem 'jquery-rails'
 
 gem 'annotate'
 gem 'paperclip'
+
+group :development, :test do
+	gem 'rspec-rails', '~> 2.0'
+end
