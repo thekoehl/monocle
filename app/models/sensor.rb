@@ -35,8 +35,7 @@ class Sensor < ActiveRecord::Base
       self.data_points.average(:value, :group => "created_at_daily", :order => "created_at ASC")
   end
   def average_by_month
-    self.data_points.average(:value, :group => "created_at_monthly", :order => "created_at ASC",
-          :conditions => ["created_at >= ?", Time.now - 3.months])
+    self.data_points.average(:value, :group => "created_at_monthly", :order => "created_at ASC")
   end
 
   def todays_average
