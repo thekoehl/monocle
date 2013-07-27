@@ -12,6 +12,10 @@ describe Sensor, type: :model do
 		return s
 	}
 	describe '.data_points' do
+		it 'will recalculate maximum value if needed' do
+			sensor.last_value_as_percentage.should eq(50)
+		end
+
 		it 'can recalculate maximum value' do
 			sensor.recalculate_maximum_value!
 			sensor.maximum_value.should eq(4)

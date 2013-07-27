@@ -5,7 +5,7 @@
 			<h2><%= sensor.name %></h2>
 			<div class="data-container">
 				<div class="progress progress-striped">
-  				<div class="bar" style="width: 20%;"></div>
+  				<div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;"></div>
 				</div>
 				<span class="value-container"><%= sensor.data_points.last.value %></span>
 				<span class="units-container"><%= sensor.data_points.last.units %></span>

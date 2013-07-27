@@ -29,6 +29,10 @@ class Sensor < ActiveRecord::Base
   end
 
   def last_value_as_percentage
+    if self.maximum_value_recalculated_at.nil? || self.maximum_value_recalculated_at < Time.now-6.hours
+      recalculate_maximum_value!
+    end
+
     return 0 unless self.data_points.count > 0
     return 0 unless self.maximum_value > 0
 
