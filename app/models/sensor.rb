@@ -30,9 +30,9 @@ class Sensor < ActiveRecord::Base
     unless self.minimum_value_recalculated_at.nil? || self.minimum_value_recalculated_at < Time.now-6.hours
       return
     end
-    return unless self.data_points.recent.count > 0
+    return unless self.data_points.count > 0
 
-    minimum_value = self.data_points.recent.minimum(:value)
+    minimum_value = self.data_points.minimum(:value)
     self.update_attribute('minimum_value', minimum_value)
   end
 
@@ -40,8 +40,8 @@ class Sensor < ActiveRecord::Base
     unless self.maximum_value_recalculated_at.nil? || self.maximum_value_recalculated_at < Time.now-6.hours
       return
     end
-    return unless self.data_points.recent.count > 0
-    maximum_value = self.data_points.recent.maximum(:value)
+    return unless self.data_points.count > 0
+    maximum_value = self.data_points.maximum(:value)
     self.update_attribute('maximum_value', maximum_value)
   end
 
