@@ -25,6 +25,7 @@ class DataPoint < ActiveRecord::Base
   belongs_to :sensor
 
   scope :ordered_by_latest, order('created_at DESC')
+  scope :recent, where('created_at >= ?', Time.now - 7.days)
 
   validates_presence_of :reporter
   validates_presence_of :sensor
