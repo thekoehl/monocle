@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130615062134) do
+ActiveRecord::Schema.define(:version => 20130727035816) do
 
   create_table "alarms", :force => true do |t|
     t.integer  "sensor_id"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(:version => 20130615062134) do
     t.datetime "latest_snapshot_updated_at"
   end
 
+  create_table "comparisons", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "comparisons_sensors", :force => true do |t|
+    t.integer "comparison_id"
+    t.integer "sensor_id"
+  end
+
   create_table "data_points", :force => true do |t|
     t.integer  "value"
     t.string   "reporter"
@@ -62,24 +74,14 @@ ActiveRecord::Schema.define(:version => 20130615062134) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "reporting_dashboards", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-  end
-
-  create_table "reporting_dashboards_sensors", :force => true do |t|
-    t.integer "reporting_dashboard_id"
-    t.integer "sensor_id"
-  end
-
   create_table "sensors", :force => true do |t|
     t.string   "name"
     t.string   "reporter"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+    t.integer  "maximum_value",                 :default => 0
+    t.datetime "maximum_value_recalculated_at"
   end
 
   create_table "users", :force => true do |t|

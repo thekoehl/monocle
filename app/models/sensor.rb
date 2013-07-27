@@ -11,9 +11,13 @@
 #
 
 class Sensor < ActiveRecord::Base
+
+  has_and_belongs_to_many :comparisons
+  before_destroy { comparisons.clear }
+
   belongs_to :user
   has_many :alarms
-  has_many :data_points
+  has_many :data_points, dependent: :destroy
 
   scope :signal_faulted, where("updated_at <= ?", Time.now - 6.hours)
 
@@ -22,7 +26,25 @@ class Sensor < ActiveRecord::Base
   attr_accessible :name, :reporter
 
   # Model methods
-  def signal_faulted                
+  def recalculate_maximum_value!
+    return unless self.data_points.count > 0
+    maximum_value = self.data_points.maximum(:value)
+    self.update_attribute('maximum_value', maximum_value)
+  end
+
+  def last_value_as_percentage
+    if self.maximum_value_recalculated_at.nil? || self.maximum_value_recalculated_at < Time.now-6.hours
+      recalculate_maximum_value!
+    end
+
+    return 0 unless self.data_points.count > 0
+    return 0 unless self.maximum_value > 0
+
+    datapoint = self.data_points.last
+    return ( (datapoint.value.to_f / self.maximum_value.to_f) * 100).to_i
+  end
+
+  def signal_faulted
     self.updated_at < (Time.now-6.hours)
   end
 

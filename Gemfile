@@ -6,7 +6,6 @@ gem 'rvm-capistrano'
 gem "devise"
 gem "therubyracer"
 gem "less-rails"
-gem "twitter-bootstrap-rails"
 gem 'mysql2'
 gem 'sqlite3'
 

@@ -1,14 +1,15 @@
 <h1>Dashboard</h1>
-<table class="table table-striped">
-	<tbody>
-		<% @sensors.each do |sensor| %>
-			<tr>
-				<td>
-					<strong><%= link_to sensor.name, sensor %></strong>
-					<aside>updated @ <%= sensor.data_points.last.created_at %></aside>
-				</td>
-				<td><h2 class="pull right"><%= sensor.data_points.last.value %><%= sensor.data_points.last.units%></h2></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<ul class="sensors-dashboard">
+	<% @sensors.each do |sensor| %>
+		<li>
+			<h2><%= sensor.name %></h2>
+			<div class="data-container">
+				<div class="progress progress-striped">
+  				<div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;"></div>
+				</div>
+				<span class="value-container"><%= sensor.data_points.last.value %></span>
+				<span class="units-container"><%= sensor.data_points.last.units %></span>
+			</div>
+		</li>
+	<% end %>
+</ul>

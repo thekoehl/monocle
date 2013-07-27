@@ -1,8 +1,8 @@
-<h1>New Reporting Dashboard</h1>
+<h1>New Comparison</h1>
 <% if @sensors.nil? %>
 	<p>You need some sensors before you can create alarms!</p>
 <% else %>
-	<%= form_for @reporting_dashboard, :url => {:action => 'create'} do |f| %>	
+	<%= form_for @comparison, :url => {:action => 'create'} do |f| %>	
 		<%= render :partial => "form", :locals => { 
 			:f => f, 
 			:sensors => @sensors

@@ -32,6 +32,6 @@ class User < ActiveRecord::Base
   ################
 
   has_many :cameras
-  has_many :reporting_dashboards, :order => "title ASC"
+  has_many :comparisons, :order => "title ASC"
   has_many :sensors, :order => "name ASC"
 end
