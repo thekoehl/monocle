@@ -26,16 +26,29 @@ class Sensor < ActiveRecord::Base
   attr_accessible :name, :reporter
 
   # Model methods
+  def recalculate_minimum_value!
+    unless self.minimum_value_recalculated_at.nil? || self.minimum_value_recalculated_at < Time.now-6.hours
+      return
+    end
+    return unless self.data_points.count > 0
+
+    minimum_value = self.data_points.minimum(:value)
+    self.update_attribute('minimum_value', minimum_value)
+  end
+
   def recalculate_maximum_value!
+    unless self.maximum_value_recalculated_at.nil? || self.maximum_value_recalculated_at < Time.now-6.hours
+      return
+    end
     return unless self.data_points.count > 0
     maximum_value = self.data_points.maximum(:value)
     self.update_attribute('maximum_value', maximum_value)
   end
 
   def last_value_as_percentage
-    if self.maximum_value_recalculated_at.nil? || self.maximum_value_recalculated_at < Time.now-6.hours
-      recalculate_maximum_value!
-    end
+    recalculate_minimum_value!
+    recalculate_maximum_value!
+
 
     return 0 unless self.data_points.count > 0
     return 0 unless self.maximum_value > 0

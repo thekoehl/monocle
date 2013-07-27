@@ -21,6 +21,11 @@ describe Sensor, type: :model do
 			sensor.maximum_value.should eq(4)
 		end
 
+		it 'can recalculate minimum value' do
+			sensor.recalculate_minimum_value!
+			sensor.minimum_value.should eq(1)
+		end
+
 		it 'can calculate percentage of last value' do
 			sensor.recalculate_maximum_value!
 			sensor.last_value_as_percentage.should eq(50)
