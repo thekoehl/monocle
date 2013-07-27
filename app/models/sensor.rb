@@ -28,7 +28,7 @@ class Sensor < ActiveRecord::Base
   # Model methods
   def recalculate_maximum_value!
     return unless self.data_points.count > 0
-    maximum_value = self.data_points.where('created_at >= ?', Time.now - 48.hours).maximum(:value)
+    maximum_value = self.data_points.maximum(:value)
     self.update_attribute('maximum_value', maximum_value)
   end
 
