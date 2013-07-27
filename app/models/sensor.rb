@@ -11,9 +11,13 @@
 #
 
 class Sensor < ActiveRecord::Base
+
+  has_and_belongs_to_many :comparisons
+  before_destroy { comparisons.clear }
+
   belongs_to :user
   has_many :alarms
-  has_many :data_points
+  has_many :data_points, dependent: :destroy
 
   scope :signal_faulted, where("updated_at <= ?", Time.now - 6.hours)
 

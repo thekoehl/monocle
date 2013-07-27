@@ -1,4 +1,4 @@
-class ReportingDashboard < ActiveRecord::Base
+class Comparison < ActiveRecord::Base
   # Accessors
   attr_accessible :sensors
   attr_accessible :title

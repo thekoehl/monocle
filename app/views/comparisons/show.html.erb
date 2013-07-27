@@ -1,10 +1,10 @@
-<h1><%= @reporting_dashboard.title %></h1>
+<h1><%= @comparison.title %></h1>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load('visualization', '1.0', {'packages':['corechart']});
 </script>
 <ul class="nav nav-pills chart-sub-nav">
-        <li class="small-screen-hide"><%= link_to "Back to Dashboards", reporting_dashboards_path %></li>
+        <li class="small-screen-hide"><%= link_to "Back to Dashboards", comparisons_path %></li>
         <li><a href="#" class="chart-range" chart-range="all-time">All Time</a></li>
         <li><a href="#" class="chart-range" chart-range="this-month">Months</a></li>
         <li class="active"><a href="#" class="chart-range" chart-range="this-day">Days</a></li>

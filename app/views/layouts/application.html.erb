@@ -22,9 +22,10 @@
                 <a class="brand" href="/">Monocle</a>
                 <div class="container nav-collapse">
                     <ul class="nav">
+                        <li><%= link_to "Dashboard", dashboard_path %></li>
                         <li><%= link_to "Alarms", alarms_path %></li>
                         <li><%= link_to "Cameras", cameras_path %></li>
-                        <li><%= link_to "Dashboards", reporting_dashboards_path %></li>
+                        <li><%= link_to "Comparisons", comparisons_path %></li>
                         <li><%= link_to "Sensors", sensors_path %></li>
                     </ul>
                     <% if current_user %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727035024) do
+ActiveRecord::Schema.define(:version => 20130727035816) do
 
   create_table "alarms", :force => true do |t|
     t.integer  "sensor_id"
@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(:version => 20130727035024) do
     t.datetime "latest_snapshot_updated_at"
   end
 
+  create_table "comparisons", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "comparisons_sensors", :force => true do |t|
+    t.integer "comparison_id"
+    t.integer "sensor_id"
+  end
+
   create_table "data_points", :force => true do |t|
     t.integer  "value"
     t.string   "reporter"
@@ -62,18 +74,6 @@ ActiveRecord::Schema.define(:version => 20130727035024) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "reporting_dashboards", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "user_id"
-  end
-
-  create_table "reporting_dashboards_sensors", :force => true do |t|
-    t.integer "reporting_dashboard_id"
-    t.integer "sensor_id"
-  end
-
   create_table "sensors", :force => true do |t|
     t.string   "name"
     t.string   "reporter"
@@ -85,18 +85,18 @@ ActiveRecord::Schema.define(:version => 20130727035024) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                     :default => "", :null => false
-    t.string   "encrypted_password",        :default => "", :null => false
+    t.string   "email",                                    :default => "", :null => false
+    t.string   "encrypted_password",        :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",             :default => 0
+    t.integer  "sign_in_count",                            :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "api_key"
     t.datetime "last_notification_sent_at"
   end

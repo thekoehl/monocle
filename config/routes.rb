@@ -1,27 +1,20 @@
 ComPhantomdataMonicle::Application.routes.draw do
-  
+
   resources :camera_events
-
-
   resources :cameras
-
-
-  resources :reporting_dashboards
-
+  resources :comparisons
 
   resources :alarms do
     member do
       post :reset
     end
   end
-  
+
   resources :data_points
-  
+  get 'dashboard', to: 'sensors#dashboard', as: :dashboard
+
   resources :sensors do
-    collection do
-      get :dashboard
-    end
-    member do      
+    member do
       get :big_display
       get :data
       get :data_points
