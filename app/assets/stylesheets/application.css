@@ -120,6 +120,9 @@ ul.sensors-dashboard {
     margin: 10px;
     overflow: hidden;
 }
+.sensors-dashboard a, .sensors-dashboard a:hover {
+    color: black;
+}
 .sensors-dashboard h2 {
     font-size: 1em;
     font-weight: normal;

@@ -1,8 +1,7 @@
-<h1>Dashboard</h1>
 <ul class="sensors-dashboard">
 	<% @sensors.each do |sensor| %>
 		<li>
-			<h2><%= sensor.name %></h2>
+			<h2><%= link_to sensor.name, sensor_path(sensor) %></h2>
 			<div class="data-container">
 				<div class="progress progress-striped">
   				<div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;"></div>
