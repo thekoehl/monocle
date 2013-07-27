@@ -121,10 +121,13 @@ ul.sensors-dashboard {
     overflow: hidden;
 }
 .sensors-dashboard h2 {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: normal;
     margin-top: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-shadow: none;
+    white-space: nowrap;
 }
 .sensors-dashboard li {
     background-color: #fff;
