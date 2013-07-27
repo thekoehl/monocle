@@ -54,7 +54,15 @@ class Sensor < ActiveRecord::Base
     return 0 unless self.maximum_value > 0
 
     datapoint = self.data_points.last
-    return ( (datapoint.value.to_f / self.maximum_value.to_f) * 100).to_i
+    max = self.maximum_value.to_f
+    min = self.minimum_value.to_f
+    val = datapoint.value.to_f
+
+    range = max - min
+
+    return 0 if range == 0
+
+    return (  100 * ( (val - min) / range )  ).to_i
   end
 
   def signal_faulted
