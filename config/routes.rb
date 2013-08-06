@@ -21,6 +21,9 @@ ComPhantomdataMonicle::Application.routes.draw do
     end
   end
 
+  namespace :api, :path => 'api' do
+    resources :sensors
+  end
 
   devise_for :users
 
