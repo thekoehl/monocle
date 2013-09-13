@@ -17,50 +17,23 @@
         <% end %>
     </div>
 <% end %>
-<div class="row">
+<div class="sensors-listing">
     <% if @sensors.present? %>
-        <table class="table table-striped sensors-listing">
-            <thead>
-                <tr>
-                    <td class="sensor-name">Name</td>
-                    <td>Progress Bar</td>
-                </tr>
-            </thead>
-            <tbody>
-                <% @sensors.each do |sensor| %>
-                    <tr>
-                        <td class="sensor-name">
-                            <%= link_to sensor.name, sensor %>
-                            <% if sensor.signal_faulted %>
-                                <span class="label label-warning">SF</span>
-                            <% end %>
-                            <% sensor.alarms.active.each do |alarm| %>
-                                <% if alarm.trigger_type == "high_level" %>
-                                    <span class="label label-important">HL</span>
-                                <% elsif alarm.trigger_type == "low_level" %>
-                                    <span class="label label-important">LL</span>
-                                <% end %>
-                            <% end %>
-                        </td>
-                        <% if sensor.data_points.last == nil %>
-                            <td>N/A</td>
-                            <td>N/A</td>
-                            <td class="todays-average">N/A</td>
-                            <td class="last-updated">N/A</td>
-                        <% else %>
-                            <td>
-                                <div class="progress progress-striped">
-                                    <div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;">
-                                        <span class="value-container"><%= sensor.data_points.last.value %></span>
-                                        <span class="units-container"><%= sensor.data_points.last.units %></span>
-                                    </div>
-                                </div>
-                            </td>
-                        <% end %>
-                    </tr>
-                <% end %>
-            </tbody>
-        </table>
+        <% @sensors.each do |sensor| %>
+            <div class="row sensors-listing-item">
+                <div class="col-md-4">
+                    <h2><%= link_to sensor.name, sensor %></h2>
+                </div>
+                <div class="col-md-10">
+                    <div class="progress progress-striped">
+                        <div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;">
+                            <span class="value-container"><%= sensor.data_points.last.value %></span>
+                            <span class="units-container"><%= sensor.data_points.last.units %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
     <% else %>
         <h2><strong>Aw, no data yet!</strong></h2>
     <% end %>
