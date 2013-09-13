@@ -30,6 +30,10 @@
                     <li><%= link_to "Comparisons", comparisons_path %></li>
                     <li><%= link_to "Sensors", sensors_path %></li>
                 </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li><%= link_to "My Info", edit_user_registration_path %></li>
+                    <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+                </ul>
             </nav>
         </div>
         <!--
