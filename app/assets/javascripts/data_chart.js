@@ -67,9 +67,9 @@ NERD.DataChart = {
     },
     getGoogleChartOptions: function(options) {
         var chartOptions = {
-            'backgroundColor': '#272b30',
-            'foregroundColor': '#ffffff',
-            'colors': ['#4C99D4', '#CD563E', '#CCE0AB', '#F7C087', '#A9C1D9'],
+            'backgroundColor': '#ffffff',
+            'foregroundColor': '#000000',
+            'colors': ['#31b0d5', '#CD563E', '#CCE0AB', '#F7C087', '#A9C1D9'],
             'title': options.sensorNames.join(','),
             'width': '100%',
             'height': 350,
@@ -79,14 +79,14 @@ NERD.DataChart = {
                 'textPosition': 'in',
                 'maxAlternation': 1,
                 'showEvery': 5,
-                'textStyle': { 'color': '#ffffff' }
+                'textStyle': { 'color': '#000000' }
             },
             'vAxis': {
                 'textPosition': 'in',
-                'textStyle': { 'color': '#ffffff' }
+                'textStyle': { 'color': '#000000' }
             },
             'titlePosition': 'in',
-            'titleTextStyle': {'color': '#ffffff'}
+            'titleTextStyle': {'color': '#000000'}
         };
         return chartOptions;
     },
