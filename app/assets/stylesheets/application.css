@@ -30,6 +30,7 @@ header.masthead {
  ******************************************************************************/
 .main-wrapper {
     margin: 80px auto;
+    margin-top: 80px !important;
     max-width:960px;
 }
 
