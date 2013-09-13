@@ -163,7 +163,18 @@ ul.sensors-dashboard {
  }
 
  .sensors-listing .sensor-name {
+    padding-top:22px;
     width:300px;
+ }
+
+ .sensors-listing .sensor-name a {
+    background-image: -webkit-radial-gradient(100% 100%, ellipse farthest-corner, rgb(52, 114, 168) 0%, rgb(125, 162, 227) 100%);
+    border-radius: 5px;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    width: 280px;
  }
 
  .sensors-listing .bar .value-container {
