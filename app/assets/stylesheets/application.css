@@ -152,11 +152,22 @@ ul.sensors-dashboard {
     font-weight: bolder;
     font-size: 1.6em;
 }
+
 /******************************************************************************
     Sensors Listing
  ******************************************************************************/
  table.sensors-listing td {
+    font-size: 1.3em;
     padding: 16px;
+    padding-top: 31px;
+ }
+
+ .sensors-listing .sensor-name {
+    width:300px;
+ }
+
+ .sensors-listing .bar .value-container {
+    font-size: 1.3em;
  }
 
 /* SENSORS */
