@@ -21,10 +21,10 @@
     <% if @sensors.present? %>
         <% @sensors.each do |sensor| %>
             <div class="row sensors-listing-item">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <%= link_to sensor.name, sensor %>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="progress progress-striped">
                         <div  class="progress-bar progress-bar-info" role="progressbar" style="width: <%= sensor.last_value_as_percentage%>%;">
                             <span class="value-container"><%= sensor.data_points.last.value %></span>
