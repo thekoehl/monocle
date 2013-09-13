@@ -1,13 +1,20 @@
+<% if @sensors.count == 0 %>
+	<h1>Aw, no sensors</h1>
+	<p>Log some data!</p>
+<% end %>
 <ul class="sensors-dashboard">
 	<% @sensors.each do |sensor| %>
 		<li>
-			<h2><%= link_to sensor.name, sensor_path(sensor) %></h2>
+			<h2>
+				<%= link_to sensor.name, sensor_path(sensor) %>
+			</h2>
 			<div class="data-container">
 				<div class="progress progress-striped">
-  				<div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;"></div>
+  				<div class="bar" style="width: <%= sensor.last_value_as_percentage%>%;">
+						<span class="value-container"><%= sensor.data_points.last.value %></span>
+						<span class="units-container"><%= sensor.data_points.last.units %></span>
+  				</div>
 				</div>
-				<span class="value-container"><%= sensor.data_points.last.value %></span>
-				<span class="units-container"><%= sensor.data_points.last.units %></span>
 			</div>
 		</li>
 	<% end %>
