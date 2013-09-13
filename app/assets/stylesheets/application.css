@@ -175,6 +175,7 @@ ul.sensors-dashboard {
 }
 .sensors-listing .progress-bar {
     padding-top: 3px;
+    min-width: 70px;
 }
 
 .sensors-listing-item:nth-child(odd) {
