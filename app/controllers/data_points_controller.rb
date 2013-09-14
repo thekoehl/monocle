@@ -12,10 +12,15 @@ class DataPointsController < ApplicationController
 
 			@data_point = DataPoint.new params[:data_point]
 			@sensor = Sensor.find :first, :conditions => ["user_id = ? AND name = ?", @user.id, params[:sensor][:name]]
-			if @sensor == nil			
+			if @sensor == nil
 				@sensor = Sensor.new params[:sensor]
 				@sensor.user = @user
 			end
+
+			if params[:sensor][:group_name] && @sensor.group_name != params[:sensor][:group_name]
+				@sensor.group_name = params[:sensor][:group_name]
+			end
+
 			@data_point.sensor = @sensor
 
 			@data_point.save!
