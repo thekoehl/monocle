@@ -19,7 +19,7 @@ class SensorsController < ApplicationController
         @sensors = params[:id].split(',').map do |id|
             current_user.sensors.find_by_id id
         end
-        
+
         if params[:chart_range] == "this-day"
     	   data = @sensors.map { |s| s.average_by_hour.to_a }
         elsif params[:chart_range] == "this-month"
@@ -35,11 +35,13 @@ class SensorsController < ApplicationController
         flash[:notice] = "Sensor has been deleted."
         return redirect_to sensors_path
     end
+
     def index
-        @sensors = current_user.sensors.all
+        @sensor_groups = current_user.sensors.group_by(&:group_name_sortable).sort
         @active_alarms = current_user.sensors.collect {|sensor| sensor.alarms.where(:active => true)}.flatten.compact
         @signal_faulted_sensors = current_user.sensors.signal_faulted
     end
+
     def show
     	@sensor = current_user.sensors.find_by_id params[:id]
     	raise "Could not locate sensor by id #{params[:id]}" unless @sensor

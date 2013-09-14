@@ -11,7 +11,7 @@ user = User.last
 Sensor.destroy_all
 (0..15).each do |i|
 	puts "Working with sensor #{i}..."
-	sensor = user.sensors.find_or_create_by_name "Test #{i}", reporter: "Test Data Source"
+	sensor = user.sensors.find_or_create_by_name "Test #{i}", reporter: "Test Data Source", group_name: "Group #{(i/5).to_s}"
 	(0..45).each do |j|
 		t = Time.now - j.hours
 		dp = DataPoint.new(value: rand(0..325), reporter: "test reporter", units: "T")

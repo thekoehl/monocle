@@ -23,9 +23,15 @@ class Sensor < ActiveRecord::Base
 
   validates_presence_of :name
 
-  attr_accessible :name, :reporter
+  attr_accessible :name, :reporter, :group_name
 
-  # Model methods
+  # Instance methods
+
+  def group_name_sortable
+    return "Undefined" if self.group_name.nil?
+    return self.group_name
+  end
+
   def recalculate_minimum_value!
     unless self.minimum_value_recalculated_at.nil? || self.minimum_value_recalculated_at < Time.now-6.hours
       return
