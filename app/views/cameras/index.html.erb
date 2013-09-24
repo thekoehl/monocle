@@ -12,6 +12,9 @@
                             <%= image_tag camera.latest_snapshot.url(:small), class: 'img-responsive img-thumbnail' %>
                         </center>
                         <h4>Events</h4>
+                        <% if camera.camera_events.count == 0 %>
+                            <p>Aw, nothing of note today.</p>
+                        <% end %>
                         <ul class="list-group camera-event-list">
                             <% camera.camera_events.each do |camera_event| %>
                                 <li class="list-group-item">
