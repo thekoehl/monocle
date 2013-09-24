@@ -1,3 +1,33 @@
+<% @cameras.in_groups_of(2).each do |cameras| %>
+    <div class="row">
+        <% cameras.each do |camera| %>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <%= camera.title %> @ <%= time_ago_in_words camera.updated_at %> ago
+                    </div>
+                    <div class="panel-body">
+                        <center>
+                            <%= image_tag camera.latest_snapshot.url(:small), class: 'img-responsive img-thumbnail' %>
+                        </center>
+                        <h4>Events</h4>
+                        <ul class="list-group camera-event-list">
+                            <% camera.camera_events.each do |camera_event| %>
+                                <li class="list-group-item">
+                                    <%= link_to camera_event.video.url(:original, false), target: '_blank' do |b| %>
+                                        <%= camera_event.created_at %>
+                                        <span class="pull-right glyphicon glyphicon-cloud-download"></span>
+                                    <% end %>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>
+<!--
 <div class="row">
     <ul class="camera-listing">
         <% @cameras.each do |camera| %>
@@ -25,4 +55,4 @@
             </li>
         <% end %>
     </ul>
-</div>
+</div>-->

@@ -3,7 +3,7 @@ class Camera < ActiveRecord::Base
   # Attributesd  #
   ################
   attr_accessible :title, :latest_snapshot
-  
+
   ################
   # Associations #
   ################
@@ -14,7 +14,7 @@ class Camera < ActiveRecord::Base
   ################
   # Gems         #
   ################
-  has_attached_file :latest_snapshot, :styles => { medium: "640x480" }
+  has_attached_file :latest_snapshot, :styles => { small: '320x240', medium: "640x480" }
 
   ################
   # Validations  #
