@@ -1,30 +1,32 @@
-<div class="alert alert-notice">
+<div class="alert alert-success">
     <p><%= link_to "sign up", new_user_registration_path, :class => "btn btn-inverse" %> if you don't already have an account!</p>
 </div>
 
 <div class="row">
-    <div class="span6">
+    <div class="col-md-6">
         <h3>What is monocle?</h3>
         <p>Monocle is a simple little datalogger.  Use my monocle thor script (@github) to periodically poll your stuff and send it back here to be graphed.  I like pretty graphs and I primarily built this app so I could look at a pretty graph of the temperature in my apartment.  Huzzah!</p>
         <p><em>This little project was made with Rails 3.0 and Twitter Bootstrap and runs on Rackspace.</em></p>
     </div>
 
-    <div class="span3">
+    <div class="col-md-4">
         <h3>Login</h3>
-        <%=  form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-            <div class="form-fields-container">
+        <%=  form_for(resource, :as => resource_name, :url => session_path(resource_name), role: 'form') do |f| %>
+            <div class="form-group">
                 <%= f.label :email %>
-                <%= f.email_field :email %>
+                <%= f.email_field :email, class: 'form-control' %>
             </div>
-            <div class="form-fields-container">
+            <div class="form-group">
                 <%= f.label :password %>
-                <%= f.password_field :password %>
+                <%= f.password_field :password, class: 'form-control' %>
             </div>
-            <div class="form-fields-container checkbox-container">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+            <div class="checkbox">
+            <label for="user_remember_me">
+                <input type="checkbox" id="user_remember_me" name="user[remember_me]"/>
+                Remember Me
+            </label>
             </div>
-            <div class="form-fields-container">
+            <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Login!" />
             </div>
         <% end %>
