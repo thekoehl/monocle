@@ -23,7 +23,7 @@ class Sensor < ActiveRecord::Base
 
   validates_presence_of :name
 
-  attr_accessible :name, :reporter, :group_name
+  attr_accessible :name, :reporter, :group_name, :minimum_value, :maximum_value, :minimum_value_recalculated_at, :maximum_value_recalculated_at
 
   # Instance methods
 
@@ -39,7 +39,7 @@ class Sensor < ActiveRecord::Base
     return unless self.data_points.count > 0
 
     minimum_value = self.data_points.minimum(:value)
-    self.update_attribute('minimum_value', minimum_value)
+    self.update_attributes({minimum_value: minimum_value, minimum_value_recalculated_at: Time.now})
   end
 
   def recalculate_maximum_value!
@@ -48,7 +48,7 @@ class Sensor < ActiveRecord::Base
     end
     return unless self.data_points.count > 0
     maximum_value = self.data_points.maximum(:value)
-    self.update_attribute('maximum_value', maximum_value)
+    self.update_attributes(maximum_value: maximum_value, maximum_value_recalculated_at: Time.now)
   end
 
   def last_value_as_percentage
