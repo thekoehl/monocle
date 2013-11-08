@@ -1,0 +1,26 @@
+<input type="hidden" id="api-key" value="<%= current_user.api_key %>"/>
+
+<!-- Sensors Index -->
+<div id="sensors-index-base" class="sensors-index hidden">
+  <ul class="nav nav-tabs">
+    <li><a href="#" data-time-range="hourly">Hourly</a></li>
+    <li><a href="#" data-time-range="daily">Daily</a></li>
+    <li><a href="#" data-time-range="monthly">Monthly</a></li>
+  </ul>
+</div>
+<script id="sensors-index-item-tmpl" type="text/x-handlebars-template">
+  <div class="row sensors-index-item">
+    <div class="col-md-4 text-bit">
+      <h2>{{name}}</h2>
+      <span class="value">{{last_value data_points_hourly}}{{units}}</span>
+      <a class="delete-link" data-for-sensor="{{id}}" href="/sensors/delete.json?id={{id}}">
+        <span class="glyphicon glyphicon-trash"></span>
+      </a>
+    </div>
+    <div class="col-md-8">
+      <div class="chart-container">
+        <svg style="height:190px;"></svg>
+      </div>
+    </div>
+  </div>
+</script>
