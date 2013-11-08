@@ -1,3 +1,0 @@
-== README
-* A very simple data logger built to receive data from any number of sensors that submit data via the API.
-* Built to use the provided monocle.thor script for very easy to configure monitoring.
