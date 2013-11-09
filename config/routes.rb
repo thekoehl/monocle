@@ -1,8 +1,6 @@
 PDMonocle::Application.routes.draw do
-  resources :data_points
-  resources :sensors
-
   namespace :api, :path => 'api' do
+    resources :cameras
     resources :data_points
     resources :sensors
     get '/data-points/create', to: 'data_points#create'

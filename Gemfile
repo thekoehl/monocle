@@ -45,4 +45,5 @@ gem 'capistrano', group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'paperclip'
 gem 'timecop'

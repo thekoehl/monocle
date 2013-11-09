@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # Relationships #
   #################
 
+  has_many :cameras, dependent: :destroy
   has_many :sensors, dependent: :destroy
 
   ###############

@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test "has_many cameras" do
+    user = User.new
+    user.cameras << Camera.new(name: 'test')
+    assert user.cameras.length == 1
+  end
   test "has_many sensors" do
     user = User.new
     user.sensors << Sensor.new(name: 'test', units: 'tests/s')
