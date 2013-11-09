@@ -2,7 +2,7 @@ json.status "success"
 json.sensors @sensors do |sensor|
   json.name sensor.name
   json.units sensor.units
-  json.data_points_hourly sensor.data_points.segmented('hourly').average(:value) do |dp|
+  json.data_points_hourly sensor.data_points.where(["created_at > ?", Time.now-1.day]).segmented('hourly').average(:value) do |dp|
     json.id dp[0]
     json.value dp[1]
   end
