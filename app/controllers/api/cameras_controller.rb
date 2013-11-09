@@ -1,5 +1,6 @@
 class Api::CamerasController < Api::BaseController
 	before_filter :load_and_authenticate_api_user!
+	protect_from_forgery :except => :create # This is meant to be called from the outside
 
 	# This really is a create or update; but this is easiest for API
 	# users to use.
