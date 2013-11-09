@@ -8,6 +8,17 @@
     <li><a href="#" data-time-range="monthly">Monthly</a></li>
   </ul>
 </div>
+
+<!-- Cameras Index -->
+<div id="cameras-index-base" class="cameras-index hidden"></div>
+<script id="cameras-index-item-tmpl" type="text/x-handlebars-template">
+  <div>
+    <h2>{{name}}</h2>
+    <img src="{{latest_snapshot_url}}" class="camera-thumbnail thumbnail"/>
+  </div>
+</script>
+
+<!-- Sensor Index -->
 <script id="sensors-index-item-tmpl" type="text/x-handlebars-template">
   <div class="row sensors-index-item">
     <div class="col-md-4 text-bit">

@@ -1,11 +1,13 @@
 var NERD = NERD || {};
 
 NERD.CamerasIndex = {
+    apiKey: undefined,
     cameras: undefined,
     trigger: undefined,
     view: undefined,
 
     init: function() {
+        this.apiKey = $('#api-key').val();
         this.trigger = $('#navigation-cameras');
         if (this.trigger === false) return;
 
@@ -48,7 +50,7 @@ NERD.CamerasIndex = {
     loadCameras: function() {
         var self = this;
         $.ajax({
-            url: '/cameras/index.json',
+            url: '/api/cameras?api_key=' + self.apiKey,
             success: function(response) {
                 if (response.status != SUCCESS) { NERD.ErrorHandler.showError(response.message); return }
                 self.cameras = response.cameras;
