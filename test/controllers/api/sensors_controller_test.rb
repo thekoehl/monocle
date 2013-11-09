@@ -12,9 +12,9 @@ class Api::SensorsControllerTest < ActionController::TestCase
 
     assert body['sensors'][0]['name'] = sensor.name
     assert body['sensors'][0]['units'] = sensor.units
-    assert body['sensors'][0]['data_points_hourly'][0]["value"] == "35.0"
-    assert body['sensors'][0]['data_points_daily'][0]["value"] == "85.0"
-    assert body['sensors'][0]['data_points_monthly'][0]["value"] == "85.0"
+    assert body['sensors'][0]['data_points_hourly'][0]["value"] == 35
+    assert body['sensors'][0]['data_points_daily'][0]["value"] == 85
+    assert body['sensors'][0]['data_points_monthly'][0]["value"] == 85
   end
   test 'can destroy sensor' do
     sensor = get_valid_sensor
