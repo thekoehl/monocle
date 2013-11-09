@@ -6,7 +6,7 @@ json.sensors @sensors do |sensor|
     json.id dp[0]
     json.value dp[1]
   end
-  json.data_points_daily sensor.data_points.segmented('daily').average(:value) do |dp|
+  json.data_points_daily sensor.data_points.where(["created_at > ?", Time.now-14.days]).segmented('daily').average(:value) do |dp|
     json.id dp[0]
     json.value dp[1]
   end
