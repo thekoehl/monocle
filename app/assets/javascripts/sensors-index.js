@@ -21,10 +21,10 @@ NERD.SensorsIndex = {
 
       if (!confirm('Are you sure you want to delete this sensor?')) return;
       var $this = $(this);
-      var uri = $this.attr('href');
+      var uri = $this.attr('href') + '?api_key=' + self.apiKey;
       var id = $this.attr('data-for-sensor');
 
-      $.ajax({url: uri, success: function() {
+      $.ajax({url: uri, type: 'DELETE', success: function() {
         self.sensors = self.sensors.filter(function(value, index, ar) {
           if (value.id == id) return false;
           return true;

@@ -18,7 +18,7 @@ class Api::SensorsControllerTest < ActionController::TestCase
   end
   test 'can destroy sensor' do
     sensor = get_valid_sensor
-    get :destroy, id: sensor.id, api_key: sensor.user.api_key, format: :json
+    delete :destroy, id: sensor.id, api_key: sensor.user.api_key, format: :json
     assert Sensor.count == 0
   end
 
