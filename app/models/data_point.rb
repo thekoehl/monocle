@@ -11,7 +11,7 @@ class DataPoint < ActiveRecord::Base
   ##########
   scope :segmented, ->(segmentation) {
      group("#{segmentation}_segmentation")
-    .order("created_at ASC")
+    .order("#{segmentation}_segmentation")
   }
 
   ###############
