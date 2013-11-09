@@ -16,6 +16,11 @@ class Api::SensorsControllerTest < ActionController::TestCase
     assert body['sensors'][0]['data_points_daily'][0]["value"] == "85.0"
     assert body['sensors'][0]['data_points_monthly'][0]["value"] == "85.0"
   end
+  test 'can destroy sensor' do
+    sensor = get_valid_sensor
+    get :destroy, id: sensor.id, api_key: sensor.user.api_key, format: :json
+    assert Sensor.count == 0
+  end
 
   def get_valid_sensor
     user = User.new(email: 'test@test.com', password: 'aserfAWERAErrfser')
