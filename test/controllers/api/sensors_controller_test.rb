@@ -3,9 +3,10 @@ require 'test_helper'
 class Api::SensorsControllerTest < ActionController::TestCase
   test "can get json" do
     sensor = get_valid_sensor
-    get :index, api_key: sensor.user.api_key
+    get :index, api_key: sensor.user.api_key, format: :json
 
     body = JSON.parse(response.body)
+    puts body.inspect
     assert body['sensors'][0]['name'] = sensor.name
     assert body['sensors'][0]['units'] = sensor.units
     assert body['sensors'][0]['data_points_hourly'][0]["value"] == "35.0"
