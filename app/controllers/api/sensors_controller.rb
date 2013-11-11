@@ -13,7 +13,7 @@ class Api::SensorsController < Api::BaseController
   end
 
   def index
-    @sensors = @current_user.sensors
+    @sensors = @current_user.sensors.order(name: :asc)
   end
 
 end
