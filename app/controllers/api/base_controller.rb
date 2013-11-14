@@ -11,6 +11,6 @@ class Api::BaseController < ApplicationController
   end
 
   def json_success
-    { "result" => true }
+    { "status" => "success" }
   end
 end

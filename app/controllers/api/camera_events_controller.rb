@@ -19,6 +19,15 @@ class Api::CameraEventsController < Api::BaseController
 		end
 	end
 
+	def destroy_all
+		begin
+			@current_user.camera_events.destroy_all
+			return render json: json_success
+		rescue Exception => ex
+			return render json: json_failure(ex.message), status: 500
+		end
+	end
+
 	def index
 		@camera_events = @current_user.camera_events.order("created_at DESC")
 	end

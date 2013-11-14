@@ -1,11 +1,13 @@
 var NERD = NERD || {};
 
 NERD.CameraEventsIndex = {
+    apiKey: undefined,
     camera_events: undefined,
     trigger: undefined,
     view: undefined,
 
     init: function() {
+        this.apiKey = $('#api-key').val();
         this.trigger = $('#navigation-camera-events');
         if (this.trigger === false) return;
 
@@ -47,10 +49,12 @@ NERD.CameraEventsIndex = {
     insertDeleteAllLink: function() {
         if (this.view == undefined) {NERD.ErrorHandler.showError('For some reason a view wasnt where we expected it to be.'); return; }
         var link = $('<a href="" class="delete-link btn btn-default">Delete All</a>');
+        var self = this;
         link.click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: '/camera-events/delete.json',
+                url: '/api/camera_events/destroy_all?api_key=' + self.apiKey,
+                method: 'post',
                 success: function(response) {
                     if (response.status != SUCCESS) { NERD.ErrorHandler.showError(response.message); return }
                     self.view.remove();
@@ -62,7 +66,7 @@ NERD.CameraEventsIndex = {
     loadCameraEvents: function() {
         var self = this;
         $.ajax({
-            url: '/camera-events/index.json',
+            url: '/api/camera_events?api_key=' + self.apiKey,
             success: function(response) {
                 if (response.status != SUCCESS) { NERD.ErrorHandler.showError(response.message); return }
                 self.camera_events = response.camera_events;

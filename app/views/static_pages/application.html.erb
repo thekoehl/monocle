@@ -9,6 +9,16 @@
   </ul>
 </div>
 
+<!-- Camera Events Index -->
+<div id="camera-events-index-base" class="camera-events-index hidden"></div>
+<script id="camera-events-index-item-tmpl" type="text/x-handlebars-template">
+  <div class="camera-events-index-item">
+    <a class="download-link" href="{{event_recording_url}}" target="_blank">
+        <span class="glyphicon glyphicon-cloud"></span><span class="location">{{location}}</span><span class="created-at">{{CreatedAt}}</span>
+    </a>
+  </div>
+</script>
+
 <!-- Cameras Index -->
 <div id="cameras-index-base" class="cameras-index hidden"></div>
 <script id="cameras-index-item-tmpl" type="text/x-handlebars-template">
