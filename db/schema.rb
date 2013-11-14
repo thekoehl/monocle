@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114001142) do
+ActiveRecord::Schema.define(version: 20131114044642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alarms", force: true do |t|
+    t.integer  "sensor_id"
+    t.string   "alarm_type"
+    t.integer  "trigger_value"
+    t.datetime "last_notification_sent_at"
+    t.datetime "last_triggered_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "camera_events", force: true do |t|
     t.integer  "user_id"

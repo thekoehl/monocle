@@ -1,4 +1,6 @@
 PDMonocle::Application.routes.draw do
+  resources :alarms
+
   namespace :api, :path => 'api' do
     resources :cameras
     resources :camera_events do

@@ -27,6 +27,15 @@ class DataPoint < ActiveRecord::Base
   # Action Filters #
   ##################
 
+  after_save :check_for_and_trigger_alarms_if_needed
+  def check_for_and_trigger_alarms_if_needed
+    self.sensor.alarms.each do |alarm|
+      alarm.check_for_and_trigger_if_needed
+    end
+
+    return true
+  end
+
   before_validation :compute_statistical_references
   def compute_statistical_references
     tn = Time.now.utc.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"])
