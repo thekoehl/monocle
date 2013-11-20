@@ -3,19 +3,12 @@ require 'test_helper'
 class AlarmTest < ActiveSupport::TestCase
 
 	def setup
-		@user = User.new(email: 'test@test.com', password: 'aserfAWERAErrfser')
-		@sensor = Sensor.new(name: 'Test Sensor', units: 'cats/s')
-		@sensor.user = @user
-		@sensor.save!
-
-		@alarm = Alarm.new
-		@alarm.sensor = @sensor
-		@alarm.alarm_type = Alarm::ALARM_TYPES[:low_level]
+		@alarm = FactoryGirl.build(:alarm_with_sensor)
 		@alarm.trigger_value = 5
+		@alarm.save!
 
-		@data_point = DataPoint.new
-		@data_point.sensor = @alarm.sensor
-		@data_point.value = @alarm.trigger_value + 1
+		@data_point = @alarm.sensor.data_points.build
+		@data_point.value = 5
 	end
 
 	###############
@@ -99,7 +92,8 @@ class AlarmTest < ActiveSupport::TestCase
 
 			assert ActionMailer::Base.deliveries.empty? != true
 			message = ActionMailer::Base.deliveries[0]
-			assert message.subject == "Monocle Alert: Test Sensor triggered an alarm at 4"
+			puts message.subject
+			assert message.subject == "Monocle Alert: Test Sensor with User triggered an alarm at 4"
 		end
 	end
 

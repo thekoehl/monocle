@@ -1,14 +1,10 @@
 require 'test_helper'
 
 class SensorTest < ActiveSupport::TestCase
-  test "has_many sensors" do
-    sensor = Sensor.new(name: 'Test Sensor', units: 'cats/s')
-    sensor.data_points << get_valid_data_point()
+  test "has_many data points" do
+    sensor = FactoryGirl.build(:sensor)
+    sensor.data_points << FactoryGirl.build(:data_point)
     sensor.save!
     assert sensor.data_points.length == 1
-  end
-
-  def get_valid_data_point
-    return DataPoint.new(value: 5, hourly_segmentation: Time.now, daily_segmentation: Time.now, monthly_segmentation: Time.now)
   end
 end
