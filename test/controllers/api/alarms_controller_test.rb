@@ -2,6 +2,8 @@ require 'test_helper'
 
 class Api::AlarmsControllerTest < ActionController::TestCase
 	test "can create new alarms" do
+		current_alarms = Alarm.count
+
 		@sensor = FactoryGirl.build(:sensor_with_user)
 		@sensor.save!
 
@@ -13,5 +15,6 @@ class Api::AlarmsControllerTest < ActionController::TestCase
 			},
 			api_key: @sensor.user.api_key
 		}
+		assert Alarm.count == current_alarms + 1
 	end
 end

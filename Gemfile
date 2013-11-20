@@ -16,6 +16,7 @@ group :doc do
 end
 
 group :test do
+	gem 'minitest-reporters'
 	gem 'timecop'
 	gem 'factory_girl'
 end

@@ -92,7 +92,6 @@ class AlarmTest < ActiveSupport::TestCase
 
 			assert ActionMailer::Base.deliveries.empty? != true
 			message = ActionMailer::Base.deliveries[0]
-			puts message.subject
 			assert message.subject == "Monocle Alert: Test Sensor with User triggered an alarm at 4"
 		end
 	end
