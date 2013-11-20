@@ -22,7 +22,4 @@ class Api::CamerasController < Api::BaseController
 		@cameras = @current_user.cameras
 	end
 
-	def camera_params
-		params.require(:camera).permit(:latest_snapshot)
-	end
 end

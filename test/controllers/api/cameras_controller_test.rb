@@ -2,7 +2,9 @@ require 'test_helper'
 
 class Api::CamerasControllerTest < ActionController::TestCase
   test "can upload snapshots" do
-  	user = get_valid_user
+  	user = FactoryGirl.build(:user)
+    user.save!
+
   	test_image = fixture_file_upload('files/test.jpg', 'image/jpg')
   	post :create, {camera: {name: "snapshot test"}, api_key: user.api_key, latest_snapshot: test_image}, format: :json
   	assert_response :success
@@ -10,7 +12,9 @@ class Api::CamerasControllerTest < ActionController::TestCase
   end
 
   test "can get cameras" do
-    user = get_valid_user
+    user = FactoryGirl.build(:user)
+    user.save!
+
     test_image = fixture_file_upload('files/test.jpg', 'image/jpg')
     post :create, {camera: {name: "snapshot test"}, api_key: user.api_key, latest_snapshot: test_image}, format: :json
     assert_response :success
@@ -20,9 +24,14 @@ class Api::CamerasControllerTest < ActionController::TestCase
     assert body['cameras'][0]['latest_snapshot_url'].include?('test')
   end
 
-  def get_valid_user
-  	user = User.new(email: 'test@test.com', password: 'aserfAWERAErrfser')
+  test "does throw exception if no camera is passed" do
+    user = FactoryGirl.build(:user)
     user.save!
-    return user
+
+    test_image = fixture_file_upload('files/test.jpg', 'image/jpg')
+    post :create, {api_key: user.api_key, latest_snapshot: test_image}, format: :json
+    assert_response 500
+    body = JSON.parse(response.body)
+    assert body['messages'][0] == 'No camera passed'
   end
 end

@@ -8,7 +8,7 @@ class Api::SensorsController < Api::BaseController
     return render(json: json_failure("Could not locate specified sensor")) unless sensor
     success = sensor.destroy
     return render(json: json_success) if success
-    return render(json: json_failure("Could not delete sensor for some reason."))
+    # It really should never fall through
   end
 
   def index

@@ -20,12 +20,8 @@ class Api::CameraEventsController < Api::BaseController
 	end
 
 	def destroy_all
-		begin
-			@current_user.camera_events.destroy_all
-			return render json: json_success
-		rescue Exception => ex
-			return render json: json_failure(ex.message), status: 500
-		end
+		@current_user.camera_events.destroy_all
+		return render json: json_success
 	end
 
 	def index

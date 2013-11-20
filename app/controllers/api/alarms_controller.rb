@@ -5,6 +5,7 @@ class Api::AlarmsController < Api::BaseController
 
 	def create
 		begin
+			validate_create_params
 			@sensor = @current_user.sensors.find(params[:alarm][:sensor_id])
 			raise "User to sensor mismatch" if @sensor.nil?
 
@@ -25,6 +26,11 @@ private
 
 	def alarm_params
 		params.require(:alarm).permit(:alarm_type, :sensor_id, :trigger_value, :user_id)
+	end
+
+	def validate_create_params
+		raise "You must pass an alarm" unless params[:alarm]
+		raise "You must pass an alarm[sensor_id]" unless params[:alarm][:sensor_id]
 	end
 
 end
