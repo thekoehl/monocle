@@ -12,6 +12,7 @@ class Alarm < ActiveRecord::Base
 	#################
 
 	belongs_to :sensor
+	belongs_to :user
 
 	###############
 	# Validations #
@@ -20,6 +21,17 @@ class Alarm < ActiveRecord::Base
 	validates :alarm_type, presence: true
 	validates :sensor, presence: true
 	validates :trigger_value, presence: true
+	validates :user, presence: true
+
+  ##################
+	# Action Filters #
+	##################
+
+	before_validation :associate_user
+	def associate_user
+		return false unless self.sensor && self.sensor.user
+		self.user = self.sensor.user
+	end
 
   ####################
 	# Instance Methods #

@@ -3,7 +3,7 @@ require 'test_helper'
 class AlarmTest < ActiveSupport::TestCase
 
 	def setup
-		@alarm = FactoryGirl.build(:alarm_with_sensor)
+		@alarm = FactoryGirl.build(:alarm)
 		@alarm.trigger_value = 5
 		@alarm.save!
 
@@ -28,6 +28,11 @@ class AlarmTest < ActiveSupport::TestCase
 	test 'requires trigger value' do
 		@alarm.trigger_value = nil
 		assert @alarm.save == false
+	end
+
+	test 'it autosets the user' do
+		@alarm.save!
+		assert @alarm.user == @alarm.sensor.user
 	end
 
 	test 'can save valid alarm' do
@@ -92,7 +97,7 @@ class AlarmTest < ActiveSupport::TestCase
 
 			assert ActionMailer::Base.deliveries.empty? != true
 			message = ActionMailer::Base.deliveries[0]
-			assert message.subject == "Monocle Alert: Test Sensor with User triggered an alarm at 4"
+			assert message.subject == "Monocle Alert: #{@alarm.sensor.name} triggered an alarm at 4"
 		end
 	end
 

@@ -1,6 +1,7 @@
 class Api::AlarmsController < Api::BaseController
 	before_filter :load_and_authenticate_api_user!
-	protect_from_forgery :except => :create # This is meant to be called from the outside
+
+	respond_to :json
 
 	def create
 		begin
@@ -16,10 +17,14 @@ class Api::AlarmsController < Api::BaseController
 		end
 	end
 
+	def index
+		@alarms = @current_user.alarms
+	end
+
 private
 
 	def alarm_params
-		params.require(:alarm).permit(:alarm_type, :sensor_id, :trigger_value, )
+		params.require(:alarm).permit(:alarm_type, :sensor_id, :trigger_value, :user_id)
 	end
 
 end
