@@ -8,7 +8,7 @@ services: postgresql
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
-  - bundle exec rake test
+  - CODECLIMATE_REPO_TOKEN=1b0cfc5b1a9213edd793de41a755315f33f8077b2d2478a801baff7e91fcc791 bundle exec rake test
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database monocle_test' -U postgres

@@ -16,6 +16,7 @@ group :doc do
 end
 
 group :test do
+	gem "codeclimate-test-reporter", require: nil
 	gem 'minitest-reporters'
 	gem 'timecop'
 	gem 'factory_girl'

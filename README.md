@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jordantcox/com.phantomdata.Monocle.png)](https://travis-ci.org/jordantcox/com.phantomdata.Monocle)
+[![Build Status](https://travis-ci.org/jordantcox/com.phantomdata.Monocle.png)](https://travis-ci.org/jordantcox/com.phantomdata.Monocle) [![Code Climate](https://codeclimate.com/repos/528c31de56b102694a000b6a/badges/4c2a2c4332c0d99f4d23/gpa.png)](https://codeclimate.com/repos/528c31de56b102694a000b6a/feed)
 
 Monocle
 
