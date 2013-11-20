@@ -3,10 +3,6 @@ class Api::DataPointsController < Api::BaseController
 
   def create
     begin
-      raise "No sensor name passed" unless params[:sensor][:name]
-      raise "No sensor units passed" unless params[:sensor][:units]
-      raise "No datapoint value passed" unless params[:data_point][:value]
-
       sensor = Sensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
       sensor.units = params[:sensor][:units]
       sensor.save!
