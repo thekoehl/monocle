@@ -4,9 +4,7 @@ class Api::CameraEventsController < Api::BaseController
 
 	def create
 		begin
-			raise "No camera event passed" unless params[:camera_event]
-			raise "No location passed for the camera event" unless params[:camera_event][:location]
-			raise "No recording passed for the camera event" unless params[:event_recording]
+			validate_create_params
 
 			@camera_event = CameraEvent.new(location: params[:camera_event][:location])
 			@camera_event.user = @current_user
@@ -26,6 +24,14 @@ class Api::CameraEventsController < Api::BaseController
 
 	def index
 		@camera_events = @current_user.camera_events.order("created_at DESC")
+	end
+
+private
+
+	def validate_create_params
+		raise "No camera event passed" unless params[:camera_event]
+		raise "No location passed for the camera event" unless params[:camera_event][:location]
+		raise "No recording passed for the camera event" unless params[:event_recording]
 	end
 
 end

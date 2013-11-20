@@ -5,12 +5,8 @@ class Api::DataPointsController < Api::BaseController
     begin
       validate_create_params
 
-      sensor = Sensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
-      sensor.units = params[:sensor][:units]
-      sensor.save!
-
-      data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value])
-      data_point.save!
+      sensor = create_sensor_from_params
+      data_point = create_data_point_from_params(sensor)
 
       return render json: json_success
     rescue Exception => ex
@@ -19,6 +15,21 @@ class Api::DataPointsController < Api::BaseController
   end
 
 private
+
+  def create_data_point_from_params sensor
+    data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value])
+    data_point.save!
+
+    return data_point
+  end
+
+  def create_sensor_from_params
+    sensor = Sensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
+    sensor.units =  params[:sensor][:units]
+    sensor.save!
+
+    return sensor
+  end
 
   def validate_create_params
     raise "You must pass a datapoint" unless params[:data_point]
