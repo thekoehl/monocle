@@ -9,12 +9,9 @@ class Api::DataPointsController < Api::BaseController
 
       sensor = Sensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
       sensor.units = params[:sensor][:units]
-
       sensor.save!
 
-      data_point = DataPoint.new
-      data_point.sensor = sensor
-      data_point.value = params[:data_point][:value]
+      data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value])
       data_point.save!
 
       return render json: json_success

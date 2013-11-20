@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-PDMonocle::Application.config.secret_key_base = APP_CONFIG['secret_token'] || ENV['M_SECRET_TOKEN']
+PDMonocle::Application.config.secret_key_base = APP_CONFIG.nil? ? ENV['M_SECRET_TOKEN'] : APP_CONFIG['secret_token']
