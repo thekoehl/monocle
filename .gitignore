@@ -19,3 +19,4 @@ config/deploy.rb
 .idea
 app_config.yml
 *.DS_Store*
+.env

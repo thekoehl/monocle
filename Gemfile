@@ -27,5 +27,6 @@ group :development do
 end
 
 gem 'devise'
+gem 'dotenv-rails' # Neither nginx nor local dev is happy with speccing env variables
 gem 'paperclip'
 gem 'pg'
