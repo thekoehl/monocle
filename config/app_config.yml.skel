@@ -1,7 +1,0 @@
-development: &default
-	  secret_token:              "asetkseriuiiiAWEIWAEiu23iu4!!"
-test:
-  <<: *default
-
-production:
-  <<: *default
