@@ -5,17 +5,13 @@ class Api::CamerasController < Api::BaseController
 	# This really is a create or update; but this is easiest for API
 	# users to use.
 	def create
-		begin
-			validate_create_params
+		validate_create_params
 
-			@camera = @current_user.cameras.find_or_create_by(name: params[:camera][:name], user_id: @current_user)
-			@camera.latest_snapshot = params[:latest_snapshot]
-			@camera.save!
+		@camera = @current_user.cameras.find_or_create_by(name: params[:camera][:name], user_id: @current_user)
+		@camera.latest_snapshot = params[:latest_snapshot]
+		@camera.save!
 
-			render json: json_success
-		rescue Exception => ex
-			return render json: json_failure(ex.message), status: 500
-		end
+		render json: json_success
 	end
 
 	def index

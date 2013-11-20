@@ -3,18 +3,14 @@ class Api::CameraEventsController < Api::BaseController
 	protect_from_forgery :except => :create # This is meant to be called from the outside
 
 	def create
-		begin
-			validate_create_params
+		validate_create_params
 
-			@camera_event = CameraEvent.new(location: params[:camera_event][:location])
-			@camera_event.user = @current_user
-			@camera_event.event_recording = params[:event_recording]
-			@camera_event.save!
+		@camera_event = CameraEvent.new(location: params[:camera_event][:location])
+		@camera_event.user = @current_user
+		@camera_event.event_recording = params[:event_recording]
+		@camera_event.save!
 
-			render json: json_success
-		rescue Exception => ex
-			return render json: json_failure(ex.message), status: 500
-		end
+		render json: json_success
 	end
 
 	def destroy_all

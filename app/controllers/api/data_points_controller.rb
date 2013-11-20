@@ -2,16 +2,12 @@ class Api::DataPointsController < Api::BaseController
   before_filter :load_and_authenticate_api_user!
 
   def create
-    begin
-      validate_create_params
+    validate_create_params
 
-      sensor = create_sensor_from_params
-      data_point = create_data_point_from_params(sensor)
+    sensor = create_sensor_from_params
+    data_point = create_data_point_from_params(sensor)
 
-      return render json: json_success
-    rescue Exception => ex
-      return render json: json_failure(ex.message), status: 500
-    end
+    return render json: json_success
   end
 
 private

@@ -4,18 +4,14 @@ class Api::AlarmsController < Api::BaseController
 	respond_to :json
 
 	def create
-		begin
-			validate_create_params
-			@sensor = @current_user.sensors.find(params[:alarm][:sensor_id])
-			raise "User to sensor mismatch" if @sensor.nil?
+		validate_create_params
+		@sensor = @current_user.sensors.find(params[:alarm][:sensor_id])
+		raise "User to sensor mismatch" if @sensor.nil?
 
-			@alarm = Alarm.new alarm_params
-			@alarm.save!
+		@alarm = Alarm.new alarm_params
+		@alarm.save!
 
-			render json: json_success
-		rescue Exception => ex
-			return render json: json_failure(ex.message), status: 500
-		end
+		render json: json_success
 	end
 
 	def index
