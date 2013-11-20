@@ -1,11 +1,14 @@
+require 'simplecov'
+SimpleCov.start
+
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-require "codeclimate-test-reporter"
-
 require 'factory_girl'
-
 require 'minitest/reporters'
 
 class ActiveSupport::TestCase
@@ -20,6 +23,6 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   FactoryGirl.find_definitions
 
-	CodeClimate::TestReporter.start
+	
   Minitest::Reporters.use!
 end

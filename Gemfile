@@ -20,6 +20,7 @@ group :test do
 	gem 'minitest-reporters'
 	gem 'timecop'
 	gem 'factory_girl'
+	gem 'simplecov', require: false
 end
 
 group :development do
