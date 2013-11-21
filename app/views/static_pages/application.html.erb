@@ -1,3 +1,4 @@
+
 <input type="hidden" id="api-key" value="<%= current_user.api_key %>"/>
 
 <!-- Sensors Index -->
@@ -8,6 +9,21 @@
     <li><a href="#" data-time-range="monthly">Monthly</a></li>
   </ul>
 </div>
+
+<!-- Alarms Index -->
+<div id="alarms-index-base" class="alarm-index hidden"></div>
+<script id="alarms-index-header-tmpl" type="text/x-handlebars-template">
+  <a href="#" class="alarm-create-link btn btn-success pull-right">Create Alarm</a>
+</script>
+
+<!-- Alarm Form -->
+<script id="alarms-form-tmpl" type="text/x-handlebars-template">
+  <fieldset>
+    <form>
+      <h3>Things</h3>
+    </form>
+  </fieldset>
+</script>
 
 <!-- Camera Events Index -->
 <div id="camera-events-index-base" class="camera-events-index hidden"></div>

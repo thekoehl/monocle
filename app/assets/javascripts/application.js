@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require handlebars
 
 //= require nvd3/lib/d3.v3

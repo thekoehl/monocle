@@ -78,3 +78,7 @@ h2 {
   font-size: 52px;
   font-weight: bolder;
 }
+.subnav-container {
+  float:right;
+  margin-bottom: 25px;
+}

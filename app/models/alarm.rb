@@ -29,8 +29,10 @@ class Alarm < ActiveRecord::Base
 
 	before_validation :associate_user
 	def associate_user
-		return false unless self.sensor && self.sensor.user
+		return true unless self.sensor && self.sensor.user
 		self.user = self.sensor.user
+
+		return true
 	end
 
   ####################
