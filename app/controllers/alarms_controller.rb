@@ -46,7 +46,7 @@ class AlarmsController < ActionController::Base
   end
 
   def index
-    @alarms = current_user.alarms.includes(:sensor)
+    @alarms = current_user.alarms.includes(:sensor).order("sensors.name ASC")
   end
 
   def new
