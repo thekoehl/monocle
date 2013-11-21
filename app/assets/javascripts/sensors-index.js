@@ -11,6 +11,7 @@ NERD.SensorsIndex = {
 
     this.activeType = 'hourly';
     this.apiKey = $('#api-key').val();
+    if(this.apiKey == undefined) return
     this.registerHandlebarHelpers();
     this.loadSensors();
   },

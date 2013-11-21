@@ -1,5 +1,6 @@
 PDMonocle::Application.routes.draw do
   resources :alarms
+  resources :sensors
 
   namespace :api, :path => 'api' do
     resources :alarms
