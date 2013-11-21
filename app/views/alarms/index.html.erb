@@ -1,0 +1,29 @@
+<h2>Alarms</h2>
+<div class="subnav-container">
+  <%= link_to "Create New", new_alarm_path, class: 'btn btn-success' %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sensor Name</th>
+      <th>Trigger Value</th>
+      <th>Alarm Type</th>
+      <th>Last Triggered At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @alarms.each do |alarm| %>
+      <tr>
+        <td><%= alarm.sensor.name %></td>
+        <td><%= alarm.trigger_value %></td>
+        <td><%= alarm.alarm_type %></td>
+        <td><%= alarm.last_triggered_at %></td>
+        <td>
+          <%= link_to "Edit", edit_alarm_path(alarm), :class=> "btn" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

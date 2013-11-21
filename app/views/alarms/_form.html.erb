@@ -1,0 +1,23 @@
+ <% if alarm.errors.any? %>
+  <div class="alert alert-warning">
+    <h2><%= pluralize(alarm.errors.count, "error") %> prohibited this from being saved:</h2>
+    <% alarm.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+<%= form_for alarm do |f| %>
+  <div class="form-group">
+    <%= f.label :sensor_id %>
+    <%= f.select :sensor_id, sensor_options, {prompt: "Select a sensor"}, {class: 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :alarm_type %>
+    <%= f.select :alarm_type, alarm_types, {prompt: "Select an alarm type"}, {class: 'form-control'} %>
+  </div>
+  <div class="form-group">
+    <%= f.label :trigger_value %>
+    <%= f.text_field :trigger_value, class: 'form-control' %>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+<% end %>

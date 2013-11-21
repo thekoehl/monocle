@@ -79,6 +79,9 @@ h2 {
   font-weight: bolder;
 }
 .subnav-container {
-  float:right;
   margin-bottom: 25px;
+  overflow: hidden;
+}
+.subnav-container > * {
+  float:right;
 }
