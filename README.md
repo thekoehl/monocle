@@ -8,5 +8,5 @@ A simple datalogger that provides a full API for pushing and retrieving data as 
 Running
 =======
 
-The following environment variables need to be set:
+The following environment variables need to be set either through the environment or through a .env file in the root:
 - M_SECRET_TOKEN = The session storage secret token; make one up
