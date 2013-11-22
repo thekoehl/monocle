@@ -53,7 +53,7 @@ class AlarmTest < ActiveSupport::TestCase
 
 			@alarm.reload
 
-			assert @alarm.last_triggered_at.to_s == Time.now.utc.to_s
+			assert @alarm.last_triggered_at.to_s == Time.now.to_s
 		end
 	end
 
@@ -67,7 +67,7 @@ class AlarmTest < ActiveSupport::TestCase
 
 			@alarm.reload
 
-			assert @alarm.last_triggered_at.to_s == Time.now.utc.to_s
+			assert @alarm.last_triggered_at.to_s == Time.now.to_s
 		end
 	end
 
@@ -93,7 +93,7 @@ class AlarmTest < ActiveSupport::TestCase
 
 			@alarm.reload
 
-			assert @alarm.last_triggered_at.to_s == Time.now.utc.to_s
+			assert @alarm.last_triggered_at.to_s == Time.now.to_s
 
 			assert ActionMailer::Base.deliveries.empty? != true
 			message = ActionMailer::Base.deliveries[0]

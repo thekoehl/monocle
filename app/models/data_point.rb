@@ -38,7 +38,7 @@ class DataPoint < ActiveRecord::Base
 
   before_validation :compute_statistical_references
   def compute_statistical_references
-    tn = Time.now.utc.in_time_zone(ActiveSupport::TimeZone["Central Time (US & Canada)"])
+    tn = Time.now
     self.monthly_segmentation = tn.strftime("%Y/%m")
     self.daily_segmentation   = tn.strftime("%a %m/%d")
     self.hourly_segmentation  = tn.strftime("%a %m/%d %H:00")
