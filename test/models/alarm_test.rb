@@ -93,7 +93,7 @@ class AlarmTest < ActiveSupport::TestCase
 
 			@alarm.reload
 
-			assert @alarm.last_triggered_at.to_s == Time.now.to_s
+			assert @alarm.last_triggered_at.utc.to_s == Time.now.utc.to_s, "Expected #{@alarm.last_triggered_at.utc} was given #{Time.now.utc}"
 
 			assert ActionMailer::Base.deliveries.empty? != true
 			message = ActionMailer::Base.deliveries[0]
