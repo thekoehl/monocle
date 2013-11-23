@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120061004) do
+ActiveRecord::Schema.define(version: 20131123032733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 20131120061004) do
   create_table "data_points", force: true do |t|
     t.integer  "sensor_id"
     t.integer  "value"
-    t.datetime "hourly_segmentation"
-    t.datetime "daily_segmentation"
-    t.datetime "monthly_segmentation"
+    t.string   "hourly_segmentation"
+    t.string   "daily_segmentation"
+    t.string   "monthly_segmentation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
