@@ -8,7 +8,7 @@ class ChangeSegmentationsToStrings < ActiveRecord::Migration
     change_column :data_points, :monthly_segmentation, :string
 
     puts "Migrating datapoints to new compute format... this could take awhile..."
-    DataPoint.all do |dp|
+    DataPoint.all.each do |dp|
       tn = dp.created_at.in_time_zone(Rails.configuration.time_zone)
 
       dp.hourly_segmentation  = tn.strftime("%Y/%m/%d %H:00 (%a)")
