@@ -40,7 +40,7 @@ class Alarm < ActiveRecord::Base
 	####################
 
 	def check_for_and_trigger_if_needed
-		last_datapoint = self.sensor.data_points.order("created_at DESC").last
+		last_datapoint = self.sensor.data_points.order("created_at ASC").last
 
 		if self.is_low_level? && last_datapoint.value <= self.trigger_value
 			self.trigger!
