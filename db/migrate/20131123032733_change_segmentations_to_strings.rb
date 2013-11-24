@@ -15,7 +15,7 @@ class ChangeSegmentationsToStrings < ActiveRecord::Migration
       dp.daily_segmentation   = tn.strftime("%Y/%m/%d (%a)")
       dp.monthly_segmentation = tn.strftime("%Y/%m")
 
-      dp.save!
+      dp.save(validate: false)
     end
   end
 end
