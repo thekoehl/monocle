@@ -22,7 +22,7 @@ class Sensor < ActiveRecord::Base
 
 	def last_value
 		return 0 if self.data_points.count == 0
-		return self.data_points.order("created_at DESC").last.value
+		return self.data_points.order("created_at DESC").first.value
 	end
 
 end
