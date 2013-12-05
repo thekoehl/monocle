@@ -1,7 +1,7 @@
 <div id="camera-events-index" class="camera-events-index">
   <% @camera_events.each do |camera_event| %>
     <div class="camera-events-index-item">
-      <a class="download-link" href="" target="_blank">
+      <a class="download-link" href="<%= camera_event.event_recording.url %>" target="_blank">
         <span class="glypicon glyphicon-cloud"></span>
         <span class="location"><%= camera_event.location %></span>
         <span class="created-at"><%= camera_event.created_at %></span>
