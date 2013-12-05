@@ -1,0 +1,10 @@
+
+<div id="cameras-index" class="cameras-index">
+  <% @cameras.each do |camera| %>
+    <div>
+      <h2><%= camera.name %></h2>
+      <%= image_tag camera.latest_snapshot.url, class: "camera-thumbnail thumbnail" %>
+      <em><%= camera.updated_at %></em>
+    </div>
+  <% end %>
+</div>
