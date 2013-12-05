@@ -1,6 +1,11 @@
 PDMonocle::Application.routes.draw do
   resources :alarms
   resources :cameras
+  resources :camera_events do
+    collection do
+      post 'destroy_all'
+    end
+  end
   resources :sensors
 
   namespace :api, :path => 'api' do

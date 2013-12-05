@@ -1,0 +1,13 @@
+<div id="camera-events-index" class="camera-events-index">
+  <% @camera_events.each do |camera_event| %>
+    <div class="camera-events-index-item">
+      <a class="download-link" href="" target="_blank">
+        <span class="glypicon glyphicon-cloud"></span>
+        <span class="location"><%= camera_event.location %></span>
+        <span class="created-at"><%= camera_event.created_at %></span>
+      </a>
+    </div>
+  <% end %>
+  <%= button_to 'Destroy All', destroy_all_camera_events_path, class: 'delete-link btn btn-default' %>
+</div>
+
