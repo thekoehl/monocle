@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   has_many :alarms
   has_many :cameras, dependent: :destroy
   has_many :camera_events, dependent: :destroy
-  has_many :sensors, dependent: :destroy
+  has_many :numeric_sensors, dependent: :destroy
+  has_many :stateful_sensors, dependent: :destroy
 
   ###############
   # Validations #

@@ -5,7 +5,7 @@ class Api::AlarmsController < Api::BaseController
 
   def create
     validate_create_params
-    @sensor = @current_user.sensors.find(params[:alarm][:sensor_id])
+    @sensor = @current_user.numeric_sensors.find(params[:alarm][:sensor_id])
     raise "User to sensor mismatch" if @sensor.nil?
 
     @alarm = Alarm.new alarm_params

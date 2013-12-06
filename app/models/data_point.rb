@@ -4,7 +4,7 @@ class DataPoint < ActiveRecord::Base
   # Relationships #
   #################
 
-  belongs_to :sensor
+  belongs_to :numeric_sensor
 
   ##########
   # Scopes #
@@ -29,7 +29,7 @@ class DataPoint < ActiveRecord::Base
 
   after_save :check_for_and_trigger_alarms_if_needed
   def check_for_and_trigger_alarms_if_needed
-    self.sensor.alarms.each do |alarm|
+    self.numeric_sensor.alarms.each do |alarm|
       alarm.check_for_and_trigger_if_needed
     end
 
