@@ -28,7 +28,6 @@ group :development do
   gem 'timecop'
 end
 
-gem 'brakeman'
 gem 'devise'
 gem 'dotenv-rails' # Neither nginx nor local dev is happy with speccing env variables
 gem 'paperclip'
