@@ -58,6 +58,9 @@ h2 {
   text-align: center;
   width:275px;
 }
+.constrain {
+  overflow: hidden;
+}
 .top-navigation a {
   margin-left: 15px;
 }
@@ -68,7 +71,6 @@ h2 {
 .sensors-index-item {
   border-bottom: 2px solid #cec;
   margin-bottom: 15px;
-  overflow: hidden;
 }
 .sensors-index-item .text-bit {
   padding-top: 50px;

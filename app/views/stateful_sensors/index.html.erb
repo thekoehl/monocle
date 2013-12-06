@@ -1,6 +1,6 @@
 <div class="sensors-index">
   <% @stateful_sensors.each do |stateful_sensor| %>
-    <div class="sensors-index-item">
+    <div class="sensors-index-item constrain">
       <div class="col-md-4 text-bit">
         <h2><%= stateful_sensor.name %></h2>
         <span class="value"><%= stateful_sensor.last_state %></span>
