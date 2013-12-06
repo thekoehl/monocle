@@ -68,6 +68,7 @@ h2 {
 .sensors-index-item {
   border-bottom: 2px solid #cec;
   margin-bottom: 15px;
+  overflow: hidden;
 }
 .sensors-index-item .text-bit {
   padding-top: 50px;
@@ -77,6 +78,15 @@ h2 {
   color: #333;
   font-size: 52px;
   font-weight: bolder;
+}
+.state-changes-wrapper {
+  height:150px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding:0 15px 0 15px;
+}
+.state-changes.table {
+  margin-bottom: 0;
 }
 .subnav-container {
   margin-bottom: 25px;

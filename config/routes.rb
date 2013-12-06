@@ -7,6 +7,7 @@ PDMonocle::Application.routes.draw do
     end
   end
   resources :sensors
+  resources :stateful_sensors
 
   namespace :api, :path => 'api' do
     resources :alarms
@@ -20,6 +21,7 @@ PDMonocle::Application.routes.draw do
     resources :sensors
     resources :state_changes
     get '/data-points/create', to: 'data_points#create'
+    get '/state-changes/create', to: 'state_changes#create'
   end
 
   devise_for :users
