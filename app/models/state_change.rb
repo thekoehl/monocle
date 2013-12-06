@@ -4,12 +4,12 @@ class StateChange < ActiveRecord::Base
   # Relationships #
   #################
 
-  belongs_to :sensor
+  belongs_to :stateful_sensor
 
   ###############
   # Validations #
   ###############
 
-  validates :value, presence: true
+  validates :new_state, presence: true
 
 end

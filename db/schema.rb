@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20131206060653) do
   end
 
   create_table "state_changes", force: true do |t|
-    t.integer  "sensor_id"
+    t.integer  "stateful_sensor_id"
     t.string   "old_state"
     t.string   "new_state"
     t.datetime "created_at"

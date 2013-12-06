@@ -18,6 +18,7 @@ PDMonocle::Application.routes.draw do
     end
     resources :data_points
     resources :sensors
+    resources :state_changes
     get '/data-points/create', to: 'data_points#create'
   end
 
