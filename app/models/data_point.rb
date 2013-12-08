@@ -13,6 +13,9 @@ class DataPoint < ActiveRecord::Base
      group("#{segmentation}_segmentation")
     .order("#{segmentation}_segmentation")
   }
+  scope :closest_to, ->(datetime) {
+    where('created_at >= ? AND created_at <= ?', datetime-15.minutes, datetime+15.minutes)
+  }
 
   ###############
   # Validations #
@@ -46,4 +49,15 @@ class DataPoint < ActiveRecord::Base
 
     return true
   end
+
+  ####################
+  # Instance Methods #
+  ####################
+  
+  def closest_data_point datetime
+    data_points = self.numeric_sensor.data_points.closest_to(datetime)
+    return DataPoint.new(created_at: datetime, value: 0) if data_points.count == 0
+    return data_points.first
+  end
+
 end

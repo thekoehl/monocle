@@ -12,7 +12,7 @@ user.stateful_sensors.destroy_all
 Timecop.freeze do
 	r = Random.new
 	start_time = Time.now
-	floor_time = Time.now - (24*7).hours
+	floor_time = Time.now - (24*16).hours
 	(0..5).each do |s|
 		sensor = NumericSensor.new(name: "Sensor #{s}", units: "t/s", user: user)
     stateful_sensor = StatefulSensor.new(name: "Stateful Sensor #{s}", user: user)
