@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @sensor.data_points.where('created_at > ?', Time.now-7.days).each do |dp| %>
+    <% @sensor.data_points.where('created_at > ?', Time.now-7.days).order("created_at DESC").each do |dp| %>
       <% closest_dp = dp.closest_data_point(dp.created_at-7.days) %>
       <tr>
         <td><%= dp.created_at.strftime("%Y/%m/%d %H:%M (%a)") %></td>
