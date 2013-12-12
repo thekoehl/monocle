@@ -6,7 +6,11 @@ PDMonocle::Application.routes.draw do
       post 'destroy_all'
     end
   end
-  resources :sensors
+  resources :sensors do
+    collection do
+      get 'scifi'
+    end
+  end
   resources :stateful_sensors
 
   namespace :api, :path => 'api' do
@@ -18,7 +22,11 @@ PDMonocle::Application.routes.draw do
     	end
     end
     resources :data_points
-    resources :sensors
+    
+    resources :sensors do
+
+    end
+
     resources :state_changes
     get '/data-points/create', to: 'data_points#create'
     get '/state-changes/create', to: 'state_changes#create'
