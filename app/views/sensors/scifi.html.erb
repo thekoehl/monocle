@@ -71,6 +71,15 @@
         font-size: 1.3em;
         width: 265px;
       }
+      .numeric-sensor-readout-units {
+        margin-top: 13px;
+        margin-left: 5px;
+      }
+      .numeric-sensor-readout-units p {
+        color: #FFCC66;
+        margin: 0;    
+        text-align: center;
+      }
       .numeric-sensor-readout-value {
         color: #FF9900;
         font-weight: bolder;
@@ -131,7 +140,10 @@
             <div class="numeric-sensor-readout">
               <h2><%= sensor.name %></h2>
               <div class="numeric-sensor-readout-value"><%= sensor.last_value %></div>
-              <div class="numeric-sensor-readout-units"><%= sensor.units %><br/><%= sensor.trend_direction_arrow.html_safe%></div>
+              <div class="numeric-sensor-readout-units">
+                <p class="trend-direction"><%= sensor.trend_direction_arrow.html_safe%></p>
+                <%= sensor.units %>
+              </div>
             </div>
             
             <div class="progress-bar-wrapper">
