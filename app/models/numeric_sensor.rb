@@ -26,9 +26,17 @@ class NumericSensor < Sensor
     return @max_value
   end
 
+  def min_value
+    @min_value ||= self.data_points.where('created_at > ?', Time.now-7.days).minimum(:value).to_f
+    return @min_value
+  end
+ 
+
   def current_percentage_value
-    return 0 if max_value == 0
-    return ((last_value / max_value) * 100).to_i
+    range = max_value - min_value
+    return 0 if range == 0
+    percentage = last_value / range
+    return (percentage * 100).to_i
   end
 
 end
