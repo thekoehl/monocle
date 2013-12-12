@@ -11,7 +11,8 @@ class StatefulSensor < Sensor
   ####################
   
   def last_state
-    return self.state_changes.last.new_state
+    @last_state ||= self.state_changes.last.new_state
+    return @last_state
   end
 
 end

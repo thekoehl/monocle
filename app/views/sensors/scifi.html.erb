@@ -114,11 +114,17 @@
         text-align: center;
         width: 75px;
       }
-          </style>
+      .stateful-sensor-readout-state.off {
+        background-color: #CCCC52;
+      }
+    </style>
+    <script type="text/javascript">
+//      window.setTimeout('location.reload();', 5*1000);
+    </script>
   </head>
   <body>
     <div class="body-wrapper">
-      <h1>Systems Operations</h1>
+      <h1>Systems Operations @ <%= Time.now.strftime("%H:%M") %></h1>
       <div class="numeric-sensors-list">
         <% @numeric_sensors.each do |sensor| %>
           <div class="numeric-sensor-item">
@@ -147,7 +153,7 @@
           <% @stateful_sensors.each do |sensor| %>
             <div class="stateful-sensor-item">
               <h2><%= sensor.name %></h2>
-              <div class="stateful-sensor-readout-state"><%= sensor.last_state %></div>
+              <div class="stateful-sensor-readout-state <%= "off" if sensor.last_state == 'OFF'%>"><%= sensor.last_state %></div>
             </div>
           <% end %>
         </div>
