@@ -131,7 +131,7 @@
             <div class="numeric-sensor-readout">
               <h2><%= sensor.name %></h2>
               <div class="numeric-sensor-readout-value"><%= sensor.last_value %></div>
-              <div class="numeric-sensor-readout-units"><%= sensor.units %></div>
+              <div class="numeric-sensor-readout-units"><%= sensor.units %><br/><%= sensor.trend_direction_arrow.html_safe%></div>
             </div>
             
             <div class="progress-bar-wrapper">

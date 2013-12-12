@@ -31,6 +31,28 @@ class NumericSensor < Sensor
     return @min_value
   end
  
+  def trend_direction
+    return "NONE" if self.data_points.count <= 1
+    prior_value = self.data_points.order('created_at DESC').take(2)[1].value
+    if last_value < prior_value
+      return "DOWN"
+    elsif last_value > prior_value
+      return "UP"
+    else
+      return "NONE"
+    end
+  end
+
+  def trend_direction_arrow
+    trend = trend_direction
+    if trend == 'UP'
+      return '&#x25B2;'
+    elsif trend == 'DOWN'
+      return '&#x25BC;'
+    elsif trend == 'NONE'
+      return '&#x25A0;'
+    end
+  end
 
   def current_percentage_value
     range = max_value - min_value
