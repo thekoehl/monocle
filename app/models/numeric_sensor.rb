@@ -35,7 +35,7 @@ class NumericSensor < Sensor
   def current_percentage_value
     range = max_value - min_value
     return 0 if range == 0
-    percentage = last_value / range
+    percentage = (last_value - min_value) / range
     return (percentage * 100).to_i
   end
 
