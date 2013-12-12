@@ -32,8 +32,8 @@ class NumericSensor < Sensor
   end
  
   def trend_direction
-    return "NONE" if self.data_points.count <= 1
-    prior_value = self.data_points.order('created_at DESC').take(2)[1].value
+    return "NONE" if self.data_points.count <= 2
+    prior_value = self.data_points.order('created_at DESC').limit(3)[2].value
     if last_value < prior_value
       return "DOWN"
     elsif last_value > prior_value
