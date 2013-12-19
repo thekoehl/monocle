@@ -1,9 +1,9 @@
 class NumericSensor < Sensor
-  
+
   #################
   # Relationships #
   #################
-  
+
   has_many :data_points, dependent: :destroy
 
   ###############
@@ -30,7 +30,7 @@ class NumericSensor < Sensor
     @min_value ||= self.data_points.where('created_at > ?', Time.now-7.days).minimum(:value).to_f
     return @min_value
   end
- 
+
   def trend_direction
     return "NONE" if self.data_points.count <= 2
     prior_value = self.data_points.order('created_at DESC').limit(3)[2].value

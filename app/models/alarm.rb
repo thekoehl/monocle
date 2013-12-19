@@ -14,6 +14,8 @@ class Alarm < ActiveRecord::Base
 	belongs_to :sensor
 	belongs_to :user
 
+  delegate :name, :to => :sensor, :prefix => true
+
 	###############
 	# Validations #
 	###############

@@ -1,5 +1,5 @@
 class Sensor < ActiveRecord::Base
- 
+
   #################
   # Relationships #
   #################

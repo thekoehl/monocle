@@ -9,8 +9,8 @@ class StatefulSensor < Sensor
   ####################
   # Instance Methods #
   ####################
-  
-  def last_state
+
+def last_state
     @last_state ||= self.state_changes.last.new_state
     return @last_state
   end

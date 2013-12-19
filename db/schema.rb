@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206060653) do
+ActiveRecord::Schema.define(version: 20131219061328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20131206060653) do
     t.integer  "user_id"
   end
 
+  add_index "alarms", ["sensor_id"], name: "index_alarms_on_sensor_id", using: :btree
+  add_index "alarms", ["user_id"], name: "index_alarms_on_user_id", using: :btree
+
   create_table "camera_events", force: true do |t|
     t.integer  "user_id"
     t.string   "location"
@@ -38,6 +41,8 @@ ActiveRecord::Schema.define(version: 20131206060653) do
     t.datetime "event_recording_updated_at"
   end
 
+  add_index "camera_events", ["user_id"], name: "index_camera_events_on_user_id", using: :btree
+
   create_table "cameras", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -48,6 +53,8 @@ ActiveRecord::Schema.define(version: 20131206060653) do
     t.integer  "latest_snapshot_file_size"
     t.datetime "latest_snapshot_updated_at"
   end
+
+  add_index "cameras", ["user_id"], name: "index_cameras_on_user_id", using: :btree
 
   create_table "data_points", force: true do |t|
     t.integer  "numeric_sensor_id"
@@ -67,6 +74,8 @@ ActiveRecord::Schema.define(version: 20131206060653) do
     t.datetime "updated_at"
     t.string   "type"
   end
+
+  add_index "sensors", ["user_id"], name: "index_sensors_on_user_id", using: :btree
 
   create_table "state_changes", force: true do |t|
     t.integer  "stateful_sensor_id"

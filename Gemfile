@@ -21,6 +21,7 @@ group :test do
 	gem 'timecop'
 	gem 'factory_girl'
 	gem 'simplecov', require: false
+  gem 'rails_best_practices'
 end
 
 group :development do

@@ -1,5 +1,5 @@
 class CameraEventsController < ActionController::Base
- 
+
   layout 'application'
 
   ##################

@@ -9,7 +9,7 @@ class StateChange < ActiveRecord::Base
   ##########
   # Scopes #
   ##########
-  
+
   scope :a_few, -> { limit(15).order("created_at DESC") }
 
   ###############
@@ -25,7 +25,7 @@ class StateChange < ActiveRecord::Base
 
   # This is meant to just be state changes; dont save if this is a dupe
   #
-  # Depends upon assign_previous_state being executed first during the 
+  # Depends upon assign_previous_state being executed first during the
   # before_validation callback.
   before_save :ensures_not_duplicate
   def ensures_not_duplicate

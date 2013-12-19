@@ -9,6 +9,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - M_SECRET_TOKEN=897e62f6eb4f4425f90a7e177fdfa67793bc55071c260f9ba39e6fc00cb4f1d1b84cd345e6e4a218d2889312e95c9aa4bab91404c92b181809eb942540790a82 CODECLIMATE_REPO_TOKEN=1b0cfc5b1a9213edd793de41a755315f33f8077b2d2478a801baff7e91fcc791 bundle exec rake test
+  - bundle exec rails_best_practices
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database monocle_test' -U postgres

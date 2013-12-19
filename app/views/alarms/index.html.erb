@@ -15,7 +15,7 @@
   <tbody>
     <% @alarms.each do |alarm| %>
       <tr>
-        <td><%= alarm.sensor.name %></td>
+        <td><%= alarm.sensor_name %></td>
         <td><%= alarm.trigger_value %></td>
         <td><%= alarm.alarm_type %></td>
         <td><%= alarm.last_triggered_at %></td>

@@ -53,7 +53,7 @@ class DataPoint < ActiveRecord::Base
   ####################
   # Instance Methods #
   ####################
-  
+
   def closest_data_point datetime
     data_points = self.numeric_sensor.data_points.closest_to(datetime)
     return DataPoint.new(created_at: datetime, value: 0) if data_points.count == 0

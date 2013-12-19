@@ -86,6 +86,6 @@ PDMonocle::Application.configure do
     user_name:            ENV['M_SMTP_USERNAME'],
     password:             ENV['M_SMTP_PASSWORD'],
     authentication:       'plain',
-    enable_starttls_auto: true  
+    enable_starttls_auto: true
   }
 end

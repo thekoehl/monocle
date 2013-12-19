@@ -34,7 +34,6 @@ Timecop.freeze do
 			data_point.save!
 
       raise "Could not create statechange" unless StateChange.create(new_state: v, stateful_sensor: stateful_sensor)
-    
 
 			current_time = current_time - 1.hour
 		end
