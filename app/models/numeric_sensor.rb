@@ -1,5 +1,13 @@
 class NumericSensor < Sensor
 
+  #############
+  # Constants #
+  #############
+
+  TREND_ARROW_UP = '&#x25B2;'
+  TREND_ARROW_DOWN = '&#x25BC;'
+  TREND_ARROW_STABLE = '&#x25A0;'
+
   #################
   # Relationships #
   #################
@@ -31,26 +39,33 @@ class NumericSensor < Sensor
     return @min_value
   end
 
+  # Determines the current trend in data values.  Currently looks at the difference
+  # between the current and 2 values-ago.
+  #
+  # Returns:
+  # -1 for going down
+  #  0 for stable
+  # +1 for going up
   def trend_direction
-    return "NONE" if self.data_points.count <= 2
+    return 0 if self.data_points.count <= 2
     prior_value = self.data_points.order('created_at DESC').limit(3)[2].value
     if last_value < prior_value
-      return "DOWN"
+      return -1
     elsif last_value > prior_value
-      return "UP"
+      return 1
     else
-      return "NONE"
+      return 0
     end
   end
 
   def trend_direction_arrow
     trend = trend_direction
-    if trend == 'UP'
-      return '&#x25B2;'
-    elsif trend == 'DOWN'
-      return '&#x25BC;'
-    elsif trend == 'NONE'
-      return '&#x25A0;'
+    if trend > 0
+      return TREND_ARROW_UP
+    elsif trend < 0
+      return TREND_ARROW_DOWN
+    elsif trend == 0
+      return TREND_ARROW_STABLE
     end
   end
 
