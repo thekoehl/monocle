@@ -6,7 +6,7 @@ PDMonocle::Application.routes.draw do
       post 'destroy_all'
     end
   end
-  resources :sensors, only: [:show, :index] do
+  resources :sensors, only: [:index] do
     collection do
       get 'scifi'
     end

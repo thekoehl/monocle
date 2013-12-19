@@ -12,9 +12,4 @@ class SensorsController < ActionController::Base
     render layout: false
   end
 
-  def show
-    @sensor = current_user.numeric_sensors.find_by_id params[:id]
-    raise "Could not locate specified sensor" unless @sensor
-  end
-
 end
