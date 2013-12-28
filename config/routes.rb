@@ -1,4 +1,5 @@
 PDMonocle::Application.routes.draw do
+  get '/dashboards', to: 'dashboards#scifi'
   resources :alarms, except: [:show]
   resources :cameras, only: [:index]
   resources :camera_events, only: [:index] do

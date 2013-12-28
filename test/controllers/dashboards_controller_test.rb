@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class SensorsControllerTest < ActionController::TestCase
+class DashboardsControllerTest < ActionController::TestCase
 
   include Devise::TestHelpers
 
-  test 'it can list sensors' do
+  test 'it can display the default scifi dashboard' do
     user = FactoryGirl.create(:user)
     sign_in user
 
-    get :index
+    get :scifi
 
     assert_response 200
   end
