@@ -33,4 +33,5 @@ gem 'devise'
 gem 'dotenv-rails' # Neither nginx nor local dev is happy with speccing env variables
 gem 'newrelic_rpm'
 gem 'paperclip'
+gem 'puma'
 gem 'pg'
