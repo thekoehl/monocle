@@ -3,7 +3,7 @@ json.sensors @sensors do |sensor|
   json.id sensor.id
   json.name sensor.name
   json.units sensor.units
-  json.data_points_hourly sensor.data_points.segmented('hourly').order('hourly_segmentation asc').limit(26).average(:value) do |dp|
+  json.data_points_hourly sensor.data_points.where(["created_at > ?", Time.now-3.days]).segmented('hourly').average(:value) do |dp|
     json.id dp[0]
     json.value dp[1].to_i
   end
