@@ -3,7 +3,7 @@ class StaticPagesController < ActionController::Base
   before_filter :authenticate_user!, only: [ :application ]
 
   def home
-    return render "application" if current_user
+    return redirect_to sensors_path if current_user
   end
 
 end

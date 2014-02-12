@@ -1,7 +1,8 @@
 header {
   line-height: 0.86em;
-  margin: 0 auto;
+  margin: 25px auto;  
   max-width: 647px;
+  overflow: hidden;
   padding-left: 15px;
 }
 header h1 .byline {

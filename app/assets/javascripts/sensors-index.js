@@ -93,26 +93,20 @@ NERD.SensorsIndex = {
       var html = template(this.sensors[i]);
       var el = $(html);
       el.appendTo(this.view);
-      if (this.activeType == 'hourly')
-        NERD.DataChart.init(el.find('.chart-container'), this.sensors[i].data_points_hourly, this.sensors[i].Name, 'hourly');
-      else if (this.activeType == 'monthly')
-        NERD.DataChart.init(el.find('.chart-container'), this.sensors[i].data_points_monthly, this.sensors[i].Name, 'monthly');
-      else if (this.activeType == 'daily')
-        NERD.DataChart.init(el.find('.chart-container'), this.sensors[i].data_points_daily, this.sensors[i].Name, 'daily');
+ 
+      NERD.DataChart.init(el.find('.chart-container'), this.sensors[i].data_points_hourly, this.sensors[i].Name, 'hourly');
+ 
     };
     this.initDeleteLinks();
-    this.initNavigationTabs();
+  },
+  sortSensors: function() {
+    this.sensors.sort(function(a,b) {
+      if (a.Name < b.Name)
+        return -1;
+      if (a.Name > b.Name)
+        return 1;
+      return 0;
 
-        //this.dispose();
-      },
-      sortSensors: function() {
-        this.sensors.sort(function(a,b) {
-          if (a.Name < b.Name)
-            return -1;
-          if (a.Name > b.Name)
-            return 1;
-          return 0;
-
-        });
-      }
-    };
+    });
+  }
+};
