@@ -13,14 +13,14 @@ class Api::DataPointsController < Api::BaseController
 private
 
   def create_data_point_from_params sensor
-    data_point = DataPoint.new(numeric_sensor: sensor, value: params[:data_point][:value])
+    data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value])
     data_point.save!
 
     return data_point
   end
 
   def create_sensor_from_params
-    sensor = NumericSensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
+    sensor = Sensor.find_or_create_by(name: params[:sensor][:name], user_id: @current_user.id)
     sensor.units =  params[:sensor][:units]
     sensor.save!
 

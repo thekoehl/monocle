@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class NumericSensorTest < ActiveSupport::TestCase
+class SensorTest < ActiveSupport::TestCase
 
   ####################
   # Data Aggregation #
   ####################
 
   def create_sensor_with_range_array range_array
-    sensor = FactoryGirl.create(:numeric_sensor)
+    sensor = FactoryGirl.create(:sensor)
     range_array.each do |i|
-      FactoryGirl.create(:data_point, numeric_sensor: sensor, value: i)
+      FactoryGirl.create(:data_point, sensor: sensor, value: i)
     end
     return sensor
   end
@@ -41,13 +41,13 @@ class NumericSensorTest < ActiveSupport::TestCase
 
   test 'it can return the proper arrow based on direction' do
     sensor = create_sensor_with_range_array [1,2,3]
-    assert sensor.trend_direction_arrow == NumericSensor::TREND_ARROW_UP
+    assert sensor.trend_direction_arrow == Sensor::TREND_ARROW_UP
 
     sensor = create_sensor_with_range_array [3,3,3]
-    assert sensor.trend_direction_arrow == NumericSensor::TREND_ARROW_STABLE
+    assert sensor.trend_direction_arrow == Sensor::TREND_ARROW_STABLE
 
     sensor = create_sensor_with_range_array [3,2,1]
-    assert sensor.trend_direction_arrow == NumericSensor::TREND_ARROW_DOWN
+    assert sensor.trend_direction_arrow == Sensor::TREND_ARROW_DOWN
 
   end
 
@@ -61,7 +61,7 @@ class NumericSensorTest < ActiveSupport::TestCase
   ################
 
   test "has_many data points" do
-    sensor = FactoryGirl.build(:numeric_sensor)
+    sensor = FactoryGirl.build(:sensor)
     sensor.data_points << FactoryGirl.build(:data_point)
     sensor.save!
     assert sensor.data_points.length == 1
@@ -73,16 +73,16 @@ class NumericSensorTest < ActiveSupport::TestCase
 
   test 'can get last_value' do
     r = Random.new
-    sensor = FactoryGirl.create(:numeric_sensor)
+    sensor = FactoryGirl.create(:sensor)
     ts = Time.now - 7.hours
     d = nil
     Timecop.freeze do
       5.times.each do
         Timecop.travel ts
-        FactoryGirl.create(:data_point, numeric_sensor: sensor, value: Random.rand(0..55))
+        FactoryGirl.create(:data_point, sensor: sensor, value: Random.rand(0..55))
         ts = ts + 1.hour
       end
-      d = FactoryGirl.create(:data_point, numeric_sensor: sensor, value: Random.rand(0..55))
+      d = FactoryGirl.create(:data_point, sensor: sensor, value: Random.rand(0..55))
     end
 
     sensor.reload

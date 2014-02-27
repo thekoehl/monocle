@@ -21,24 +21,24 @@ class Api::SensorsControllerTest < ActionController::TestCase
     sensor = get_valid_sensor
     delete :destroy, id: sensor.id, api_key: sensor.user.api_key, format: :json
     assert_response 200
-    assert NumericSensor.where(id: sensor.id).count == 0
+    assert Sensor.where(id: sensor.id).count == 0
   end
 
   def get_valid_sensor
     user = User.new(email: 'test@test.com', password: 'aserfAWERAErrfser')
     user.save!
 
-    sensor = NumericSensor.new(name: "Test Sensor", units: "cats/sec")
+    sensor = Sensor.new(name: "Test Sensor", units: "cats/sec")
     sensor.user = user
     sensor.save!
 
     data_point = DataPoint.new(value: 35)
-    data_point.numeric_sensor = sensor
+    data_point.sensor = sensor
     data_point.save!
 
     Timecop.travel(Time.now + 3.hours)
     data_point = DataPoint.new(value: 135)
-    data_point.numeric_sensor = sensor
+    data_point.sensor = sensor
     data_point.save!
 
     return sensor

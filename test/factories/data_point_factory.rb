@@ -2,6 +2,6 @@ FactoryGirl.define do
 	factory :data_point do
 		value 5
 
-    after(:build) { |object| object.numeric_sensor ||= FactoryGirl.build(:numeric_sensor) }
+    after(:build) { |object| object.sensor ||= FactoryGirl.build(:sensor) }
 	end
 end

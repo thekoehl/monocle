@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227043807) do
+ActiveRecord::Schema.define(version: 20140227045825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140227043807) do
   add_index "cameras", ["user_id"], name: "index_cameras_on_user_id", using: :btree
 
   create_table "data_points", force: true do |t|
-    t.integer  "numeric_sensor_id"
+    t.integer  "sensor_id"
     t.integer  "value"
     t.string   "hourly_segmentation"
     t.string   "daily_segmentation"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 20140227043807) do
     t.string   "units"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
   end
 
   add_index "sensors", ["user_id"], name: "index_sensors_on_user_id", using: :btree

@@ -10,7 +10,7 @@ class AlarmsController < ActionController::Base
   before_filter :populate_form_dropdowns, except: [ :index ]
   def populate_form_dropdowns
     @alarm_types = [ ['Low Level', 'low_level'] , ['High Level', 'high_level'] ]
-    @sensor_options = current_user.numeric_sensors.map{ |t| [t.name, t.id] }
+    @sensor_options = current_user.sensors.map{ |t| [t.name, t.id] }
 
     return true
   end
@@ -18,7 +18,7 @@ class AlarmsController < ActionController::Base
   before_filter :verify_sensor_to_user_match, only: [ :create, :update ]
   def verify_sensor_to_user_match
     return true unless params[:alarm] && params[:alarm][:sensor_id]
-    if current_user.numeric_sensors.where(id: params[:alarm][:sensor_id]).length == 0
+    if current_user.sensors.where(id: params[:alarm][:sensor_id]).length == 0
       flash[:notice] = "That was not your sensor."
       return redirect_to alarms_path
     end

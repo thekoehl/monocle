@@ -4,7 +4,7 @@ class Api::AlarmsControllerTest < ActionController::TestCase
 	test "can create new alarms" do
 		current_alarms = Alarm.count
 
-		@sensor = FactoryGirl.build(:numeric_sensor)
+		@sensor = FactoryGirl.build(:sensor)
 		@sensor.save!
 
 		post :create, {
@@ -19,7 +19,7 @@ class Api::AlarmsControllerTest < ActionController::TestCase
 	end
 
 	test 'it does return 500 if saving an alarm fails' do
-		@sensor = FactoryGirl.build(:numeric_sensor)
+		@sensor = FactoryGirl.build(:sensor)
 		@sensor.save!
 		post :create, {
 			api_key: @sensor.user.api_key

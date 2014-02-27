@@ -8,7 +8,7 @@ class AlarmsControllerTest < ActionController::TestCase
     current_alarms_count = Alarm.count
 
     user = FactoryGirl.create(:user)
-    sensor = FactoryGirl.create(:numeric_sensor, user: user)
+    sensor = FactoryGirl.create(:sensor, user: user)
 
     sign_in user
 
@@ -24,7 +24,7 @@ class AlarmsControllerTest < ActionController::TestCase
   end
 
   test 'it does redisplay the new form if bad params to create' do
-    sensor = FactoryGirl.create(:numeric_sensor)
+    sensor = FactoryGirl.create(:sensor)
     sign_in sensor.user
 
     post :create, {alarm: { trigger_value: 5}}
@@ -37,7 +37,7 @@ class AlarmsControllerTest < ActionController::TestCase
     current_alarms_count = Alarm.count
     user = FactoryGirl.create(:user)
     second_user = FactoryGirl.create(:user)
-    sensor = FactoryGirl.create(:numeric_sensor, user: user)
+    sensor = FactoryGirl.create(:sensor, user: user)
 
     sign_in second_user
 
@@ -67,7 +67,7 @@ class AlarmsControllerTest < ActionController::TestCase
 
   test 'it can list alarms' do
     user = FactoryGirl.create(:user)
-    sensor = FactoryGirl.create(:numeric_sensor, user: user)
+    sensor = FactoryGirl.create(:sensor, user: user)
     alarm = FactoryGirl.create(:alarm, sensor: sensor)
 
     sign_in user
@@ -79,7 +79,7 @@ class AlarmsControllerTest < ActionController::TestCase
 
   test 'it can update alarms' do
     user = FactoryGirl.create(:user)
-    sensor = FactoryGirl.create(:numeric_sensor, user: user)
+    sensor = FactoryGirl.create(:sensor, user: user)
     alarm = FactoryGirl.create(:alarm, sensor: sensor, user: user)
 
     sign_in user

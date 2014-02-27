@@ -134,7 +134,7 @@
     <div class="body-wrapper">
       <h1>Systems Operations @ <%= Time.now.in_time_zone(Rails.configuration.time_zone).strftime("%H:%M") %></h1>
       <div class="numeric-sensors-list">
-        <% @numeric_sensors.each do |sensor| %>
+        <% @sensors.each do |sensor| %>
           <div class="numeric-sensor-item">
             <div class="numeric-sensor-readout">
               <h2><%= sensor.name %></h2>
