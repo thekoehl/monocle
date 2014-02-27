@@ -11,7 +11,6 @@ private
   def load_dashboard_data
     @cameras = current_user.cameras
     @numeric_sensors = current_user.numeric_sensors.order('name ASC')
-    @stateful_sensors = current_user.stateful_sensors.order('name ASC')
 
     return true
   end

@@ -159,14 +159,6 @@
             </div>
           <% end %>
         </div>
-        <div class="stateful-sensors-list">
-          <% @stateful_sensors.each do |sensor| %>
-            <div class="stateful-sensor-item">
-              <h2><%= sensor.name %></h2>
-              <div class="stateful-sensor-readout-state <%= "off" if sensor.last_state == 'OFF'%>"><%= sensor.last_state %></div>
-            </div>
-          <% end %>
-        </div>
       </div><!-- /col-right -->
   </body>
 </html>
