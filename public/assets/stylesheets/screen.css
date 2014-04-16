@@ -8,8 +8,9 @@ h1 {
   color: #DFE4EE;
 }
 main {
-  margin: 20px;
-  overflow: hidden;
+  display: table;
+  margin: 40px;
+  width: 100%;
 }
 p {
   font-family: 'Roboto', sans-serif;
@@ -19,19 +20,21 @@ p {
   Main Content
 */
 .main-content {
-  float: left;
+  display: table-cell;
   padding: 0 0 0 50px;
+  width:90%;
 }
 
 /*
   Secondary Navigation
 */
 .secondary {
-  float: left;
-  padding: 0 15px 0 15px;
+  display: table-cell;
+  padding: 0 35px 0 15px;
   max-width: 300px;
-}
-.secondary {
+  min-width: 170px;
+  vertical-align: top;
+  border-right: 1px solid #F1EBEB;
 }
 .secondary > div:first-child {
   margin-top: 0;
@@ -65,7 +68,7 @@ p {
   margin: 10px 0 10px 0;
   overflow: hidden;
   border-bottom: 1px solid #EBEBEB;
-  padding: 5px 0 5px 0;
+  padding: 10px 0 10px 0;
 }
 .sensor-readout-horizontal h3 {
   float: left;
