@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416003311) do
+ActiveRecord::Schema.define(version: 20140416013333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_points", force: true do |t|
+    t.decimal  "value"
+    t.datetime "logged_at_localized"
+    t.integer  "sensor_id"
+  end
+
+  add_index "data_points", ["sensor_id"], name: "index_data_points_on_sensor_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
+
+  create_table "sensors", force: true do |t|
+    t.string  "name"
+    t.string  "units"
+    t.integer "group_id"
+  end
+
+  add_index "sensors", ["group_id"], name: "index_sensors_on_group_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,8 +52,10 @@ ActiveRecord::Schema.define(version: 20140416003311) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "api_key"
   end
 
+  add_index "users", ["api_key"], name: "index_users_on_api_key", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
