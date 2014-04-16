@@ -17,7 +17,7 @@
             <h2><%= group.name %></h2>
             <% group.sensors.each do |sensor| %>
               <div class="sensor-readout-horizontal">
-                <h3><%= sensor.name %></h3>
+                <h3><%= link_to sensor.name, sensor %></h3>
                 <p class="value"><%= sensor.last_data_point.value %><%= sensor.units %></p>
               </div>
             <% end %>

@@ -70,6 +70,10 @@ p {
   border-bottom: 1px solid #EBEBEB;
   padding: 10px 0 10px 0;
 }
+.sensor-readout-horizontal a {
+  color: #000;
+  text-decoration: none;
+}
 .sensor-readout-horizontal h3 {
   float: left;
   line-height: 1.5em;
