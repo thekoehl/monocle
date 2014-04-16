@@ -7,29 +7,37 @@ h1 {
   font-size: 3em;
   color: #DFE4EE;
 }
+h3 {
+  font-size: 0.85em;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
 main {
-  display: table;
-  margin: 40px;
-  width: 100%;
+  margin: 40px auto;
+  overflow: hidden;
+  width: 980px;
 }
 p {
   font-family: 'Roboto', sans-serif;
+}
+table td {
+  padding: 15px;
 }
 
 /*
   Main Content
 */
 .main-content {
-  display: table-cell;
-  padding: 0 0 0 50px;
-  width:90%;
+  float:left;
+  min-width: 699px;
+  margin-left: 25px;
 }
 
 /*
   Secondary Navigation
 */
 .secondary {
-  display: table-cell;
+  float:left;
   padding: 0 35px 0 15px;
   max-width: 300px;
   min-width: 170px;
@@ -48,17 +56,12 @@ p {
   border-bottom: 1px solid #ccc;
   padding-bottom: 12px;
 }
-.secondary h3 {
-  font-size: 0.85em;
-  font-weight: 300;
-  font-family: 'Roboto', sans-serif;
-}
+
 /*
   Main Content
 */
 .main {
   float: left;
-  max-width: 960px;
 }
 
 /*
@@ -86,4 +89,27 @@ p {
   background-color: #0080FF;
   font-size: 0.85em;
   color: #FFF;
+}
+
+/*
+  Chart Containers
+*/
+.chart-container-full {
+  width: 100%;
+}
+
+/*
+  Grids
+*/
+.horizontal-grid {
+  overflow: hidden;
+  width: 100%;
+}
+.horizontal-grid:first-child {
+  margin-left: 0;
+}
+.horizontal-grid > * {
+  float: left;
+  margin-left: 10px;
+  width:31%;
 }

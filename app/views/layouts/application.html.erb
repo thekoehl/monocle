@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>Monocle</title>
-  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css" />
-
   <link href='http://fonts.googleapis.com/css?family=Lobster|Roboto:400,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/screen.css" />
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -29,7 +31,5 @@
       <%= yield %>
     </div>
   </main>
-  <script type="text/javascript" src="/assets/javascripts/jquery-2.1.0.min.js"></script>
-  <script type="text/javascript" src="/assets/javascripts/application.js"></script>
 </body>
 </html>
