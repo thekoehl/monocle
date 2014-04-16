@@ -1,9 +1,0 @@
-test:
-  pool: 5
-  timeout: 5000
-  host: localhost
-  adapter: postgresql
-  username: postgres
-  password:
-  database: monocle_test
-  min_messages: ERROR
