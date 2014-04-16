@@ -1,12 +1,12 @@
 <h1><%= @sensor.name %></h1>
 <div class="chart-container-full">
-  <%= area_chart @sensor.data_points.group_by_hour(:logged_at).maximum(:value) %>
+  <%= area_chart @sensor.data_points.group_by_day(:logged_at).maximum(:value) %>
 </div>
 
 <ul class="horizontal-grid">
   <li class="sensor-readout-horizontal">
     <h3>Average</h3>
-    <p class="value"><%= @sensor.data_points.average(:value) %><%= @sensor.units %></p>
+    <p class="value"><%= @sensor.data_points.average(:value).to_i %><%= @sensor.units %></p>
   </li>
   <li class="sensor-readout-horizontal">
     <h3>Maximum</h3>
