@@ -2,13 +2,11 @@
 <html>
 <head>
   <title>Monocle</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/stylesheets/screen.css" />
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
