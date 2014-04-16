@@ -3,7 +3,12 @@ body {
 h1,h2,h3,h4,h5 {
   font-family: 'Lobster', cursive;
 }
+h1 {
+  font-size: 3em;
+  color: #DFE4EE;
+}
 main {
+  margin: 20px;
   overflow: hidden;
 }
 p {
@@ -11,30 +16,39 @@ p {
 }
 
 /*
+  Main Content
+*/
+.main-content {
+  float: left;
+  padding: 0 0 0 50px;
+}
+
+/*
   Secondary Navigation
 */
 .secondary {
-  color: #fefefe;
   float: left;
-  padding: 15px;
+  padding: 0 15px 0 15px;
   max-width: 300px;
 }
 .secondary {
-  background: #55a1ed; /* Old browsers */
+}
+.secondary > div:first-child {
+  margin-top: 0;
+}
+.secondary > div {
+  margin: 30px 0 10px 0;
 }
 .secondary h2 {
   font-size: 1.5em;
-  margin: 10px;
   letter-spacing: 0.1em;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #ccc;
   padding-bottom: 12px;
 }
 .secondary h3 {
-  font-size: 1.25em;
-  margin: 10px;
-}
-.secondary p {
-  margin: 10px;
+  font-size: 0.85em;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
 }
 /*
   Main Content
@@ -48,22 +62,21 @@ p {
   Sensor Readout - Horizontal
 */
 .sensor-readout-horizontal {
+  margin: 10px 0 10px 0;
   overflow: hidden;
+  border-bottom: 1px solid #EBEBEB;
+  padding: 5px 0 5px 0;
 }
 .sensor-readout-horizontal h3 {
   float: left;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.85em;
-  font-weight: 300;
-  color: #F7F7F7;
-  line-height: 1.7em;
+  line-height: 1.5em;
 }
 .sensor-readout-horizontal .value {
+  margin-left: 20px;
   float: right;
-  border: 1px solid #cecece;
+  font-weight: 300;
   padding: 4px;
-  border-radius: 5px;
-  background-color: #23405D;
+  background-color: #0080FF;
   font-size: 0.85em;
   color: #FFF;
 }
