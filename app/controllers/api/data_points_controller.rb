@@ -1,6 +1,6 @@
 class Api::DataPointsController < Api::BaseController
   # data_point[value] = 2.25
-  # data_point[logged_at_localized] = 2014-04-15 20:48:24 -0500
+  # data_point[logged_at] = 2014-04-15 20:48:24 -0500
   # sensor[name] = Test Sensor
   # sensor[units] = F
   def create
@@ -16,7 +16,7 @@ class Api::DataPointsController < Api::BaseController
 private
 
   def create_data_point_from_params sensor
-    data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value], logged_at_localized: params[:data_point][:logged_at_localized])
+    data_point = DataPoint.new(sensor: sensor, value: params[:data_point][:value], logged_at: params[:data_point][:logged_at])
     data_point.save!
 
     return data_point

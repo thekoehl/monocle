@@ -3,11 +3,32 @@
 <head>
   <title>Monocle</title>
   <link rel="stylesheet" type="text/css" href="/assets/stylesheets/reset.css" />
+
+  <link href='http://fonts.googleapis.com/css?family=Lobster|Roboto:400,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/assets/stylesheets/screen.css" />
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+  <main>
+    <% unless current_user.nil? %>
+      <aside class="secondary">
+        <% current_user.groups.each do |group| %>
+          <div>
+            <h2><%= group.name %></h2>
+            <% group.sensors.each do |sensor| %>
+              <div class="sensor-readout-horizontal">
+                <h3><%= sensor.name %></h3>
+                <p class="value"><%= sensor.last_data_point.value %><%= sensor.units %></p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </aside>
+    <% end %>
+    <div class="main">
+      <%= yield %>
+    </div>
+  </main>
   <script type="text/javascript" src="/assets/javascripts/jquery-2.1.0.min.js"></script>
   <script type="text/javascript" src="/assets/javascripts/application.js"></script>
 </body>

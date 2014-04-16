@@ -13,7 +13,7 @@ class CreateBaseObjects < ActiveRecord::Migration
     end
     create_table :data_points do |t|
       t.decimal :value
-      t.datetime :logged_at_localized
+      t.datetime :logged_at
 
       t.integer :sensor_id
       t.timestamps

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140416013333) do
 
   create_table "data_points", force: true do |t|
     t.decimal  "value"
-    t.datetime "logged_at_localized"
+    t.datetime "logged_at"
     t.integer  "sensor_id"
     t.datetime "created_at"
     t.datetime "updated_at"

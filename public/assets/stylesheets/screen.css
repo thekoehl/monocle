@@ -1,0 +1,69 @@
+body {
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'Lobster', cursive;
+}
+main {
+  overflow: hidden;
+}
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*
+  Secondary Navigation
+*/
+.secondary {
+  color: #fefefe;
+  float: left;
+  padding: 15px;
+  max-width: 300px;
+}
+.secondary {
+  background: #55a1ed; /* Old browsers */
+}
+.secondary h2 {
+  font-size: 1.5em;
+  margin: 10px;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid white;
+  padding-bottom: 12px;
+}
+.secondary h3 {
+  font-size: 1.25em;
+  margin: 10px;
+}
+.secondary p {
+  margin: 10px;
+}
+/*
+  Main Content
+*/
+.main {
+  float: left;
+  max-width: 960px;
+}
+
+/*
+  Sensor Readout - Horizontal
+*/
+.sensor-readout-horizontal {
+  overflow: hidden;
+}
+.sensor-readout-horizontal h3 {
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #F7F7F7;
+  line-height: 1.7em;
+}
+.sensor-readout-horizontal .value {
+  float: right;
+  border: 1px solid #cecece;
+  padding: 4px;
+  border-radius: 5px;
+  background-color: #23405D;
+  font-size: 0.85em;
+  color: #FFF;
+}

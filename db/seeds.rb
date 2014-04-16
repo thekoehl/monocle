@@ -17,7 +17,7 @@ Group.destroy_all
       t = Time.now - hour_from_now.hours
       d = DataPoint.new
       d.sensor = s
-      d.logged_at_localized = t
+      d.logged_at = t.to_s
       d.value = Random.rand(100)
       d.save!
     end
