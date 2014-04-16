@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
     self.api_key = SecureRandom.uuid
   end
 
+  ##################
+  # Associations   #
+  ##################
+  has_many :groups
+  has_many :sensors, through: :groups
+
 end

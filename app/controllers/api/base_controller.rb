@@ -18,8 +18,8 @@ class Api::BaseController < ApplicationController
     { "status" => "success" }
   end
 
-  #rescue_from Exception do |exception|
-  #  render json: json_failure(exception.message), status: 500
-  #end
+  rescue_from Exception do |exception|
+    render json: json_failure(exception.message), status: 500
+  end
 
 end

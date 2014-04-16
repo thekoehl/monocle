@@ -3,5 +3,5 @@ class Group < ActiveRecord::Base
   validates :user, presence: true
 
   belongs_to :user
-  has_many :sensors
+  has_many :sensors, dependent: :destroy
 end

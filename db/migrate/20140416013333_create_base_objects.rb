@@ -3,17 +3,20 @@ class CreateBaseObjects < ActiveRecord::Migration
     create_table :groups do |t|
       t.string :name
       t.integer :user_id
+      t.timestamps
     end
     create_table :sensors do |t|
       t.string :name
       t.string :units
       t.integer :group_id
+      t.timestamps
     end
     create_table :data_points do |t|
       t.decimal :value
       t.datetime :logged_at_localized
 
       t.integer :sensor_id
+      t.timestamps
     end
     add_index :users, :api_key
     add_index :groups, :user_id

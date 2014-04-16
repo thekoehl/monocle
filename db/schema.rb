@@ -20,21 +20,27 @@ ActiveRecord::Schema.define(version: 20140416013333) do
     t.decimal  "value"
     t.datetime "logged_at_localized"
     t.integer  "sensor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "data_points", ["sensor_id"], name: "index_data_points_on_sensor_id", using: :btree
 
   create_table "groups", force: true do |t|
-    t.string  "name"
-    t.integer "user_id"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "groups", ["user_id"], name: "index_groups_on_user_id", using: :btree
 
   create_table "sensors", force: true do |t|
-    t.string  "name"
-    t.string  "units"
-    t.integer "group_id"
+    t.string   "name"
+    t.string   "units"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "sensors", ["group_id"], name: "index_sensors_on_group_id", using: :btree

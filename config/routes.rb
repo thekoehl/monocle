@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api, :path => 'api' do
     resources :data_points
+    resources :sensors
   end
 
   match 'installation', to: 'users#installation', via: [:get]

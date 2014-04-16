@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+u = User.first
+
+Group.destroy_all
+
+(0..5).each do |group_number|
+  g = Group.new
+  g.user = u
+  g.name = "Group #{group_number}"
+  g.save!
+  (0..5).each do |sensor_number|
+    s = Sensor.new
+    s.group = g
+    s.name = "Sensor #{sensor_number}"
+    s.units = "F"
+    s.save!
+    (0..24).each do |hour_from_now|
+      t = Time.now - hour_from_now.hours
+      d = DataPoint.new
+      d.sensor = s
+      d.logged_at_localized = t
+      d.value = Random.rand(100)
+      d.save!
+    end
+  end
+end

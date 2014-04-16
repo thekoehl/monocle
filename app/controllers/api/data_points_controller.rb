@@ -1,5 +1,4 @@
 class Api::DataPointsController < Api::BaseController
-  #
   # data_point[value] = 2.25
   # data_point[logged_at_localized] = 2014-04-15 20:48:24 -0500
   # sensor[name] = Test Sensor
