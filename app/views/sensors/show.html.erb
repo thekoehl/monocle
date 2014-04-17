@@ -20,5 +20,18 @@
     <p class="value"><%= @sensor.data_points.minimum(:value) %><%= @sensor.units %></p>
   </li>
 </ul>
+
+<% unless @sensor.events.empty? %>
+  <h2>Events</h2>
+  <table>
+    <% @sensor.events.each do |event| %>
+      <tr>
+        <td><%= event.created_at %></td>
+        <td><%= event.event_type %></td>
+        <td><%= event.acknowledged %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 <p></p>
 

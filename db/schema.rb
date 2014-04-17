@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417002157) do
+ActiveRecord::Schema.define(version: 20140417020201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20140417002157) do
   end
 
   add_index "data_points", ["sensor_id"], name: "index_data_points_on_sensor_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.integer  "sensor_id"
+    t.boolean  "acknowledged"
+    t.string   "event_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "events", ["sensor_id"], name: "index_events_on_sensor_id", using: :btree
 
   create_table "groups", force: true do |t|
     t.string   "name"

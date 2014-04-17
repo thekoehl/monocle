@@ -22,6 +22,7 @@ p {
   font-family: 'Roboto', sans-serif;
 }
 table td {
+  font-weight: 300;
   padding: 15px;
 }
 
@@ -32,6 +33,10 @@ table td {
   float:left;
   min-width: 699px;
   margin-left: 25px;
+}
+.main-content h2 {
+  font-size: 1.85em;
+  margin-top: 30px;
 }
 
 /*
