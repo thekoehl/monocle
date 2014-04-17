@@ -4,6 +4,7 @@ class AddMoreFieldsToSensors < ActiveRecord::Migration
       t.integer :high_level
       t.integer :low_level
       t.integer :signal_fault_delay
+      t.datetime :last_notification_sent_at
     end
   end
 end

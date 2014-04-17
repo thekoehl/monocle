@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140417002157) do
     t.integer  "high_level"
     t.integer  "low_level"
     t.integer  "signal_fault_delay"
+    t.datetime "last_notification_sent_at"
   end
 
   add_index "sensors", ["group_id"], name: "index_sensors_on_group_id", using: :btree

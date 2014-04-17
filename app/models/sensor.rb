@@ -6,4 +6,6 @@ class Sensor < ActiveRecord::Base
   belongs_to :group
   has_many :data_points, dependent: :destroy
   has_one :last_data_point, class_name: 'DataPoint', order: 'logged_at DESC'
+
+  include Alarmable
 end

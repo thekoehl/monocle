@@ -11,6 +11,7 @@ class DataPoint < ActiveRecord::Base
   after_save :update_last_value_on_sensor
   def update_last_value_on_sensor
     self.sensor.update_attribute(:last_value, self.value)
+    self.sensor.check_for_and_trigger_alarm
   end
 
 
