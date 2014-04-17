@@ -12,14 +12,14 @@ module Alarmable
     ['high_level', 'low_level', 'signal_fault'].each do |type|
       next unless self.send("#{type}_active?".to_sym)
       notify_of_active_alarm type
-      self.update_attribute(last_notification_sent_at: Time.now)
+      self.update_attribute('last_notification_sent_at', Time.now)
     end
   end
 
 private
 
   def notify_of_active_alarm type
-    #LoggerService.instance.log_error "#{type} alarm encountered for #{@human_name} at #{value}"
+    MonocleMailer.alarm_email(self, type).deliver!
   end
 
   def signal_fault_active?
