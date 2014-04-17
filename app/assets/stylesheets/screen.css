@@ -157,7 +157,7 @@ table td {
   text-decoration: none;
 
   display:block;
-  width: 130px;
+  width: 115px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -167,7 +167,7 @@ table td {
   line-height: 1.5em;
 }
 .sensor-readout-horizontal .value {
-  margin-left: 20px;
+  margin-left: 0;
   float: right;
   font-weight: 300;
   padding: 4px;
