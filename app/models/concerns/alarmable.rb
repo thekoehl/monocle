@@ -11,9 +11,9 @@ module Alarmable
 
     ['high_level', 'low_level', 'signal_fault'].each do |type|
       next unless self.send("#{type}_active?".to_sym)
-      Event.new(event_type: type, sensor_id: self.id, acknowledged: false).save!
+      Event.new(event_type: type, sensor_id: self.id).save!
       notify_of_active_alarm type
-      self.update_attribute('last_notification_sent_at', Time.now)
+      self.update_attributes({last_notification_sent_at: Time.now, needs_attention: true})
     end
   end
 

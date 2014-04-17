@@ -18,7 +18,7 @@
           <div>
             <h2><%= group.name %></h2>
             <% group.sensors.each do |sensor| %>
-              <div class="sensor-readout-horizontal">
+              <div class="sensor-readout-horizontal <% if sensor.needs_attention %>needs-attention<% end %>">
                 <h3><%= link_to sensor.name, sensor %></h3>
                 <p class="value"><%= sensor.last_value.nil? ? 'N/A' : sensor.last_value %><%= sensor.units %></p>
               </div>

@@ -15,6 +15,10 @@ class SensorsController < ApplicationController
   def show; end
 
   def update
+    # Why are we clearing this?  If the user is browsing the sensor;
+    # then they have seen any issues and should be reminded if they
+    # didn't fix it.
+    @sensor.last_notification_sent_at = nil
     if @sensor.update_attributes(sensor_params)
       flash[:notice] = "Succesfully updated sensor."
       return redirect_to sensor_path(@sensor)

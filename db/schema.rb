@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417020201) do
+ActiveRecord::Schema.define(version: 20140417021455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20140417020201) do
     t.integer  "low_level"
     t.integer  "signal_fault_delay"
     t.datetime "last_notification_sent_at"
+    t.boolean  "needs_attention",           default: false
   end
 
   add_index "sensors", ["group_id"], name: "index_sensors_on_group_id", using: :btree

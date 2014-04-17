@@ -90,7 +90,10 @@ table td {
   padding: 8px;
   text-decoration: none;
 }
-
+.needs-attention {
+  background-color: #FAE7E7;
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+}
 /*
   Chart Containers
 */
@@ -117,6 +120,10 @@ table td {
   border: 1px solid #cecece;
   padding: 10px;
   width: 200px;
+}
+.vertical-form input[type="checkbox"] {
+  width: auto;
+  margin-top: 1.25em;
 }
 
 /*
@@ -161,3 +168,38 @@ table td {
   color: #FFF;
 }
 
+/*
+  Fadeing Bits
+*/
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
