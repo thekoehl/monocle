@@ -1,4 +1,7 @@
-<h1><%= @sensor.name %></h1>
+<div class="primary-nav-container">
+  <h1><%= @sensor.name %></h1>
+  <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn' %>
+</div>
 <div class="chart-container-full">
   <%= area_chart @sensor.data_points.group_by_day(:logged_at).maximum(:value) %>
 </div>

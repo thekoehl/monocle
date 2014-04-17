@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416142526) do
+ActiveRecord::Schema.define(version: 20140417002157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 20140416142526) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "last_value"
+    t.integer  "high_level"
+    t.integer  "low_level"
+    t.integer  "signal_fault_delay"
   end
 
   add_index "sensors", ["group_id"], name: "index_sensors_on_group_id", using: :btree
