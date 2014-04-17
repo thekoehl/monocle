@@ -28,6 +28,6 @@ class SensorsController < ApplicationController
 
 private
   def sensor_params
-    params.require(:sensor).permit(:high_level, :low_level, :signal_fault_delay)
+    params.require(:sensor).permit(:high_level, :low_level, :signal_fault_delay, :needs_attention)
   end
 end
