@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'chartkick'
 gem 'devise'
+gem 'dotenv'
 gem 'groupdate'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
