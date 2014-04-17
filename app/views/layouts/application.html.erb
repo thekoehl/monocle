@@ -20,7 +20,7 @@
             <% group.sensors.each do |sensor| %>
               <div class="sensor-readout-horizontal <% if sensor.needs_attention %>needs-attention<% end %>">
                 <h3><%= link_to sensor.name, sensor %></h3>
-                <p class="value"><%= sensor.last_value.nil? ? 'N/A' : number_to_human_size(sensor.last_value).gsub('B','').gsub('ytes','') %><%= sensor.units %></p>
+                <p class="value"><%= sensor.last_value.nil? ? 'N/A' : number_to_human_size(sensor.last_value).gsub('B','').gsub('ytes','').gsub('yte','') %><%= sensor.units %></p>
               </div>
             <% end %>
           </div>
