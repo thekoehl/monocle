@@ -7,13 +7,13 @@
 </div>
 <div class="chart-container-full">
   <% if params[:timespan].nil? || params[:timespan] == 'day' %>
-    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 1.days.ago.midnight..Time.now).maximum(:value) %>
+    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 1.days.ago.midnight..1.hour.ago).maximum(:value) %>
   <% elsif params[:timespan] == 'week' %>
-    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 7.days.ago.midnight..Time.now).maximum(:value) %>
+    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 7.days.ago.midnight..1.hour.ago).maximum(:value) %>
   <% elsif params[:timespan] == 'month' %>
-    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 31.days.ago.midnight..Time.now).maximum(:value) %>
+    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 31.days.ago.midnight..1.hour.ago).maximum(:value) %>
   <% elsif params[:timespan] == 'year' %>
-    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 365.days.ago.midnight..Time.now).maximum(:value) %>
+    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 365.days.ago.midnight..1.hour.ago).maximum(:value) %>
   <% end %>
 </div>
 
