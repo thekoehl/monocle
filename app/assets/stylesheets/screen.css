@@ -81,7 +81,7 @@ table td {
 }
 
 /*
-  Buttons
+  Kitchen Sink
 */
 .btn {
   background-color: #0080FF;
@@ -95,6 +95,7 @@ table td {
   background-color: #FAE7E7;
   -webkit-animation: fadein 2s; /* Safari and Chrome */
 }
+
 /*
   Chart Containers
 */
@@ -154,6 +155,12 @@ table td {
 .sensor-readout-horizontal a {
   color: #000;
   text-decoration: none;
+
+  display:block;
+  width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sensor-readout-horizontal h3 {
   float: left;
