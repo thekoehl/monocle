@@ -5,18 +5,6 @@
   <%= link_to 'Week', sensor_path(@sensor, timespan: 'week'), class: 'btn' %>
   <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
 </div>
-<div class="chart-container-full">
-  <%= area_chart @data %>
-  <% if params[:timespan].nil? || params[:timespan] == 'day' %>
-    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 1.days.ago.midnight..Time.now).maximum(:value) %>
-  <% elsif params[:timespan] == 'week' %>
-    <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 7.days.ago.midnight..Time.now).maximum(:value) %>
-  <% elsif params[:timespan] == 'month' %>
-    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 31.days.ago.midnight..Time.now).maximum(:value) %>
-  <% elsif params[:timespan] == 'year' %>
-    <%= area_chart @sensor.data_points.group_by_day(:logged_at, range: 365.days.ago.midnight..Time.now).maximum(:value) %>
-  <% end %>
-</div>
 
 <ul class="horizontal-grid">
   <li class="sensor-readout-horizontal">
