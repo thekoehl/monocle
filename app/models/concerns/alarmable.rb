@@ -28,7 +28,7 @@ private
     return false if self.signal_fault_delay.nil?
 
     # Signal fault delay is expressed in hours, so multiply by 60
-    return (Time.now - self.data_points.order('logged_at DESC').last.logged_at) > self.signal_fault_delay * 60
+    return (Time.now - self.last_data_point.logged_at) > self.signal_fault_delay * 60
   end
 
   def low_level_active?
