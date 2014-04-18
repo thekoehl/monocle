@@ -6,8 +6,7 @@ class Sensor < ActiveRecord::Base
   belongs_to :group
   has_many :data_points, dependent: :destroy
   has_many :events, dependent: :destroy
-  has_one :last_data_point, class_name: 'DataPoint', order: 'logged_at DESC'
-
+  has_one :last_data_point, -> { order 'logged_at DESC' }, class_name: 'DataPoint'
 
   ###############
   # Validations #

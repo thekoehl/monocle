@@ -6,6 +6,7 @@
   <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
 </div>
 <div class="chart-container-full">
+  <%= area_chart @data %>
   <% if params[:timespan].nil? || params[:timespan] == 'day' %>
     <%= area_chart @sensor.data_points.group_by_hour(:logged_at, range: 1.days.ago.midnight..Time.now).maximum(:value) %>
   <% elsif params[:timespan] == 'week' %>
