@@ -5,6 +5,9 @@
   <%= link_to 'Week', sensor_path(@sensor, timespan: 'week'), class: 'btn' %>
   <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
 </div>
+<div class="chart-container-full">
+  <%= area_chart @data %>
+</div>
 
 <ul class="horizontal-grid">
   <li class="sensor-readout-horizontal">
