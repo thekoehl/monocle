@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+gem 'capistrano'
+gem 'capistrano-bundler'
+gem 'capistrano-chruby'
+gem 'capistrano-rails'
+gem 'chartkick'
+gem 'devise'
+gem 'dotenv-rails'
+gem 'groupdate'
+gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails'
+gem 'pg'
+gem 'puma'
+gem 'rails', '4.1.0'
+gem 'spring', group: :development
+gem 'turbolinks'
+gem 'whenever', require: false

@@ -1,0 +1,14 @@
+# Monocle
+
+## Introduction
+This is my answer to Nagios.  Over my years spent managing and monitoring systems, I've grown to hate bloated software packages that accomplish a relatively simple task.  Poll my systems and see if they're up and running.  I've developed Monocle with the idea of a light-weight polling service (requiring only Ruby) that submits its data back to a central monitor over a RESTful API.  There's a minimum amount of configuration involved (it will automatically graph any data reported to it creating needed objects on the fly) and it has the basic functions that fill my needs.
+
+## Deployment Setup
+* Setup your .env file by copying env.skel to .env and filling in the values
+* Setup your database user and database using postgresql (tested on 9.3)
+* Setup your initial deployment root directory on the prod box
+* Setup the initial cap folder structure with `cap production deploy:check`
+* Copy the .skel files in config to their non-skeleton counterparts and fill in values
+* Run `bundle exec cap production db:migrate` to get your database up and running
+* Start your server (there's an example upstart script; or bundle exec puma)
+* Run `whenever` to get the setup information for the crontab

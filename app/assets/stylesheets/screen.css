@@ -1,0 +1,213 @@
+body, input, select, textarea {
+  font-family: 'Roboto', sans-serif;
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'Lobster', cursive;
+}
+h1 {
+  font-size: 3em;
+  color: #DFE4EE;
+}
+h3 {
+  font-size: 0.85em;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+}
+main {
+  margin: 40px auto;
+  overflow: hidden;
+  width: 980px;
+}
+p {
+  font-family: 'Roboto', sans-serif;
+}
+table td {
+  font-weight: 300;
+  padding: 15px;
+}
+
+/*
+  Main Content
+*/
+.main-content {
+  float:left;
+  min-width: 699px;
+  margin-left: 25px;
+}
+.main-content h2 {
+  font-size: 1.85em;
+  margin-top: 30px;
+}
+
+/*
+  Secondary Navigation
+*/
+.secondary {
+  float:left;
+  padding: 0 35px 0 15px;
+  max-width: 300px;
+  min-width: 170px;
+  vertical-align: top;
+  border-right: 1px solid #F1EBEB;
+}
+.secondary > div:first-child {
+  margin-top: 0;
+}
+.secondary > div {
+  margin: 30px 0 10px 0;
+}
+.secondary h2 {
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 12px;
+}
+.primary-nav-container {
+  overflow: hidden;
+}
+.primary-nav-container h1 {
+  float: left;
+}
+.primary-nav-container a {
+  float: right;
+  margin-right: 15px;
+  margin-top: 10px;
+}
+/*
+  Main Content
+*/
+.main {
+  float: left;
+}
+
+/*
+  Kitchen Sink
+*/
+.btn {
+  background-color: #0080FF;
+  border: none;
+  color: white;
+  font-weight: 300;
+  padding: 8px;
+  text-decoration: none;
+}
+.needs-attention {
+  background-color: #FAE7E7;
+  -webkit-animation: fadein 2s; /* Safari and Chrome */
+}
+
+/*
+  Chart Containers
+*/
+.chart-container-full {
+  width: 100%;
+}
+
+/*
+  Forms
+*/
+.vertical-form {
+  margin-top: 30px;
+}
+.vertical-form > * {
+  overflow: hidden;
+}
+.vertical-form label {
+  float: left;
+  font-weight: 300;
+  line-height: 2.45em;
+  width: 200px;
+}
+.vertical-form input {
+  border: 1px solid #cecece;
+  padding: 10px;
+  width: 200px;
+}
+.vertical-form input[type="checkbox"] {
+  width: auto;
+  margin-top: 1.25em;
+}
+
+/*
+  Grids
+*/
+.horizontal-grid {
+  overflow: hidden;
+  width: 100%;
+}
+.horizontal-grid:first-child {
+  margin-left: 0;
+}
+.horizontal-grid > * {
+  float: left;
+  margin-left: 10px;
+  width:31%;
+}
+
+/*
+  Sensor Readout - Horizontal
+*/
+.sensor-readout-horizontal {
+  overflow: hidden;
+  border-bottom: 1px solid #EBEBEB;
+  padding: 10px 0 10px 0;
+}
+.sensor-readout-horizontal a {
+  color: #000;
+  text-decoration: none;
+
+  display:block;
+  width: 115px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sensor-readout-horizontal h3 {
+  float: left;
+  line-height: 1.5em;
+}
+.sensor-readout-horizontal .value {
+  margin-left: 0;
+  float: right;
+  font-weight: 300;
+  padding: 4px;
+  background-color: #0080FF;
+  font-size: 0.85em;
+  color: #FFF;
+}
+
+/*
+  Fadeing Bits
+*/
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}

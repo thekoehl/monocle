@@ -1,0 +1,32 @@
+<h1><%= @sensor.name %></h1>
+ <% if @sensor.errors.any? %>
+  <div class="alert alert-warning">
+    <h2><%= pluralize(@sensor.errors.count, "error") %> prohibited this from being saved:</h2>
+    <% @sensor.errors.full_messages.each do |msg| %>
+      <p><%= msg %></p>
+    <% end %>
+  </div>
+<% end %>
+<%= form_for @sensor do |f| %>
+  <ul class="vertical-form">
+    <li>
+      <%= f.label :low_level %>
+      <%= f.text_field :low_level %>
+    </li>
+    <li>
+      <%= f.label :high_level %>
+      <%= f.text_field :high_level %>
+    </li>
+    <li>
+      <%= f.label :signal_fault_delay, 'Signal Fault Delay (hours)' %>
+      <%= f.text_field :signal_fault_delay %>
+    </li>
+    <li>
+      <%= f.label :needs_attention %>
+      <%= f.check_box :needs_attention %>
+    </li>
+    <li>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </li>
+  </ul>
+<% end %>
