@@ -133,6 +133,9 @@ GEM
       coffee-rails
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
+    uglifier (2.5.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
     whenever (0.8.2)
@@ -158,4 +161,5 @@ DEPENDENCIES
   rails (= 4.1.0)
   spring
   turbolinks
+  uglifier
   whenever
