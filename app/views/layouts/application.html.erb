@@ -12,21 +12,6 @@
 </head>
 <body>
   <main>
-    <% unless current_user.nil? %>
-      <aside class="secondary">
-        <% current_user.groups.each do |group| %>
-          <div>
-            <h2><%= group.name %></h2>
-            <% group.sensors.each do |sensor| %>
-              <div class="sensor-readout-horizontal <% if sensor.needs_attention %>needs-attention<% end %>">
-                <h3><%= link_to sensor.name, sensor %></h3>
-                <p class="value"><%= sensor.last_value.nil? ? 'N/A' : number_to_human_size(sensor.last_value).gsub('B','').gsub('ytes','').gsub('yte','') %><%= sensor.units %></p>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </aside>
-    <% end %>
     <div class="main-content">
       <%= yield %>
     </div>
