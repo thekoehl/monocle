@@ -21,6 +21,8 @@ class SensorsController < ApplicationController
 
   def show
     @data = chart_data # Provided by Chartable
+    @maximum = @sensor.data_points.maximum(:value)
+    @minimum = @sensor.data_points.minimum(:value)
   end
 
   def update

@@ -98,6 +98,15 @@ table td.no-attention-needed {
   margin-top: 1.25em;
 }
 /******************************************************
+  Graph Table
+ ******************************************************/
+.graph-table td {
+  padding: 0px;
+}
+.graph-table .h-axis-legend {
+  font-size: 11px;
+}
+/******************************************************
   Sensor Lists
  ******************************************************/
 .horizontal-sensor-list ul {
