@@ -7,15 +7,15 @@
 <table class="graph-table">
   <tr>
       <% @data.each do |datum| %>
-        <td><span class="h-axis-legend">
-              <%= datum[0]%>
-            </span>
-
+        <td>
             <%= human_value(datum[1]) %><%= @sensor.units %><br/>
             <% ((datum[1]/@maximum)*100).to_i.times do %>
               #<br/>
             <% end %>
-                    </td>
+            <span class="h-axis-legend">
+              <%= datum[0].strftime("%H:%m") %>
+            </span>
+        </td>
       <% end %>
   </tr>
 </table>
