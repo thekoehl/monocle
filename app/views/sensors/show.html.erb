@@ -1,15 +1,21 @@
+<div class="primary-nav-container">
+  <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn' %>
+  <%= link_to 'Year', sensor_path(@sensor, timespan: 'year'), class: 'btn' %>
+  <%= link_to 'Week', sensor_path(@sensor, timespan: 'week'), class: 'btn' %>
+  <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
+</div>
 <table class="graph-table">
   <tr>
       <% @data.each do |datum| %>
-        <td>
-          <span class="h-axis-legend">
+        <td><span class="h-axis-legend">
+              <%= datum[0]%>
+            </span>
+
             <%= human_value(datum[1]) %><%= @sensor.units %><br/>
             <% ((datum[1]/@maximum)*100).to_i.times do %>
               #<br/>
             <% end %>
-            <%= datum[0].strftime("%H:%m") %>
-          </span>
-        </td>
+                    </td>
       <% end %>
   </tr>
 </table>
