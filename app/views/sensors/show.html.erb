@@ -3,10 +3,11 @@
       <% @data.each do |datum| %>
         <td>
           <span class="h-axis-legend">
-            <%= datum[0].strftime("%H:%m") %>
+            <%= datum[1] %><%= @sensor.units %>
             <% ((datum[1]/@maximum)*100).to_i.times do %>
               #<br/>
             <% end %>
+            <%= datum[0].strftime("%H:%m") %>
           </span>
         </td>
       <% end %>

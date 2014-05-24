@@ -102,6 +102,8 @@ table td.no-attention-needed {
  ******************************************************/
 .graph-table td {
   padding: 0px;
+  text-align: center;
+  vertical-align: bottom;
 }
 .graph-table .h-axis-legend {
   font-size: 11px;
