@@ -6,7 +6,7 @@
   <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
 </div>
 <div class="chart-container-full">
-  <%= area_chart @data %>
+  <%= area_chart @data, library: {backgroundColor: "#000", textColor: "#fff", colors: ['#FFA500', '#000', '#000', '#000', '#000']} %>
 </div>
 
 <ul class="horizontal-grid">

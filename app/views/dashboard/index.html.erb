@@ -1,1 +1,22 @@
-<h1>Dashboards</h1>
+<table>
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td class="<%= attention_needed_class(group) %> ">
+          &nbsp;
+        </td>
+        <td>
+          <%= group.name %>
+        </td>
+        <% group.sensors.each do |sensor| %>
+          <td class="smaller-text">
+            <%= link_to sensor do %>
+              <span class="name"><%= sensor.name %>:</span>
+              <span class="value"><%= sensor.last_value %><%= sensor.units %></span>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
