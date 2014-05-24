@@ -12,7 +12,7 @@
           <td class="smaller-text">
             <%= link_to sensor do %>
               <span class="name"><%= sensor.name %>:</span>
-              <span class="value"><%= sensor.last_value %><%= sensor.units %></span>
+              <span class="value"><%= human_value(sensor.last_value) %><%= sensor.units %></span>
             <% end %>
           </td>
         <% end %>

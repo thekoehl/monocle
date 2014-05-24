@@ -3,7 +3,7 @@
       <% @data.each do |datum| %>
         <td>
           <span class="h-axis-legend">
-            <%= datum[1] %><%= @sensor.units %>
+            <%= human_value(datum[1]) %><%= @sensor.units %><br/>
             <% ((datum[1]/@maximum)*100).to_i.times do %>
               #<br/>
             <% end %>
