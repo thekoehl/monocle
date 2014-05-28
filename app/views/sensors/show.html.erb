@@ -1,3 +1,4 @@
+<%= link_to 'Back', dashboard_path %>
 <div class="primary-nav-container">
   <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn' %>
   <%= link_to 'Year', sensor_path(@sensor, timespan: 'year'), class: 'btn' %>
@@ -9,7 +10,7 @@
       <% @data.each do |datum| %>
         <td>
             <%= human_value(datum[1]) %><%= @sensor.units %><br/>
-            <% ((datum[1]/@maximum)*100).to_i.times do %>
+            <% ((datum[1]/@maximum)*50).to_i.times do %>
               #<br/>
             <% end %>
             <span class="h-axis-legend">

@@ -114,6 +114,7 @@ table td.no-attention-needed {
 }
 .graph-table .h-axis-legend {
   color: rgb(62, 114, 62);
+  text-shadow: none;
 }
 /******************************************************
   Sensor Lists
