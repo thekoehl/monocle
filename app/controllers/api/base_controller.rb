@@ -6,7 +6,7 @@ class Api::BaseController < ApplicationController
   def load_and_authenticate_api_user!
     return render(json: json_failure('No api_key specified'), status: 403) unless params[:api_key]
     @current_user = User.where(api_key: params[:api_key]).first
-    return render(json: json_failure('No such user with that api key'), status: 403) unless @current_user
+    return render(json: json_failure('No such user with that api key ' + params[:api_key]), status: 403) unless @current_user
   end
 
   def json_failure(value)
@@ -18,8 +18,8 @@ class Api::BaseController < ApplicationController
     { "status" => "success" }
   end
 
-  #rescue_from Exception do |exception|
-    #render json: json_failure(exception.message), status: 500
-  #end
+  rescue_from Exception do |exception|
+    render json: json_failure(exception.message), status: 500
+  end
 
 end

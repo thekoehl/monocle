@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503040006) do
+ActiveRecord::Schema.define(version: 20140712174636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cameras", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.datetime "latest_image_uploaded_at"
+    t.string   "latest_image_file_name"
+    t.string   "latest_image_content_type"
+    t.integer  "latest_image_file_size"
+    t.datetime "latest_image_updated_at"
+  end
 
   create_table "data_points", force: true do |t|
     t.decimal  "value"

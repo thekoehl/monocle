@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :api, :path => 'api' do
+    resources :cameras
     resources :data_points
     resources :sensors
   end

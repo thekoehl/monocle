@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   ##################
   # Associations   #
   ##################
+  has_many :cameras
   has_many :groups, -> {order('name ASC')}
   has_many :sensors, through: :groups
 
