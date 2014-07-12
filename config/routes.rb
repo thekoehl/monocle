@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :data_points
     resources :sensors
   end
+  resources :cameras
   resources :groups
   resources :sensors
   match 'installation', to: 'users#installation', via: [:get]
