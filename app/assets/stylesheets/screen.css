@@ -1,133 +1,20 @@
-body, input, select, textarea {
-  background-color: rgb(17, 17, 17);
-  color: lime;
-  text-shadow: 1px 2px green;
-  font-family: 'Anonymous Pro', monospace;
-}
-h1 {
-  font-size: 3em;
-  color: #DFE4EE;
-}
-h3 {
-  font-size: 0.85em;
-  font-weight: 300;
-}
-main {
+
+.form-container-single {
   margin: 40px auto;
-  overflow: hidden;
-}
-p,td {
-  font-size: 1em;
-}
-a {
-  color: lime;
-  text-decoration: none;
-  border-bottom: 1px solid #FFCC00;
-}
-/******************************************************
-  Navigation
- ******************************************************/
-.primary-nav-container {
-  float: right;
-}
-/******************************************************
-  Tables
- ******************************************************/
-table {
-  width: 100%;
-}
-table thead {
-  text-align: left;
-}
-table thead > tr {
-  border: none;
-}
-table th {
-  padding: 10px;
-}
-table td {
-  font-weight: 300;
-  padding: 15px;
-}
-table tr {
-  border: 5px solid rgb(32, 44, 32);
-}
-table td.attention-needed {
-  background-color: rgb(143, 40, 40);
-  padding: 0;
-  width: 5px;
-}
-table td.no-attention-needed {
-  background-color: rgb(40, 143, 40);;
-  padding: 0;
-  width: 5px;
+  max-width: 300px;
 }
 
-
-/*
-  Kitchen Sink
-*/
-.btn {
-  background-color: #000000;
-  border: none;
-  color: rgb(255, 194, 0);
-  font-weight: 300;
-  padding: 8px;
-  text-decoration: none;
+.link-collection-horizontal {
+  list-style-type: none;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
-
-.smaller-text {
-  font-size: 13px;
-}
-/*
-  Forms
-*/
-.vertical-form {
-  margin-top: 30px;
-}
-.vertical-form > * {
-  overflow: hidden;
-}
-.vertical-form label {
+.link-collection-horizontal > * {
   float: left;
-  font-weight: 300;
-  line-height: 2.45em;
-  width: 200px;
+  border-left: 1px solid #666;
+  margin-left: 5px;
+  padding-left: 5px;
 }
-.vertical-form input {
-  border: 1px solid #cecece;
-  padding: 10px;
-  width: 200px;
-}
-.vertical-form input[type="checkbox"] {
-  width: auto;
-  margin-top: 1.25em;
-}
-/******************************************************
-  Graph Table
- ******************************************************/
-.graph-table td {
-  font-size: 11px;
-  padding: 0px;
-  text-align: center;
-  vertical-align: bottom;
-}
-.graph-table .h-axis-legend {
-  color: rgb(62, 114, 62);
-  text-shadow: none;
-}
-/******************************************************
-  Sensor Lists
- ******************************************************/
-.horizontal-sensor-list ul {
-  overflow: hidden;
-}
-.horizontal-sensor-list li {
-  float: left;
-  margin-right: 10px;
-  border-right: 1px solid green;
-  padding-right: 5px;
-}
-.horizontal-sensor-list span {
-  font-size: 12px;
+.link-collection-horizontal *:nth-child(1) {
+  border-left: none;
 }

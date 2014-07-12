@@ -8,12 +8,15 @@
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 
   <%= csrf_meta_tags %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <main>
-    <div class="main-content">
-      <%= yield %>
-    </div>
-  </main>
+  <% if current_user %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% end %>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>
