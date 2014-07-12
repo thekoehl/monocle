@@ -13,6 +13,5 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '4.1.0'
 gem 'spring', group: :development
-gem 'turbolinks'
 gem 'uglifier'
 gem 'whenever', require: false

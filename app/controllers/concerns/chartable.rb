@@ -1,8 +1,26 @@
 module Chartable
   extend ActiveSupport::Concern
 
+  def x_axis_labels
+    mapped = chart_data.map{|k,v| k}
+    labels = mapped.select.with_index{|_,i| (i+1) % 4 == 0}
+    labels << mapped.last
+    labels.map {|v| v.strftime('%a %H:%M') }
+  end
+
+  def values
+    mapped = chart_data.map{|k,v| v}
+    values = mapped.select.with_index{|_,i| (i+1) % 4 == 0}
+    values << mapped.last
+    values
+  end
+
+  # OLD
+
   def chart_data
-    return @sensor.data_points.send("group_by_#{chart_detail_options[0]}", :logged_at, range: chart_range).maximum(:value)
+    return @chart_data if @chart_data
+    @chart_data = @sensor.data_points.send("group_by_#{chart_detail_options[0]}", :logged_at, range: chart_range).maximum(:value)
+    return @chart_data
   end
 
   def chart_range

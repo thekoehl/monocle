@@ -1,22 +1,9 @@
-<%= link_to 'Back', dashboard_path %>
-<div class="primary-nav-container">
-  <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn' %>
-  <%= link_to 'Year', sensor_path(@sensor, timespan: 'year'), class: 'btn' %>
-  <%= link_to 'Week', sensor_path(@sensor, timespan: 'week'), class: 'btn' %>
-  <%= link_to 'Day', sensor_path(@sensor, timespan: 'day'), class: 'btn' %>
+<div class="container-title">
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn btn-default' %>
+  </div>
+  <h2><%= @sensor.group.name %> / <%= @sensor.name %></h2>
 </div>
-<table class="graph-table">
-  <tr>
-      <% @data.each do |datum| %>
-        <td>
-            <%= human_value(datum[1]) %><%= @sensor.units %><br/>
-            <% ((datum[1]/@maximum)*50).to_i.times do %>
-              #<br/>
-            <% end %>
-            <span class="h-axis-legend">
-              <%= datum[0].strftime("%H:%m") %>
-            </span>
-        </td>
-      <% end %>
-  </tr>
-</table>
+
+<canvas id="chart-container" data-sensor-id="<%= @sensor.id %>"></canvas>
+
