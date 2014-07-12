@@ -18,6 +18,19 @@
   padding-right: 15px;
 }
 
+.container-vertical-listing {
+  list-style-type: none;
+}
+.container-vertical-listing > *{
+  border-top: 1px solid #eeeeee;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.container-vertical-listing *:nth-child(1) {
+  border-top: none;
+}
+
+
 .form-container-single {
   margin: 40px auto;
   max-width: 300px;
@@ -36,4 +49,10 @@
 }
 .link-collection-horizontal *:nth-child(1) {
   border-left: none;
+}
+
+@media (max-width: 840px) {
+  .hide-in-mobile {
+    display: none;
+  }
 }

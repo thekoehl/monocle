@@ -1,8 +1,8 @@
 <div class="container-title">
-  <div class="pull-right">
+  <div class="pull-right hide-in-mobile">
     <%= link_to 'Edit', edit_sensor_path(@sensor), class: 'btn btn-default' %>
   </div>
-  <h2><%= @sensor.group.name %> / <%= @sensor.name %></h2>
+  <h2><span class="hide-in-mobile"><%= @sensor.group.name %> / </span><%= @sensor.name %></h2>
 </div>
 <div class="container-chart">
   <canvas id="chart-container" class="chart-line" data-sensor-id="<%= @sensor.id %>"></canvas>
