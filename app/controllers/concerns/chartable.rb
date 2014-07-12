@@ -1,7 +1,7 @@
 module Chartable
   extend ActiveSupport::Concern
 
-  MAX_LABELS = 12
+  MAX_LABELS = 10
 
   def x_axis_labels
     mapped = chart_data.map{|k,v| k}
