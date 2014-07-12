@@ -1,8 +1,6 @@
 <% @sensors.each do |sensor| %>
-  <h3><%= sensor.name %></h3>
+  <h3><%= link_to sensor.name, sensor %></h3>
   <div class="progress">
-    <div class="progress-bar" role="progressbar" aria-valuenow="<%= sensor.last_data_point.value %>" aria-valuemin="<%= sensor.minimum %>" aria-valuemax="<%= sensor.maximum %>" style="width: <%= sensor.current_percentage %>%;">
-      <%= number_to_human_size_agnostic(sensor.last_data_point.value) %><%= sensor.units %>
-    </div>
+    <%= render partial: 'progress_bar', locals: {sensor: sensor} %>
   </div>
 <% end %>
