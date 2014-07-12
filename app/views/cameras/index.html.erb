@@ -1,0 +1,12 @@
+<h2>Cameras</h2>
+
+<div class="row">
+  <% @cameras.each do |camera| %>
+    <div class="col-lg-6 container-big-stat">
+      <a href="<%= camera.latest_image.url %>">
+        <%= image_tag camera.latest_image.url, class: 'img-thumbnail' %>
+      </a>
+      <em>Last updated: <%= camera.latest_image_updated_at %></em>
+    </div>
+  <% end %>
+</div>
