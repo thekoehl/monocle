@@ -1,0 +1,8 @@
+<% @sensors.each do |sensor| %>
+  <h3><%= sensor.name %></h3>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="<%= sensor.last_data_point.value %>" aria-valuemin="<%= sensor.minimum %>" aria-valuemax="<%= sensor.maximum %>" style="width: <%= sensor.current_percentage %>%;">
+      <%= sensor.last_data_point.value %><%= sensor.units %>
+    </div>
+  </div>
+<% end %>

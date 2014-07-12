@@ -15,5 +15,10 @@ class Sensor < ActiveRecord::Base
   validates :name, presence: true
   validates :units, presence: true
 
+  ############
+  # Concerns #
+  ############
   include Alarmable
+  include Statistical
+
 end

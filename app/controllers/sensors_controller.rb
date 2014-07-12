@@ -8,7 +8,7 @@ class SensorsController < ApplicationController
   # Filters #
   ###########
   before_filter :authenticate_user!
-  before_filter :load_sensor!
+  before_filter :load_sensor!, except: [:index]
   def load_sensor!
     @sensor = current_user.sensors.includes(:last_data_point).where(id: params[:id]).first
     raise 'Could not find sensor' if @sensor.nil?
@@ -18,6 +18,10 @@ class SensorsController < ApplicationController
   # Actions #
   ###########
   def edit; end
+
+  def index
+    @sensors = current_user.sensors.includes(:last_data_point, :data_points)
+  end
 
   def show
     @data = chart_data # Provided by Chartable
