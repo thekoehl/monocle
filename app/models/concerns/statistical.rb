@@ -20,6 +20,14 @@ module Statistical
     return @minimum
   end
 
+  def average
+    return @average if @average
+    return 0 if self.data_points.length == 0
+
+    @average = self.data_points.average(:value)
+    return @average
+  end
+
   def current_percentage
     return @current_percentage if @current_percentage
     return 0 if self.current_value == 0 || self.maximum == 0

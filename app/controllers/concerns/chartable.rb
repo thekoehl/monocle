@@ -7,7 +7,7 @@ module Chartable
     mapped = chart_data.map{|k,v| k}
     mod = mapped.length / MAX_LABELS
     labels = mapped.select.with_index{|_,i| (i+1) % mod == 0}
-    labels << mapped.last
+    labels << mapped.last unless labels.last == mapped.last
     return condense_labels labels
   end
 
@@ -57,7 +57,7 @@ module Chartable
   # Returns the resolution and how far back to send the chart.
   def chart_detail_options
     if params[:timespan].nil? || params[:timespan] == 'day' then
-      return ['hour', 1.days.ago.midnight]
+      return ['hour', 24.hours.ago]
     elsif params[:timespan] == 'week'
       return ['hour', 7.days.ago.midnight]
     elsif params[:timespan] == 'month'

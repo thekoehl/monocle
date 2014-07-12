@@ -1,4 +1,11 @@
-
+.container-big-stat {
+  text-align: center;
+}
+.container-big-stat .stat {
+  color: #666;
+  font-size: 1.25em;
+  font-weight: 500;
+}
 
 .container-body {
   margin-top: 64px;

@@ -7,4 +7,26 @@
 <div class="container-chart">
   <canvas id="chart-container" class="chart-line" data-sensor-id="<%= @sensor.id %>"></canvas>
 </div>
+<div>
+  <h3>Right Now</h3>
+  <%= render partial: 'progress_bar', locals: {sensor: @sensor} %>
+</div>
+<div class="row">
+ 
+  <div class="col-lg-4 container-big-stat">
+    <h3>Average</h3>
+    <span class="stat"><%= number_to_human_size_agnostic @sensor.average %><%= @sensor.units %></span>
+  </div>
 
+  <div class="col-lg-4 container-big-stat">
+    <h3>Minimum</h3>
+    <span class="stat"><%= number_to_human_size_agnostic @sensor.minimum %><%= @sensor.units %></span>
+  </div>
+  
+  <div class="col-lg-4 container-big-stat">
+    <h3>Maximum</h3>
+    <span class="stat"><%= number_to_human_size_agnostic @sensor.maximum %><%= @sensor.units %></span>
+  </div>
+
+  
+</div>
