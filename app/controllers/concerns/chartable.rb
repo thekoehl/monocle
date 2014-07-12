@@ -1,18 +1,40 @@
 module Chartable
   extend ActiveSupport::Concern
 
+  MAX_LABELS = 12
+
   def x_axis_labels
     mapped = chart_data.map{|k,v| k}
-    labels = mapped.select.with_index{|_,i| (i+1) % 4 == 0}
+    mod = mapped.length / MAX_LABELS
+    labels = mapped.select.with_index{|_,i| (i+1) % mod == 0}
     labels << mapped.last
-    labels.map {|v| v.strftime('%a %H:%M') }
+    return condense_labels labels
   end
 
   def values
     mapped = chart_data.map{|k,v| v}
-    values = mapped.select.with_index{|_,i| (i+1) % 4 == 0}
+    mod = mapped.length / MAX_LABELS
+    values = mapped.select.with_index{|_,i| (i+1) % mod == 0}
     values << mapped.last
-    values
+    return condense_values values
+  end
+
+  def condense_labels labels
+    if params[:timespan].nil? || params[:timespan] == 'day' || params[:timespan] == 'week' then
+      return labels.map {|v| v.strftime('%a %H:%M') }
+    elsif params[:timespan] == 'month' || params[:timespan] == 'year'
+      return labels.map {|v| v.strftime('%m/%d/%Y')}
+    end
+  end
+
+  def condense_values values
+    max = values.max
+    return values if max < 1024
+    scaler = 0
+    while ( (max/scaler) > 1024 ) do
+      scaler += 1024
+    end
+    return values.map {|v| (v / scaler).to_i}
   end
 
   # OLD

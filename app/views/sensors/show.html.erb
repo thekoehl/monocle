@@ -4,6 +4,7 @@
   </div>
   <h2><%= @sensor.group.name %> / <%= @sensor.name %></h2>
 </div>
-
-<canvas id="chart-container" data-sensor-id="<%= @sensor.id %>"></canvas>
+<div class="container-chart">
+  <canvas id="chart-container" class="chart-line" data-sensor-id="<%= @sensor.id %>"></canvas>
+</div>
 

@@ -1,6 +1,12 @@
 
+
 .container-body {
   margin-top: 64px;
+}
+
+.container-chart {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .form-container-single {
