@@ -6,6 +6,17 @@
 </div>
 <div class="container-chart">
   <canvas id="chart-container" class="chart-line" data-sensor-id="<%= @sensor.id %>"></canvas>
+
+</div>
+<div>
+  <div class="form-group">
+    <select class="form-control" id="chart-range">
+      <option value="day">Chart back hours</option>
+      <option value="week">Chart back days</option>
+      <option value="month">Chart back weeks</option>
+      <option value="year">Chart back months</option>
+    </select>
+  </div>
 </div>
 <div>
   <h3>Right Now</h3>
