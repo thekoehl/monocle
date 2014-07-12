@@ -21,7 +21,11 @@
         </div>
         <div class="collapse navbar-collapse" role="navigation">
           <ul class="nav navbar-nav">
-            <li><a href="#">Some link</a></li>
+            <% @groups.each do |group| %>
+              <li>
+                <%= link_to group.name, group %>
+              </li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
