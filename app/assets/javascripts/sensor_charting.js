@@ -2,6 +2,7 @@ $(function() {
   ChartInitialize();
 });
 var chartContainer; // OOOOH YEAAAAH
+var chart; // OOOH YEAAAAH AGAIN
 function ChartInitialize() {
   chartContainer = $('#chart-container');
   if (chartContainer.length == 0) return;
@@ -16,7 +17,7 @@ function ChartGetData() {
   var timespan = $('#chart-range').val();
   $.get('/api/sensors/' + id + '.json?timespan=' + timespan, function(data) {
     var options = ChartGetOptions();
-    var chart = new Chart(ctx).Line(data, options);
+    chart = new Chart(ctx).Line(data, options);
   });
 
 };
@@ -27,6 +28,8 @@ function ChartGetOptions() {
 };
 function ChartHookupCallbacks() {
   $('#chart-range').change(function() {
+    chart.clear();
+    chart.destroy();
     ChartGetData();
   });
 };
