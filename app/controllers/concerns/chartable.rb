@@ -30,7 +30,7 @@ module Chartable
   def condense_values values
     max = values.max
     return values if max < 1024
-    scaler = 0
+    scaler = 1
     while ( (max/scaler) > 1024 ) do
       scaler += 1024
     end
