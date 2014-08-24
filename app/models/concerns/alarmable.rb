@@ -27,10 +27,8 @@ private
     return false if self.data_points.count == 0
     return false if self.signal_fault_delay.nil?
 
-    # Signal fault delay is expressed in hours, so multiply by 60
-
-    # Rake doesn't seem to be honoring the config.time_zone here, hence the manual specification.
-    return (Time.now.in_time_zone('Central Time (US & Canada)') - self.last_data_point.logged_at) > self.signal_fault_delay * 60
+    # Signal fault delay is expressed in hours, so multiply by 60 for minutes and another for seconds
+    return (Time.now - self.last_data_point.logged_at) > self.signal_fault_delay * 3600
   end
 
   def low_level_active?
