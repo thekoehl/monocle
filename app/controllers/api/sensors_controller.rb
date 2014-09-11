@@ -2,8 +2,8 @@ class Api::SensorsController < Api::BaseController
 
   include Chartable
 
-  skip_before_filter :load_and_authenticate_api_user!
-  before_filter :authenticate_user!
+#  skip_before_filter :load_and_authenticate_api_user!
+#  before_filter :authenticate_user!
   def index
     @sensors = current_user.sensors
   end

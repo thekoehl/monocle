@@ -18,6 +18,7 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute "cd #{release_path} && source /usr/local/share/chruby/chruby.sh && chruby ruby-2.1.2 && RAILS_ENV=production bundle install"
       execute "cd #{release_path} && source /usr/local/share/chruby/chruby.sh && chruby ruby-2.1.2 && RAILS_ENV=production bundle exec rake db:migrate"
+      execute "cd #{release_path} && source /usr/local/share/chruby/chruby.sh && chruby ruby-2.1.2 && RAILS_ENV=production bundle exec rake assets:precompile"
       execute "[ -e #{release_path}/tmp/pids/puma-production.pid ] && kill -SIGUSR2 `cat #{release_path}/tmp/pids/puma-production.pid` || true"
     end
   end

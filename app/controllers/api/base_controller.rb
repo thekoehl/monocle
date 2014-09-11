@@ -4,6 +4,7 @@ class Api::BaseController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def load_and_authenticate_api_user!
+    return true if current_user
     return render(json: json_failure('No api_key specified'), status: 403) unless params[:api_key]
     @current_user = User.where(api_key: params[:api_key]).first
     return render(json: json_failure('No such user with that api key ' + params[:api_key]), status: 403) unless @current_user
